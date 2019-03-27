@@ -1,0 +1,27 @@
+{
+  "errors": [
+    {
+      "error": {
+        "resource": "lead",
+        "field": "/invalid_field",
+        "code": "unknown",
+        "message": "unknown attribute",
+        "details": "The attribute '/invalid_field' is not a known attribute for the 'lead' resource."
+      },
+      "meta": {
+        "type": "error",
+        "links": {
+          "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "type": "errors",
+    "http_status": "422 Unprocessable Entity",
+    "logref": "b5hsh-1r4th-f13p6-4j7ag",
+    "links": {
+      "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+    }
+  }
+}

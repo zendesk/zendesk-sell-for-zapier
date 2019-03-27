@@ -1,0 +1,10 @@
+{
+  "items": [],
+  "meta": {
+    "type": "collection",
+    "count": 0,
+    "links": {
+      "self": "https://api.getbase.com/v2/deal_sources?name=word&page=1&per_page=25"
+    }
+  }
+}

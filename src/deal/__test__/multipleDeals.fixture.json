@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 51753911,
+        "created_at": "2018-05-16T11:34:51Z",
+        "updated_at": "2018-05-16T11:35:16Z",
+        "name": "Deal 1",
+        "hot": false,
+        "currency": "USD",
+        "loss_reason_id": null,
+        "source_id": null,
+        "creator_id": 1045095,
+        "last_stage_change_at": "2018-05-16T11:35:16Z",
+        "last_stage_change_by_id": 1045095,
+        "dropbox_email": "dropbox@e43e1104.deals.futuresimple.com",
+        "owner_id": 1045095,
+        "value": 0,
+        "stage_id": 6386894,
+        "contact_id": 204996371,
+        "custom_fields": {},
+        "organization_id": 204996235,
+        "estimated_close_date": null,
+        "customized_win_likelihood": null,
+        "last_activity_at": "2018-05-16T11:35:16Z",
+        "tags": []
+      },
+      "meta": {
+        "version": 4,
+        "type": "deal"
+      }
+    },
+    {
+      "data": {
+        "id": 53024259,
+        "created_at": "2018-07-13T14:24:48Z",
+        "updated_at": "2018-07-13T14:24:49Z",
+        "name": "Deal 2",
+        "hot": false,
+        "currency": "USD",
+        "loss_reason_id": null,
+        "source_id": null,
+        "creator_id": 1045095,
+        "last_stage_change_at": "2018-07-13T14:29:43Z",
+        "last_stage_change_by_id": null,
+        "dropbox_email": "dropbox@93c1b53c.deals.futuresimple.com",
+        "owner_id": 1045095,
+        "value": 0,
+        "stage_id": 6386889,
+        "contact_id": 204996430,
+        "custom_fields": {},
+        "organization_id": null,
+        "estimated_close_date": null,
+        "customized_win_likelihood": null,
+        "last_activity_at": "2018-07-13T14:24:49Z",
+        "tags": []
+      },
+      "meta": {
+        "version": 3,
+        "type": "deal"
+      }
+    }
+  ]
+}

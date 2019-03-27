@@ -1,0 +1,27 @@
+{
+  "errors": [
+    {
+      "meta": {
+        "type": "error",
+        "links": {
+          "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+        }
+      },
+      "error": {
+        "field": "/data/max_discount",
+        "message": "attribute value is incorrect",
+        "code": "incorrect_value",
+        "resource": "product",
+        "details": "Ensure this value is less than or equal to 100."
+      }
+    }
+  ],
+  "meta": {
+    "type": "collection",
+    "links": {
+      "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+    },
+    "http_status": "422 Unprocessable Entity",
+    "logref": "b86t2-ah1ou-etpkg-uesig"
+  }
+}

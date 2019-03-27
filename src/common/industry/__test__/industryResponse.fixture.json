@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "data": {
+        "name": "Aerospace & Defense",
+        "created_at": "2016-12-16T22:55:11Z",
+        "updated_at": "2017-09-29T09:59:46Z"
+      },
+      "meta": {
+        "type": "industry"
+      }
+    },
+    {
+      "data": {
+        "name": "Alternative Energy",
+        "created_at": "2016-12-16T22:55:11Z",
+        "updated_at": "2017-09-29T09:59:46Z"
+      },
+      "meta": {
+        "type": "industry"
+      }
+    },
+    {
+      "data": {
+        "name": "Automobiles & Parts",
+        "created_at": "2016-12-16T22:55:11Z",
+        "updated_at": "2017-09-29T09:59:46Z"
+      },
+      "meta": {
+        "type": "industry"
+      }
+    },
+    {
+      "data": {
+        "name": "Banks",
+        "created_at": "2016-12-16T22:55:11Z",
+        "updated_at": "2017-09-29T09:59:46Z"
+      },
+      "meta": {
+        "type": "industry"
+      }
+    },
+    {
+      "data": {
+        "name": "Beverages",
+        "created_at": "2016-12-16T22:55:11Z",
+        "updated_at": "2017-09-29T09:59:46Z"
+      },
+      "meta": {
+        "type": "industry"
+      }
+    },
+    {
+      "data": {
+        "name": "Chemicals",
+        "created_at": "2016-12-16T22:55:11Z",
+        "updated_at": "2017-09-29T09:59:46Z"
+      },
+      "meta": {
+        "type": "industry"
+      }
+    }
+  ]
+}

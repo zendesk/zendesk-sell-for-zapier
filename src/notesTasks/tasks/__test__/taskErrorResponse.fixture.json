@@ -1,0 +1,27 @@
+{
+  "errors": [
+    {
+      "error": {
+        "resource": "task",
+        "field": "/resource_type",
+        "code": "incorrect_value",
+        "message": "attribute value is incorrect",
+        "details": "The attribute '/resource_type' value is not included in the list"
+      },
+      "meta": {
+        "type": "error",
+        "links": {
+          "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "type": "errors",
+    "http_status": "422 Unprocessable Entity",
+    "logref": "b6gs5-dal8f-u33ok-1aj0g",
+    "links": {
+      "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+    }
+  }
+}

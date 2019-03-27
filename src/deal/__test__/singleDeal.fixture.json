@@ -1,0 +1,8 @@
+{
+  "data": {
+    "id": 123,
+    "name": "Deal Name",
+    "contact_id": 1234567,
+    "state_id": 2
+  }
+}

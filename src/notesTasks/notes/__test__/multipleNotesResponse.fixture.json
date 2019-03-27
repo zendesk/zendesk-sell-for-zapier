@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 125258253,
+        "content": "Contact merged from the following data:\n\nLast name: John",
+        "created_at": "2018-04-12T07:08:02Z",
+        "updated_at": "2018-04-12T07:08:02Z",
+        "creator_id": 1045095,
+        "resource_type": "lead",
+        "resource_id": 159833586
+      },
+      "meta": {
+        "type": "note"
+      }
+    },
+    {
+      "data": {
+        "id": 126579799,
+        "content": "Contact merged from the following data:\n\nLast name: Mark",
+        "created_at": "2018-04-23T13:28:50Z",
+        "updated_at": "2018-07-13T14:24:55Z",
+        "creator_id": 1045095,
+        "resource_type": "lead",
+        "resource_id": 204996216
+      },
+      "meta": {
+        "type": "note"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 2045740,
+        "name": "New",
+        "created_at": "2016-12-07T08:09:14Z",
+        "updated_at": "2016-12-07T08:09:14Z"
+      },
+      "meta": {
+        "type": "lead_status"
+      }
+    },
+    {
+      "data": {
+        "id": 2045742,
+        "name": "unqualified",
+        "created_at": "2016-12-07T08:09:14Z",
+        "updated_at": "2018-09-02T16:05:57Z"
+      },
+      "meta": {
+        "type": "lead_status"
+      }
+    }
+  ],
+  "meta": {
+    "type": "collection",
+    "count": 2,
+    "links": {}
+  }
+}

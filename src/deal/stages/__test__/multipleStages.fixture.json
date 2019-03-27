@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 6111851,
+        "name": "Incoming",
+        "category": "incoming",
+        "position": 1,
+        "likelihood": 0,
+        "active": true,
+        "pipeline_id": 704704,
+        "created_at": "2016-12-07T08:09:14Z",
+        "updated_at": "2017-03-23T12:42:21Z"
+      },
+      "meta": {
+        "type": "stage"
+      }
+    },
+    {
+      "data": {
+        "id": 6359066,
+        "name": "In progress",
+        "category": "in_progress",
+        "position": 2,
+        "likelihood": 12,
+        "active": true,
+        "pipeline_id": 704704,
+        "created_at": "2017-02-08T11:46:13Z",
+        "updated_at": "2017-03-23T12:42:29Z"
+      },
+      "meta": {
+        "type": "stage"
+      }
+    }
+  ]
+}

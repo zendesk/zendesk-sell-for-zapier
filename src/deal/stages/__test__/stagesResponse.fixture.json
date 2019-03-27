@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 6524005,
+        "name": "Prospecting",
+        "category": "incoming",
+        "position": 1,
+        "likelihood": 5,
+        "active": true,
+        "pipeline_id": 757056,
+        "created_at": "2017-03-22T23:08:12Z",
+        "updated_at": "2017-03-22T23:08:12Z"
+      },
+      "meta": {
+        "type": "stage"
+      }
+    },
+    {
+      "data": {
+        "id": 6524006,
+        "name": "Qualified",
+        "category": "in_progress",
+        "position": 2,
+        "likelihood": 10,
+        "active": true,
+        "pipeline_id": 757056,
+        "created_at": "2017-03-22T23:08:12Z",
+        "updated_at": "2017-03-22T23:08:12Z"
+      },
+      "meta": {
+        "type": "stage"
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "name": "zendesk-sell-for-zapier",
+  "private": true,
+  "version": "1.0.12",
+  "description": "Zendesk Sell App in Zapier",
+  "repository": "git@github.com:zendesk/zendesk-sell-for-zapier.git",
+  "homepage": "https://getbase.com/",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build-dev": "tsc --watch",
+    "prepare": "yarn build",
+    "test": "jest",
+    "coverage": "jest --collectCoverageFrom=src/**.ts --coverage",
+    "lint": "tslint --project tsconfig.json",
+    "lint-fix": "tslint --project tsconfig.json --fix && echo \"👍 Lint passed\" || echo \"👎 Found few lint errors\"",
+    "zapier-validate": "yarn build && zapier validate",
+    "zapier-test": "yarn build && zapier test",
+    "zapier-push": "yarn build && zapier push"
+  },
+  "engines": {
+    "node": "8.10.0",
+    "npm": ">=5.6.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "zapier-platform-core": "7.6.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/lodash": "^4.14.116",
+    "@types/nock": "^9.3.0",
+    "@types/node": "^10.5.5",
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "nock": "^10.0.1",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.0.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "setupTestFrameworkScriptFile": "./jestGlobalSettings.js"
+  }
+}

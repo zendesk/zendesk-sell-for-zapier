@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 1234,
+        "name": "Incoming",
+        "category": "incoming",
+        "position": 1,
+        "likelihood": 0,
+        "active": true,
+        "pipeline_id": 704704,
+        "created_at": "2016-12-07T08:09:14Z",
+        "updated_at": "2017-03-23T12:42:21Z"
+      },
+      "meta": {
+        "type": "stage"
+      }
+    }
+  ],
+  "meta": {
+    "type": "collection",
+    "count": 1,
+    "links": {
+      "self": "https://api.getbase.com/v2/stages?per_page=25&ids=1234&page=1"
+    }
+  }
+}

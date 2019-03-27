@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 1,
+        "creator_id": 1,
+        "owner_id": 1,
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "organization_name": "Design Services Company"
+      }
+    },
+    {
+      "data": {
+        "id": 2,
+        "creator_id": 1,
+        "owner_id": 1,
+        "first_name": "Kuba",
+        "last_name": "Tutaj",
+        "organization_name": "Base CRM"
+      }
+    }
+  ],
+  "type": "collection",
+  "count": 2,
+  "links": {}
+}

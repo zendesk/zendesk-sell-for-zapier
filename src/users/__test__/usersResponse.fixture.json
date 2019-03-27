@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 1089189,
+        "name": "Uzi",
+        "email": "uzi@getbase.com",
+        "phone_number": null,
+        "timezone": null,
+        "created_at": "2017-02-08T14:59:16Z",
+        "updated_at": "2017-06-29T06:57:35Z",
+        "confirmed": true,
+        "deleted_at": null,
+        "role": "user",
+        "roles": [],
+        "status": "inactive",
+        "invited": true,
+        "team_name": "Uzi's team",
+        "group": null,
+        "reports_to": 1045095,
+        "confirmation_token": null
+      },
+      "meta": {
+        "type": "user"
+      }
+    }
+  ]
+}

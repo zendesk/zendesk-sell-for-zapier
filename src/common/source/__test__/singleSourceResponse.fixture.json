@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": 583029,
+    "created_at": "2017-05-10T11:28:17Z",
+    "updated_at": "2017-05-10T11:28:17Z",
+    "name": "This is wunderbar",
+    "creator_id": 1045095,
+    "resource_type": "lead"
+  },
+  "meta": {
+    "type": "source"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "meta": {
+        "type": "product"
+      },
+      "data": {
+        "id": 847419,
+        "updated_at": "2017-06-17T14:35:32Z",
+        "created_at": "2017-02-17T15:53:47Z",
+        "active": true,
+        "description": "",
+        "name": "ThingB",
+        "sku": "",
+        "prices": [
+          {
+            "currency": "UZS",
+            "amount": "2.32"
+          }
+        ],
+        "max_discount": null,
+        "max_markup": null,
+        "cost": null,
+        "cost_currency": "USD"
+      }
+    },
+    {
+      "meta": {
+        "type": "product"
+      },
+      "data": {
+        "id": 1153049,
+        "updated_at": "2017-06-17T14:35:17Z",
+        "created_at": "2017-06-16T13:13:42Z",
+        "active": true,
+        "description": "",
+        "name": "ThingA",
+        "sku": "",
+        "prices": [
+          {
+            "currency": "UAH",
+            "amount": "12.30"
+          }
+        ],
+        "max_discount": null,
+        "max_markup": null,
+        "cost": null,
+        "cost_currency": "USD"
+      }
+    },
+    {
+      "meta": {
+        "type": "product"
+      },
+      "data": {
+        "id": 1159062,
+        "updated_at": "2017-06-17T14:35:47Z",
+        "created_at": "2017-06-17T14:35:47Z",
+        "active": true,
+        "description": "",
+        "name": "ThingC",
+        "sku": "",
+        "prices": [
+          {
+            "currency": "USD",
+            "amount": "0.50"
+          }
+        ],
+        "max_discount": null,
+        "max_markup": null,
+        "cost": null,
+        "cost_currency": "USD"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "errors": [
+    {
+      "error": {
+        "code": "invalid_param",
+        "message": "invalid request query parameter",
+        "details": "The request query parameter 'per_page' is malformed, missing, or has an invalid value (must be between 1 and 100, given: 200)"
+      },
+      "meta": {
+        "type": "error",
+        "links": {
+          "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "type": "errors",
+    "http_status": "400 Bad Request",
+    "links": {
+      "more_info": "https://developers.getbase.com/docs/rest/articles/errors"
+    }
+  }
+}

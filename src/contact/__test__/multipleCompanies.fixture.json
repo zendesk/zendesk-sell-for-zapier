@@ -2,20 +2,22 @@
   "items": [
     {
       "data": {
-        "id": 1,
+        "id": 100,
         "creator_id": 1045095,
         "owner_id": 1293487,
-        "name": "Kuba Tutaj",
+        "name": "Base CRM",
+        "is_organization": true,
         "updated_at": "2019-09-04T08:28:59Z",
         "created_at": "1990-01-01T00:00:00Z"
       }
     },
     {
       "data": {
-        "id": 2,
+        "id": 200,
         "creator_id": 100,
         "owner_id": 1293487,
-        "name": "John Smith",
+        "name": "Zendesk",
+        "is_organization": true,
         "updated_at": "2019-01-01T08:00:00Z",
         "created_at": "1990-01-01T00:00:00Z"
       }

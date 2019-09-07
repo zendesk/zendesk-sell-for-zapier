@@ -4,7 +4,7 @@ import {ListDealsDropdown, NewDealTrigger} from './deal/newDeal.trigger'
 import {DealStageChangeTrigger, DeprecatedDealStageChangeTrigger} from './deal/dealStageChange.trigger'
 import DealUpdatedTrigger from './deal/updateDeal.trigger'
 import UpdateLeadTrigger from './lead/updateLead.trigger'
-import UpdatedContactTrigger from './contact/updatedContactTrigger'
+import UpdatedContactTrigger from './contact/updatedContact.trigger'
 import {
   ContactCompanySearch,
   ContactPersonSearch,

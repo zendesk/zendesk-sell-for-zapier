@@ -8,7 +8,9 @@
         "status": "New",
         "first_name": "Mark",
         "last_name": "Johnson",
-        "organization_name": "Design Services Company"
+        "organization_name": "Design Services Company",
+        "updated_at": "2019-09-04T08:28:59Z",
+        "created_at": "1990-01-01T00:00:00Z"
       }
     },
     {
@@ -19,7 +21,9 @@
         "status": "Unqualified",
         "first_name": "Kuba",
         "last_name": "Tutaj",
-        "organization_name": "Base CRM"
+        "organization_name": "Base CRM",
+        "updated_at": "2019-01-01T08:00:00Z",
+        "created_at": "1990-01-01T00:00:00Z"
       }
     }
   ],

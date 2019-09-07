@@ -3,6 +3,7 @@ import * as nock from 'nock'
 import * as multipleDeals from './multipleDeals.fixture.json'
 import App from '../..'
 import {DealStageChangeTrigger} from '../dealStageChange.trigger'
+import {assertDeduplicationIds} from '../../utils/testHelpers'
 
 const appTester = zapier.createAppTester(App)
 zapier.tools.env.inject()
@@ -28,6 +29,11 @@ describe('deal stage change trigger', () => {
 
     const results = await appTester(App.triggers[DealStageChangeTrigger.key].operation.perform, bundle)
     expect(results).toHaveLength(2)
+    assertDeduplicationIds(
+      results,
+      [51753911, 53024259],
+      ['51753911_2018-05-16T11:35:16Z', '53024259_2018-07-13T14:29:43Z']
+    )
   })
 
   it('should use only deal which have stage_change_at different than create date', async () => {
@@ -54,6 +60,10 @@ describe('deal stage change trigger', () => {
 
     const results = await appTester(App.triggers[DealStageChangeTrigger.key].operation.perform, bundle)
     expect(results).toHaveLength(1)
-    expect(results[0]).toHaveProperty('id', '1_2018-05-16T11:35:16Z')
+    assertDeduplicationIds(
+      results,
+      [1],
+      ['1_2018-05-16T11:35:16Z']
+    )
   })
 })

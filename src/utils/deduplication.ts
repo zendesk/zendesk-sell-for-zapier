@@ -1,4 +1,5 @@
 import * as moment from 'moment'
+import {get} from 'lodash'
 
 const isChanged = (changeFieldName: string) => {
   return (entity: any) => {
@@ -10,16 +11,21 @@ const isChanged = (changeFieldName: string) => {
   }
 }
 
-const remapDeduplicationId = (entity: any, fieldName: string): any => {
+const extractFieldValue = (entity: any, path: string): any => {
+  return get(entity, path, null)
+}
+
+const remapDeduplicationId = (entity: any, fieldPath: string): any => {
+  const fieldValue = extractFieldValue(entity, fieldPath)
   return {
     ...entity,
     entity_original_id: entity.id,
-    id: `${entity.id}_${entity[fieldName]}`
+    id: `${entity.id}_${fieldValue}`
   }
 }
 
-export const remapDeduplication = (items: any[], sortFieldName: string) => {
-  return items.map(item => remapDeduplicationId(item, sortFieldName))
+export const remapDeduplication = (items: any[], fieldPath: string) => {
+  return items.map(item => remapDeduplicationId(item, fieldPath))
 }
 
 /**

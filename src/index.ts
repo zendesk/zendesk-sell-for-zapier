@@ -66,6 +66,7 @@ import {ProductSearch} from './products/catalog/product.search'
 import {ProductSearchOrCreate} from './products/catalog/product.searchCreate'
 import {CreateProductAction, UpdateProductAction} from './products/catalog/product.action'
 import {NewProductInCatalogTrigger} from './products/catalog/newProductsInCatalog.trigger'
+import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -118,6 +119,7 @@ const App = {
     // Leads triggers
     [NewLeadTrigger.key]: NewLeadTrigger,
     [UpdateLeadTrigger.key]: UpdateLeadTrigger,
+    [LeadStatusChangeTrigger.key]: LeadStatusChangeTrigger,
 
     // Contacts triggers
     [NewContactTrigger.key]: NewContactTrigger,

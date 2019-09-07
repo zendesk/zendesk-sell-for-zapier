@@ -69,6 +69,11 @@ import {NewProductInCatalogTrigger} from './products/catalog/newProductsInCatalo
 import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
 import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
 import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
+import {
+  CompanyFieldsDropdown,
+  ContactFieldsDropdown,
+  PersonFieldsDropdown
+} from './contact/fields/contactFields.trigger'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -178,6 +183,9 @@ const App = {
     // Fields dropdowns
     [LeadFieldsDropdown.key]: LeadFieldsDropdown,
     [DealFieldsDropdown.key]: DealFieldsDropdown,
+    [PersonFieldsDropdown.key]: PersonFieldsDropdown,
+    [CompanyFieldsDropdown.key]: CompanyFieldsDropdown,
+    [ContactFieldsDropdown.key]: ContactFieldsDropdown,
   },
 
   // If you want your searches to show up, you better include it here!

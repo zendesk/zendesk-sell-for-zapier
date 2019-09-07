@@ -13,7 +13,28 @@ const listContactsByUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     ['is_organization']
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(contacts)
+  return findAndRemapOnlyUpdatedItems(contacts, bundle.inputData.trigger_field)
+}
+
+const fieldsTrigger = (isOrganization?: boolean) => {
+  if (isOrganization === true) {
+    return contactTriggers.companyFieldsDropdown
+  } else if (isOrganization === false) {
+    return contactTriggers.personFieldsDropdown
+  }
+  return contactTriggers.contactFieldsDropdown
+}
+
+const entityTypeFields = (z: ZObject, bundle: Bundle) => {
+  const fieldsTriggerName = fieldsTrigger(bundle.inputData.is_organization)
+  return {
+    key: 'trigger_field',
+    label: 'Trigger field',
+    helpText: 'Jatut zrób proszę',
+    required: false,
+    type: 'string',
+    dynamic: `${fieldsTriggerName}.id.name`
+  }
 }
 
 /**
@@ -37,8 +58,10 @@ const UpdatedContactTrigger: ZapierItem = {
         key: 'is_organization',
         label: 'Is Company?',
         required: false,
-        type: 'boolean'
-      }
+        type: 'boolean',
+        altersDynamicFields: true
+      },
+      entityTypeFields
     ],
     outputFields: [
       ...deduplicationOutputFields,

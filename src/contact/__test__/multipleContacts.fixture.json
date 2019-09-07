@@ -6,6 +6,7 @@
         "creator_id": 1045095,
         "owner_id": 1293487,
         "name": "Kuba Tutaj",
+        "tags": ["tag1", "tag2"],
         "updated_at": "2019-09-04T08:28:59Z",
         "created_at": "1990-01-01T00:00:00Z"
       }
@@ -16,6 +17,7 @@
         "creator_id": 100,
         "owner_id": 1293487,
         "name": "John Smith",
+        "tags": [],
         "updated_at": "2019-01-01T08:00:00Z",
         "created_at": "1990-01-01T00:00:00Z"
       }

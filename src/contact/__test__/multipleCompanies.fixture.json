@@ -6,6 +6,9 @@
         "creator_id": 1045095,
         "owner_id": 1293487,
         "name": "Base CRM",
+        "address": {
+          "street": "Street 9"
+        },
         "is_organization": true,
         "updated_at": "2019-09-04T08:28:59Z",
         "created_at": "1990-01-01T00:00:00Z"
@@ -18,6 +21,9 @@
         "owner_id": 1293487,
         "name": "Zendesk",
         "is_organization": true,
+        "address": {
+          "street": "Leona Wyczolkowskiego"
+        },
         "updated_at": "2019-01-01T08:00:00Z",
         "created_at": "1990-01-01T00:00:00Z"
       }

@@ -1,3 +1,7 @@
+## 1.0.13
+
+* `zapier-platform-core` bumped to newer version `8.3.0`
+
 ## 1.0.12
 
 * `zapier-platform-core` bumped to newer version `7.6.1`

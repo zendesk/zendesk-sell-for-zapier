@@ -10,7 +10,10 @@
         "last_name": "Johnson",
         "organization_name": "Design Services Company",
         "updated_at": "2019-09-04T08:28:59Z",
-        "created_at": "1990-01-01T00:00:00Z"
+        "created_at": "1990-01-01T00:00:00Z",
+        "custom_fields": {
+          "Custom Field 1": "Value 111"
+        }
       }
     },
     {
@@ -23,7 +26,10 @@
         "last_name": "Tutaj",
         "organization_name": "Base CRM",
         "updated_at": "2019-01-01T08:00:00Z",
-        "created_at": "1990-01-01T00:00:00Z"
+        "created_at": "1990-01-01T00:00:00Z",
+        "custom_fields": {
+          "Custom Field 1": "Value 222"
+        }
       }
     }
   ],

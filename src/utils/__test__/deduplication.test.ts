@@ -95,4 +95,20 @@ describe('remapDeduplication', () => {
       ['100_a', '200_null', '300_null'],
     )
   })
+
+  it('should properly use nested fields with dots', () => {
+    const deals = [
+      {id: 100, custom_fields: {'field.with.dot': 'XXX'}},
+      {id: 200, custom_fields: {}},
+      {id: 300},
+    ]
+
+    const deduplicatedItems = remapDeduplication(deals, 'custom_fields.field.with.dot')
+    expect(deduplicatedItems).toHaveLength(3)
+    assertDeduplicationIds(
+      deduplicatedItems,
+      [100, 200, 300],
+      ['100_XXX', '200_null', '300_null'],
+    )
+  })
 })

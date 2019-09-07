@@ -9,7 +9,7 @@ import {leadSample} from './lead.resource'
 
 const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
   const leads = await fetchLeadsTrigger(leadTriggers.updatedLeadTrigger, 'updated_at', [])(z, bundle)
-  return findAndRemapOnlyUpdatedItems(leads)
+  return findAndRemapOnlyUpdatedItems(leads, bundle.inputData.trigger_field)
 }
 
 const UpdateLeadTrigger: ZapierItem = {
@@ -22,6 +22,16 @@ const UpdateLeadTrigger: ZapierItem = {
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
     sample: leadSample,
+    inputFields: [
+      {
+        key: 'trigger_field',
+        label: 'Trigger field',
+        helpText: 'Jatut zrób proszę',
+        required: false,
+        type: 'string',
+        dynamic: `${leadTriggers.leadFieldsDropdown}.id.name`
+      }
+    ],
     outputFields: [
       ...deduplicationOutputFields,
       ...commonLeadOutputFields

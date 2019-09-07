@@ -67,6 +67,7 @@ import {ProductSearchOrCreate} from './products/catalog/product.searchCreate'
 import {CreateProductAction, UpdateProductAction} from './products/catalog/product.action'
 import {NewProductInCatalogTrigger} from './products/catalog/newProductsInCatalog.trigger'
 import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
+import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -171,7 +172,10 @@ const App = {
 
     // Lead/Deal sources
     [LeadSourceDropdownList.key]: LeadSourceDropdownList,
-    [DealSourceDropdownList.key]: DealSourceDropdownList
+    [DealSourceDropdownList.key]: DealSourceDropdownList,
+
+    // Fields dropdowns
+    [LeadFieldsDropdown.key]: LeadFieldsDropdown,
   },
 
   // If you want your searches to show up, you better include it here!

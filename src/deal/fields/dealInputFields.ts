@@ -12,7 +12,7 @@ const tagsHelpText = (isNew: boolean) =>
     'Specify the name of a tag which will be assigned to the deal.' :
     'Specify the name of a tag which will be assigned to the deal. Existing tags are kept.'
 
-export const dealFields = (isNew: boolean) => [
+export const dealRegularFields = (isNew: boolean) => [
   {
     key: 'name',
     label: 'Name',
@@ -92,6 +92,10 @@ export const dealFields = (isNew: boolean) => [
     list: true,
     dynamic: `${tagsTriggers.dealTagDropdown}.name`
   },
+]
+
+export const dealFields = (isNew: boolean) => [
+  ...dealRegularFields(isNew),
   customFieldsFactory(EntityType.Deal)
 ]
 

@@ -1,5 +1,4 @@
 import * as moment from 'moment'
-import {get} from 'lodash'
 
 const isChanged = (changeFieldName: string) => {
   return (entity: any) => {
@@ -11,8 +10,28 @@ const isChanged = (changeFieldName: string) => {
   }
 }
 
+const get = (entity: any, segments: string[]): any => {
+  if (segments.length === 0 || entity === null || entity === undefined) {
+    return entity
+  }
+  return get(entity[segments[0]], segments.slice(1))
+}
+
+const splitByFirstDot = (path : string) : string[] => {
+  const dotPosition = path.indexOf('.')
+  if (dotPosition <= 0) {
+    return [path]
+  }
+  return [
+    path.substring(0, dotPosition),
+    path.substring(dotPosition + 1)
+  ]
+}
+
 const extractFieldValue = (entity: any, path: string): any => {
-  return get(entity, path, null)
+  const segments = splitByFirstDot(path)
+  const value =  get(entity, segments)
+  return value === undefined ? null : value
 }
 
 const remapDeduplicationId = (entity: any, fieldPath: string): any => {
@@ -35,13 +54,13 @@ export const remapDeduplication = (items: any[], fieldPath: string) => {
  *
  * More details on how deduplication in Zapier works: https://zapier.com/developer/documentation/v2/deduplication/
  */
-export const findAndRemapOnlyChangedItems = (items: any[], changeFieldName: string) => {
-  return items.filter(isChanged(changeFieldName))
-    .map(item => remapDeduplicationId(item, changeFieldName))
+export const findAndRemapOnlyChangedItems = (items: any[], modificationTimeField: string, triggerFieldPath?: string) => {
+  return items.filter(isChanged(modificationTimeField))
+    .map(item => remapDeduplicationId(item, triggerFieldPath || modificationTimeField))
 }
 
-export const findAndRemapOnlyUpdatedItems = (items: any[]) =>
-  findAndRemapOnlyChangedItems(items, 'updated_at')
+export const findAndRemapOnlyUpdatedItems = (items: any[], triggerFieldPath?: string) =>
+  findAndRemapOnlyChangedItems(items, 'updated_at', triggerFieldPath)
 
 export const findAndRemapOnlyStageUpdatedItems = (items: any[]) =>
   findAndRemapOnlyChangedItems(items, 'last_stage_change_at')

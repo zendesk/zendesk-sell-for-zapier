@@ -8,7 +8,11 @@ import {leadTriggers} from './keys'
 import {leadSample} from './lead.resource'
 
 const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
-  const leads = await fetchLeadsTrigger(leadTriggers.updatedLeadTrigger, 'updated_at', [])(z, bundle)
+  const leads = await fetchLeadsTrigger(
+    leadTriggers.updatedLeadTrigger,
+    'updated_at',
+    []
+  )(z, bundle)
   return findAndRemapOnlyUpdatedItems(leads, bundle.inputData.trigger_field)
 }
 

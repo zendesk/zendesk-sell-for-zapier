@@ -56,7 +56,7 @@ const extractRegularFields = (entityType: EntityType): FieldDefinition[] => {
     .map(f => ({id: f.key, name: f.label}))
 }
 
-export const extractFields = (staticFields: any[], entityType: EntityType) =>
+export const extractFields = (entityType: EntityType) =>
   async (z: ZObject, bundle: Bundle): Promise<FieldDefinition[]> => {
     const regularFields = extractRegularFields(entityType)
     const customFields = await fetchSupportedCustomFields(z, entityType)

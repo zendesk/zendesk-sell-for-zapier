@@ -13,7 +13,7 @@ const listDealsByUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     []
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(deals)
+  return findAndRemapOnlyUpdatedItems(deals, bundle.inputData.trigger_field)
 }
 
 const DealUpdatedTrigger: ZapierItem = {
@@ -26,6 +26,16 @@ const DealUpdatedTrigger: ZapierItem = {
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
     sample: dealSample,
+    inputFields: [
+      {
+        key: 'trigger_field',
+        label: 'Trigger field',
+        helpText: 'Jatut zrób proszę',
+        required: false,
+        type: 'string',
+        dynamic: `${dealTriggers.dealFieldsDropdown}.id.name`
+      }
+    ],
     outputFields: [
       ...deduplicationOutputFields,
       ...dealCommonOutputFields

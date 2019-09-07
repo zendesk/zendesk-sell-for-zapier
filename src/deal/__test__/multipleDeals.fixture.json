@@ -18,7 +18,9 @@
         "value": 0,
         "stage_id": 6386894,
         "contact_id": 204996371,
-        "custom_fields": {},
+        "custom_fields": {
+          "Very_Complicated.CustomField": "XX OO XX"
+        },
         "organization_id": 204996235,
         "estimated_close_date": null,
         "customized_win_likelihood": null,

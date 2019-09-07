@@ -11,7 +11,8 @@ export const dealTriggers = {
   newDealTrigger: 'deal_new_deal_trigger',
   dealListDropdown: 'deal_list_deals_dropdown',
   updatedDealTrigger: 'deal_updated_deal',
-  dealStageChangeTrigger: 'deal_stage_change_trigger'
+  dealStageChangeTrigger: 'deal_stage_change_trigger',
+  dealFieldsDropdown: 'deal_fields_dropdown'
 }
 
 export const pipelineTriggers = {
@@ -19,7 +20,7 @@ export const pipelineTriggers = {
 }
 
 export const stageTriggers = {
-  stageListDropdown: 'stage_list_dropdown'
+  stageListDropdown: 'stage_list_dropdown',
 }
 
 export const stageSearches = {

@@ -20,6 +20,6 @@ export const LeadFieldsDropdown: ZapierItem = {
   },
 
   operation: {
-    perform: extractFields([], EntityType.Lead)
+    perform: extractFields(EntityType.Lead)
   }
 }

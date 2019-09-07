@@ -111,4 +111,36 @@ describe('remapDeduplication', () => {
       ['100_XXX', '200_null', '300_null'],
     )
   })
+
+  it('should properly use arrays as keys', () => {
+    const deals = [
+      {id: 100, tags: ['a', 'b', 'c']},
+      {id: 200, tags: [1, 2, 3]},
+      {id: 300},
+    ]
+
+    const deduplicatedItems = remapDeduplication(deals, 'tags')
+    expect(deduplicatedItems).toHaveLength(3)
+      assertDeduplicationIds(
+      deduplicatedItems,
+      [100, 200, 300],
+      ['100_a,b,c', '200_1,2,3', '300_null'],
+    )
+  })
+
+  it('should properly use object as keys', () => {
+    const deals = [
+      {id: 100, address: {street: 'a'}},
+      {id: 200, address: {}},
+      {id: 300},
+    ]
+
+    const deduplicatedItems = remapDeduplication(deals, 'address')
+    expect(deduplicatedItems).toHaveLength(3)
+    assertDeduplicationIds(
+      deduplicatedItems,
+      [100, 200, 300],
+      ['100_{"street":"a"}', '200_{}', '300_null'],
+    )
+  })
 })

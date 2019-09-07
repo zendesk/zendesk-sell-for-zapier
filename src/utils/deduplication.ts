@@ -1,4 +1,5 @@
 import * as moment from 'moment'
+import {isPlainObject} from 'lodash'
 
 const isChanged = (changeFieldName: string) => {
   return (entity: any) => {
@@ -17,7 +18,7 @@ const get = (entity: any, segments: string[]): any => {
   return get(entity[segments[0]], segments.slice(1))
 }
 
-const splitByFirstDot = (path : string) : string[] => {
+const splitByFirstDot = (path: string): string[] => {
   const dotPosition = path.indexOf('.')
   if (dotPosition <= 0) {
     return [path]
@@ -30,8 +31,15 @@ const splitByFirstDot = (path : string) : string[] => {
 
 const extractFieldValue = (entity: any, path: string): any => {
   const segments = splitByFirstDot(path)
-  const value =  get(entity, segments)
+  const value = get(entity, segments)
   return value === undefined ? null : value
+}
+
+const serializeValue = (entity: any) => {
+  if (isPlainObject(entity)) {
+    return JSON.stringify(entity)
+  }
+  return `${entity}`
 }
 
 const remapDeduplicationId = (entity: any, fieldPath: string): any => {
@@ -39,7 +47,7 @@ const remapDeduplicationId = (entity: any, fieldPath: string): any => {
   return {
     ...entity,
     entity_original_id: entity.id,
-    id: `${entity.id}_${fieldValue}`
+    id: `${entity.id}_${serializeValue(fieldValue)}`
   }
 }
 

@@ -4,7 +4,7 @@
   "version": "1.0.12",
   "description": "Zendesk Sell App in Zapier",
   "repository": "git@github.com:zendesk/zendesk-sell-for-zapier.git",
-  "homepage": "https://getbase.com/",
+  "homepage": "https://www.zendesk.com/sell/",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -26,7 +26,7 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "zapier-platform-core": "7.6.1"
+    "zapier-platform-core": "8.3.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.5",

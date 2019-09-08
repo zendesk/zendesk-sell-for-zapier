@@ -28,11 +28,11 @@ const triggerSupportedTypes = [
 const customFieldPath = (cf: RawCustomField): string =>
   `custom_fields.${cf.name}`
 
-const customFieldName = (cf: RawCustomField): string =>
-  `Custom Fields: ${cf.name}`
+const customFieldLabel = (cf: RawCustomField): string =>
+  `Custom Field: ${cf.name}`
 
 const customFieldRepresentation = (cf: RawCustomField) : FieldDefinition =>
-  ({id: customFieldPath(cf), name: customFieldName(cf)})
+  ({id: customFieldPath(cf), name: customFieldLabel(cf)})
 
 const fetchSupportedCustomFields = async (z: ZObject, entityType: EntityType): Promise<FieldDefinition[]> => {
   const customFields: RawCustomField[] = await fetchCustomFields(entityType, z)

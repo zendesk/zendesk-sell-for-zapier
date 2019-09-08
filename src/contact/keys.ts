@@ -20,7 +20,5 @@ export const contactTriggers = {
   contactListDropdown: 'contact_list_contacts',
   personListDropdown: 'contact_list_persons',
   companyListDropdown: 'contact_list_companies',
-  contactFieldsDropdown: 'contact_fields_dropdown',
-  personFieldsDropdown: 'person_fields_dropdown',
-  companyFieldsDropdown: 'company_fields_dropdown'
+  contactFieldsDropdown: 'contact_fields_dropdown'
 }

@@ -16,7 +16,7 @@ const listDealsByUpdatedAt = async (z: ZObject, bundle: Bundle) => {
   return findAndRemapOnlyUpdatedItems(deals, bundle.inputData.trigger_field)
 }
 
-const DealUpdatedTrigger: ZapierItem = {
+const UpdatedDealTrigger: ZapierItem = {
   key: dealTriggers.updatedDealTrigger,
   noun: 'Deal',
   display: {
@@ -44,4 +44,4 @@ const DealUpdatedTrigger: ZapierItem = {
   }
 }
 
-export default DealUpdatedTrigger
+export default UpdatedDealTrigger

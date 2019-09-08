@@ -2,8 +2,8 @@ import {apiTokenBearer, authentication} from './auth/authentication'
 import {version as platformVersion} from 'zapier-platform-core'
 import {ListDealsDropdown, NewDealTrigger} from './deal/newDeal.trigger'
 import {DealStageChangeTrigger, DeprecatedDealStageChangeTrigger} from './deal/dealStageChange.trigger'
-import DealUpdatedTrigger from './deal/updateDeal.trigger'
-import UpdateLeadTrigger from './lead/updateLead.trigger'
+import UpdatedDealTrigger from './deal/updatedDeal.trigger'
+import UpdatedLeadTrigger from './lead/updatedLead.trigger'
 import UpdatedContactTrigger from './contact/updatedContact.trigger'
 import {
   ContactCompanySearch,
@@ -125,7 +125,7 @@ const App = {
     // Triggers
     // Leads triggers
     [NewLeadTrigger.key]: NewLeadTrigger,
-    [UpdateLeadTrigger.key]: UpdateLeadTrigger,
+    [UpdatedLeadTrigger.key]: UpdatedLeadTrigger,
     [LeadStatusChangeTrigger.key]: LeadStatusChangeTrigger,
 
     // Contacts triggers
@@ -135,7 +135,7 @@ const App = {
     // Deals triggers
     [NewDealTrigger.key]: NewDealTrigger,
     [DealStageChangeTrigger.key]: DealStageChangeTrigger,
-    [DealUpdatedTrigger.key]: DealUpdatedTrigger,
+    [UpdatedDealTrigger.key]: UpdatedDealTrigger,
     [DeprecatedDealStageChangeTrigger.key]: DeprecatedDealStageChangeTrigger,
 
     // Note triggers

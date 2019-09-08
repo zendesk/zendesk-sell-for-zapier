@@ -16,7 +16,7 @@ const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
   return findAndRemapOnlyUpdatedItems(leads, bundle.inputData.trigger_field)
 }
 
-const UpdateLeadTrigger: ZapierItem = {
+const UpdatedLeadTrigger: ZapierItem = {
   key: leadTriggers.updatedLeadTrigger,
   noun: 'Lead',
   display: {
@@ -44,4 +44,4 @@ const UpdateLeadTrigger: ZapierItem = {
   }
 }
 
-export default UpdateLeadTrigger
+export default UpdatedLeadTrigger

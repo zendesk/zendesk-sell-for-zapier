@@ -3,7 +3,7 @@ import * as nock from 'nock'
 import * as multipleDeals from './multipleDeals.fixture.json'
 import App from '../..'
 import {assertDeduplicationIds} from '../../utils/testHelpers'
-import DealUpdatedTrigger from '../updateDeal.trigger'
+import UpdatedDealTrigger from '../updatedDeal.trigger'
 
 const appTester = zapier.createAppTester(App)
 zapier.tools.env.inject()
@@ -21,7 +21,7 @@ describe('deals update trigger', () => {
       })
       .reply(200, multipleDeals)
 
-    const results = await appTester(App.triggers[DealUpdatedTrigger.key].operation.perform, bundle)
+    const results = await appTester(App.triggers[UpdatedDealTrigger.key].operation.perform, bundle)
     expect(results).toHaveLength(2)
     assertDeduplicationIds(
       results,
@@ -46,7 +46,7 @@ describe('deals update trigger', () => {
       })
       .reply(200, multipleDeals)
 
-    const results = await appTester(App.triggers[DealUpdatedTrigger.key].operation.perform, bundle)
+    const results = await appTester(App.triggers[UpdatedDealTrigger.key].operation.perform, bundle)
     expect(results).toHaveLength(2)
     assertDeduplicationIds(
       results,

@@ -1,7 +1,7 @@
 import * as zapier from 'zapier-platform-core'
 import * as nock from 'nock'
 import App from '../../index'
-import UpdateLeadTrigger from '../updateLead.trigger'
+import UpdatedLeadTrigger from '../updatedLead.trigger'
 import * as multipleLeads from './multipleLeads.fixture.json'
 import {assertDeduplicationIds} from '../../utils/testHelpers'
 
@@ -21,7 +21,7 @@ describe('update lead trigger', () => {
       })
       .reply(200, multipleLeads)
 
-    const results = await appTester(App.triggers[UpdateLeadTrigger.key].operation.perform, bundle)
+    const results = await appTester(App.triggers[UpdatedLeadTrigger.key].operation.perform, bundle)
     expect(results).toHaveLength(2)
     assertDeduplicationIds(
       results,
@@ -46,7 +46,7 @@ describe('update lead trigger', () => {
       })
       .reply(200, multipleLeads)
 
-    const results = await appTester(App.triggers[UpdateLeadTrigger.key].operation.perform, bundle)
+    const results = await appTester(App.triggers[UpdatedLeadTrigger.key].operation.perform, bundle)
     expect(results).toHaveLength(2)
     assertDeduplicationIds(
       results,

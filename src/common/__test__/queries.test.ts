@@ -128,7 +128,7 @@ describe('streamItems', () => {
       [200, createItemsResponse([4, 5, 6], true)],
       [200, createItemsResponse([7, 8, 9], false)],
     ])
-    const bundle = createFakeBundle({}, {frontend: true})
+    const bundle = createFakeBundle({}, {isLoadingSample: true})
 
     const items = await streamItems(endpoint, createFakeActionDetails(), [], 5)(z, bundle)
     expect(items).toHaveLength(3)

@@ -14,12 +14,10 @@ export const createFakeBundle = (inputData: { [x: string]: any }, meta: object =
     inputData,
     inputDataRaw: inputData,
     meta: {
-      frontend: false,
-      prefill: false,
-      hydrate: false,
-      test_poll: false,
-      standard_poll: true,
-      first_poll: false,
+      isLoadingSample: false,
+      isFillingDynamicDropdown: false,
+      isPopulatingDedupe: false,
+      isTestingAuth: false,
       limit: 1,
       page: 1,
       ...meta

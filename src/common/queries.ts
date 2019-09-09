@@ -116,7 +116,7 @@ export const streamItems = (endpoint: string, actionDetails: ActionDetails, supp
       url: endpoint,
       params: unpackSupportedParams(supportedFilters)(bundle, otherFilters, sort)
     }
-    return await streamPages(z, payload, actionDetails, !!(bundle.meta && bundle.meta.frontend) ? 1 : maxPages)
+    return await streamPages(z, payload, actionDetails, (bundle.meta && bundle.meta.isLoadingSample) ? 1 : maxPages)
   }
 }
 

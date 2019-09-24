@@ -29,8 +29,8 @@ const UpdatedDealTrigger: ZapierItem = {
     inputFields: [
       {
         key: 'trigger_field',
-        label: 'Trigger field',
-        helpText: 'Jatut zrób proszę',
+        label: 'Field to monitor the updates',
+        helpText: 'Trigger will work only when selected field gets updated. Leave empty to trigger on any change.',
         required: false,
         type: 'string',
         dynamic: `${dealTriggers.dealFieldsDropdown}.id.name`

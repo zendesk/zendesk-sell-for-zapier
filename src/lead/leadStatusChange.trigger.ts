@@ -23,7 +23,7 @@ export const LeadStatusChangeTrigger: ZapierItem = {
   noun: 'Lead',
 
   display: {
-    label: 'Lead Enters New Status KUBA HALP',
+    label: 'Lead Enters New Status',
     description: 'Triggers when a lead has change status',
     important: false,
   },

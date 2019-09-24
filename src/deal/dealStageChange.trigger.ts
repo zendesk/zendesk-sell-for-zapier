@@ -82,7 +82,7 @@ export const DeprecatedDealStageChangeTrigger: ZapierItem = {
       {
         key: 'stage_id',
         label: 'Stage',
-        helpText: 'Name of the stage the deal was moved to. ',
+        helpText: 'Name of the stage the deal was moved to.',
         required: false,
         type: 'integer',
         dynamic: `${stageTriggers.stageListDropdown}.id.name`

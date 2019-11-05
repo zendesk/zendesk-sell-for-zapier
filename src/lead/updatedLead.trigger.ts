@@ -8,11 +8,15 @@ import {leadTriggers} from './keys'
 import {leadSample} from './lead.resource'
 
 const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
-  const leads = await fetchLeadsTrigger(leadTriggers.updatedLeadTrigger, 'updated_at', [])(z, bundle)
-  return findAndRemapOnlyUpdatedItems(leads)
+  const leads = await fetchLeadsTrigger(
+    leadTriggers.updatedLeadTrigger,
+    'updated_at',
+    []
+  )(z, bundle)
+  return findAndRemapOnlyUpdatedItems(leads, bundle.inputData.trigger_field)
 }
 
-const UpdateLeadTrigger: ZapierItem = {
+const UpdatedLeadTrigger: ZapierItem = {
   key: leadTriggers.updatedLeadTrigger,
   noun: 'Lead',
   display: {
@@ -22,6 +26,16 @@ const UpdateLeadTrigger: ZapierItem = {
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
     sample: leadSample,
+    inputFields: [
+      {
+        key: 'trigger_field',
+        label: 'Field to monitor the updates',
+        helpText: 'Trigger will work only when selected field gets updated. Leave empty to trigger on any change.',
+        required: false,
+        type: 'string',
+        dynamic: `${leadTriggers.leadFieldsDropdown}.id.name`
+      }
+    ],
     outputFields: [
       ...deduplicationOutputFields,
       ...commonLeadOutputFields
@@ -30,4 +44,4 @@ const UpdateLeadTrigger: ZapierItem = {
   }
 }
 
-export default UpdateLeadTrigger
+export default UpdatedLeadTrigger

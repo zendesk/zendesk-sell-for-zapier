@@ -1,4 +1,5 @@
 import * as moment from 'moment'
+import {isPlainObject} from 'lodash'
 
 const isChanged = (changeFieldName: string) => {
   return (entity: any) => {
@@ -10,16 +11,48 @@ const isChanged = (changeFieldName: string) => {
   }
 }
 
-const remapDeduplicationId = (entity: any, fieldName: string): any => {
+const get = (entity: any, segments: string[]): any => {
+  if (segments.length === 0 || entity === null || entity === undefined) {
+    return entity
+  }
+  return get(entity[segments[0]], segments.slice(1))
+}
+
+const splitByFirstDot = (path: string): string[] => {
+  const dotPosition = path.indexOf('.')
+  if (dotPosition <= 0) {
+    return [path]
+  }
+  return [
+    path.substring(0, dotPosition),
+    path.substring(dotPosition + 1)
+  ]
+}
+
+const extractFieldValue = (entity: any, path: string): any => {
+  const segments = splitByFirstDot(path)
+  const value = get(entity, segments)
+  return value === undefined ? null : value
+}
+
+const serializeValue = (entity: any) => {
+  if (isPlainObject(entity)) {
+    return JSON.stringify(entity)
+  }
+  return `${entity}`
+}
+
+const remapDeduplicationId = (entity: any, fieldPath: string): any => {
+  const fieldValue = extractFieldValue(entity, fieldPath)
   return {
     ...entity,
     entity_original_id: entity.id,
-    id: `${entity.id}_${entity[fieldName]}`
+    id: `${entity.id}_${serializeValue(fieldValue)}`
   }
 }
 
-export const remapDeduplication = (items: any[], sortFieldName: string) => {
-  return items.map(item => remapDeduplicationId(item, sortFieldName))
+export const remapDeduplication = (items: any[], fieldPath: string) => {
+  return items.map(item => remapDeduplicationId(item, fieldPath))
 }
 
 /**
@@ -29,13 +62,13 @@ export const remapDeduplication = (items: any[], sortFieldName: string) => {
  *
  * More details on how deduplication in Zapier works: https://zapier.com/developer/documentation/v2/deduplication/
  */
-export const findAndRemapOnlyChangedItems = (items: any[], changeFieldName: string) => {
-  return items.filter(isChanged(changeFieldName))
-    .map(item => remapDeduplicationId(item, changeFieldName))
+export const findAndRemapOnlyChangedItems = (items: any[], modificationTimeField: string, triggerFieldPath?: string) => {
+  return items.filter(isChanged(modificationTimeField))
+    .map(item => remapDeduplicationId(item, triggerFieldPath || modificationTimeField))
 }
 
-export const findAndRemapOnlyUpdatedItems = (items: any[]) =>
-  findAndRemapOnlyChangedItems(items, 'updated_at')
+export const findAndRemapOnlyUpdatedItems = (items: any[], triggerFieldPath?: string) =>
+  findAndRemapOnlyChangedItems(items, 'updated_at', triggerFieldPath)
 
 export const findAndRemapOnlyStageUpdatedItems = (items: any[]) =>
   findAndRemapOnlyChangedItems(items, 'last_stage_change_at')

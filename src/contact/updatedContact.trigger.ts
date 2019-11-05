@@ -13,7 +13,7 @@ const listContactsByUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     ['is_organization']
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(contacts)
+  return findAndRemapOnlyUpdatedItems(contacts, bundle.inputData.trigger_field)
 }
 
 /**
@@ -37,7 +37,16 @@ const UpdatedContactTrigger: ZapierItem = {
         key: 'is_organization',
         label: 'Is Company?',
         required: false,
-        type: 'boolean'
+        type: 'boolean',
+        altersDynamicFields: true
+      },
+      {
+        key: 'field_trigger',
+        label: 'Field to monitor the updates',
+        helpText: 'Trigger will work only when selected field gets updated. Leave empty to trigger on any change.',
+        required: false,
+        type: 'string',
+        dynamic: `${contactTriggers.contactFieldsDropdown}.id.name`
       }
     ],
     outputFields: [

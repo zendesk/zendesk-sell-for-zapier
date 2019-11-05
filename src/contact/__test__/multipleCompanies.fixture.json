@@ -2,22 +2,28 @@
   "items": [
     {
       "data": {
-        "id": 1,
+        "id": 100,
         "creator_id": 1045095,
         "owner_id": 1293487,
-        "name": "Kuba Tutaj",
-        "tags": ["tag1", "tag2"],
+        "name": "Base CRM",
+        "address": {
+          "street": "Street 9"
+        },
+        "is_organization": true,
         "updated_at": "2019-09-04T08:28:59Z",
         "created_at": "1990-01-01T00:00:00Z"
       }
     },
     {
       "data": {
-        "id": 2,
+        "id": 200,
         "creator_id": 100,
         "owner_id": 1293487,
-        "name": "John Smith",
-        "tags": [],
+        "name": "Zendesk",
+        "is_organization": true,
+        "address": {
+          "street": "Leona Wyczolkowskiego"
+        },
         "updated_at": "2019-01-01T08:00:00Z",
         "created_at": "1990-01-01T00:00:00Z"
       }

@@ -5,6 +5,7 @@ import {contactSearches, contactTriggers} from '../keys'
 import {userSearches, userTriggers} from '../../users/keys'
 import {industryTriggers} from '../../common/industry/keys'
 import {tagsTriggers} from '../../common/tag/keys'
+import {uniqBy} from 'lodash'
 
 const personTagsHelpText = (isNew: boolean) =>
   isNew ?
@@ -73,7 +74,7 @@ export const companyIdFields = (required: boolean) => [{
   search: `${contactSearches.companySearchOrCreate}.id`,
 }]
 
-export const companyFields = (isNew: boolean) => [
+export const companyRegularFields = (isNew: boolean) => [
   {
     key: 'name',
     label: 'Name',
@@ -89,6 +90,10 @@ export const companyFields = (isNew: boolean) => [
     search: `${contactSearches.companySearchOrCreate}.id`
   },
   ...commonContactFields(companyTagsHelpText(isNew)),
+]
+
+export const companyFields = (isNew: boolean) => [
+  ...companyRegularFields(isNew),
   customFieldsFactory(EntityType.Company)
 ]
 
@@ -101,7 +106,7 @@ export const personIdFields = (required: boolean) => [{
   search: `${contactSearches.personSearchOrCreate}.id`,
 }]
 
-export const personFields = (isNew: boolean) => [
+export const personRegularFields = (isNew: boolean) => [
   {
     key: 'first_name',
     label: 'First Name',
@@ -131,5 +136,19 @@ export const personFields = (isNew: boolean) => [
     search: `${contactSearches.companySearchOrCreate}.id`
   },
   ...commonContactFields(personTagsHelpText(isNew)),
+]
+
+export const personFields = (isNew: boolean) => [
+  ...personRegularFields(isNew),
   customFieldsFactory(EntityType.Person)
 ]
+
+export const contactRegularFields = (isNew: boolean) => {
+  return uniqBy(
+    [
+      ...personRegularFields(isNew),
+      ...companyRegularFields(isNew)
+    ],
+    field => field.key
+  )
+}

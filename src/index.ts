@@ -2,9 +2,9 @@ import {apiTokenBearer, authentication} from './auth/authentication'
 import {version as platformVersion} from 'zapier-platform-core'
 import {ListDealsDropdown, NewDealTrigger} from './deal/newDeal.trigger'
 import {DealStageChangeTrigger, DeprecatedDealStageChangeTrigger} from './deal/dealStageChange.trigger'
-import DealUpdatedTrigger from './deal/updateDeal.trigger'
-import UpdateLeadTrigger from './lead/updateLead.trigger'
-import UpdatedContactTrigger from './contact/updatedContactTrigger'
+import UpdatedDealTrigger from './deal/updatedDeal.trigger'
+import UpdatedLeadTrigger from './lead/updatedLead.trigger'
+import UpdatedContactTrigger from './contact/updatedContact.trigger'
 import {
   ContactCompanySearch,
   ContactPersonSearch,
@@ -66,6 +66,10 @@ import {ProductSearch} from './products/catalog/product.search'
 import {ProductSearchOrCreate} from './products/catalog/product.searchCreate'
 import {CreateProductAction, UpdateProductAction} from './products/catalog/product.action'
 import {NewProductInCatalogTrigger} from './products/catalog/newProductsInCatalog.trigger'
+import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
+import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
+import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
+import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -117,7 +121,8 @@ const App = {
     // Triggers
     // Leads triggers
     [NewLeadTrigger.key]: NewLeadTrigger,
-    [UpdateLeadTrigger.key]: UpdateLeadTrigger,
+    [UpdatedLeadTrigger.key]: UpdatedLeadTrigger,
+    [LeadStatusChangeTrigger.key]: LeadStatusChangeTrigger,
 
     // Contacts triggers
     [NewContactTrigger.key]: NewContactTrigger,
@@ -126,7 +131,7 @@ const App = {
     // Deals triggers
     [NewDealTrigger.key]: NewDealTrigger,
     [DealStageChangeTrigger.key]: DealStageChangeTrigger,
-    [DealUpdatedTrigger.key]: DealUpdatedTrigger,
+    [UpdatedDealTrigger.key]: UpdatedDealTrigger,
     [DeprecatedDealStageChangeTrigger.key]: DeprecatedDealStageChangeTrigger,
 
     // Note triggers
@@ -169,7 +174,12 @@ const App = {
 
     // Lead/Deal sources
     [LeadSourceDropdownList.key]: LeadSourceDropdownList,
-    [DealSourceDropdownList.key]: DealSourceDropdownList
+    [DealSourceDropdownList.key]: DealSourceDropdownList,
+
+    // Fields dropdowns
+    [LeadFieldsDropdown.key]: LeadFieldsDropdown,
+    [DealFieldsDropdown.key]: DealFieldsDropdown,
+    [ContactFieldsDropdown.key]: ContactFieldsDropdown,
   },
 
   // If you want your searches to show up, you better include it here!

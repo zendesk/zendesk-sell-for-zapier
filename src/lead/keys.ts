@@ -13,7 +13,9 @@ export const leadSearches = {
 export const leadTriggers = {
   newLeadTrigger: 'lead_new_lead_trigger',
   leadListDropdown: 'lead_list_leads_dropdown',
-  updatedLeadTrigger: 'lead_update_lead_trigger'
+  leadFieldsDropdown: 'lead_fields_list_dropdown',
+  updatedLeadTrigger: 'lead_update_lead_trigger',
+  leadStatusChangeTrigger: 'lead_status_change_trigger',
 }
 
 export const leadStatusTriggers = {

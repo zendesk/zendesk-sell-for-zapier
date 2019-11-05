@@ -96,3 +96,9 @@ export const createMappingZObject = (responses: Array<[number, object]>): FakeZO
 
 export const createFakeActionDetails = (): ActionDetails =>
   ({actionType: ActionType.Create, actionName: 'action_name', actionId: 'asdf1234'})
+
+
+export const assertDeduplicationIds = (items: any[], ids: number[], deduplicationIds: string[]) => {
+  expect(items.map((i: any) => i.entity_original_id)).toEqual(ids)
+  expect(items.map((i : any) => i.id)).toEqual(deduplicationIds)
+}

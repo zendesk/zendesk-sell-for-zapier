@@ -5,13 +5,14 @@ import {userSearches, userTriggers} from '../../users/keys'
 import {industryTriggers} from '../../common/industry/keys'
 import {sourceSearches, sourceTriggers} from '../../common/source/keys'
 import {tagsTriggers} from '../../common/tag/keys'
+import {InputField} from '../../types'
 
 const tagsHelpText = (isNew: boolean) =>
   isNew ?
     'Specify the name of a tag which will be assigned to the lead.' :
     'Specify the name of a tag which will be assigned to the lead. Existing tags are kept.'
 
-export const leadFields = (isNew: boolean) => [
+export const leadRegularFields = (isNew: boolean) : InputField[] => [
   {
     key: 'first_name',
     label: 'First Name',
@@ -167,7 +168,11 @@ export const leadFields = (isNew: boolean) => [
     label: 'Description',
     required: false,
     type: 'string'
-  },
+  }
+]
+
+export const leadFields = (isNew: boolean) => [
+  ...leadRegularFields(isNew),
   customFieldsFactory(EntityType.Lead)
 ]
 

@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 100,
+        "creator_id": 1,
+        "owner_id": 1,
+        "status": "Unqualified",
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "organization_name": "Design Services Company"
+      }
+    },
+    {
+      "data": {
+        "id": 200,
+        "creator_id": 1,
+        "owner_id": 1,
+        "status": "Unqualified",
+        "first_name": "Kuba",
+        "last_name": "Tutaj",
+        "organization_name": "Base CRM"
+      }
+    },
+    {
+      "data": {
+        "id": 300,
+        "creator_id": 1,
+        "owner_id": 1,
+        "status": "Unqualified",
+        "first_name": "Andrzej",
+        "last_name": "Kiszala",
+        "organization_name": "Zendesk"
+      }
+    }
+  ],
+  "type": "collection",
+  "count": 3,
+  "links": {}
+}

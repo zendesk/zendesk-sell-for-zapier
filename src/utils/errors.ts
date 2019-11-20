@@ -1,5 +1,5 @@
 import {HttpResponse, ZObject} from 'zapier-platform-core'
-import {isForbidden, isNotFound, isRequestInvalid} from './http'
+import {isForbidden, isNotFound, isRateLimitReached, isRequestInvalid} from './http'
 
 interface ErrorDetails {
   statusCode: number,
@@ -36,13 +36,35 @@ const requestQuery = (response: HttpResponse): string => {
 }
 
 export const extractErrorMessageFromEnvelope = (z: ZObject, response: HttpResponse): ErrorDetails => {
-  const errorResponse = parseErrorResponse(z, response.content)
   return {
     statusCode: response.status,
-    statusMessage: extractStatusMessage(errorResponse),
-    errorDetails: extractErrorDetails(errorResponse),
+    ...buildErrorMessageDetails(z, response),
     query: requestQuery(response),
     url: response.request.url
+  }
+}
+
+export const buildErrorMessageDetails = (z: ZObject, response: HttpResponse): { statusMessage: string, errorDetails: string[] } => {
+  const {status} = response
+  if (isRateLimitReached(status)) {
+    return {
+      statusMessage: '429 Too Many Requests',
+      errorDetails: ['You reached rate limit for Sell API']
+    }
+  }
+  // Purpose of this layer is to not break Zapier App in case of returning malformed envelope from Public API
+  try {
+    const errorResponse = parseErrorResponse(z, response.content)
+    return {
+      statusMessage: extractStatusMessage(errorResponse),
+      errorDetails: extractErrorDetails(errorResponse),
+    }
+  } catch (e) {
+    z.console.error('Error while parsing error envelope', e)
+    return {
+      statusMessage: 'Unexpected error',
+      errorDetails: ['Unexpected error']
+    }
   }
 }
 

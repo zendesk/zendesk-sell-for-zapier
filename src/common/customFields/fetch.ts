@@ -11,7 +11,11 @@ type Predicate = (cf: any) => boolean
 
 const cfUrl = (resourceType: ResourceType): string => restEndpoints(`${resourceType}/custom_fields`)
 
-const fetchCfDefinitions = async (z: ZObject, url: string, filter: Predicate = () => true): Promise<RawCustomField[]> => {
+const fetchCfDefinitions = async (
+  z: ZObject,
+  url: string,
+  filter: Predicate = () => true
+): Promise<RawCustomField[]> => {
   const response = await fetch(z, {url})
   return unpackItemsResponse(response, z)
     .filter(filter)

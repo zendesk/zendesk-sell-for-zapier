@@ -20,7 +20,11 @@ export interface SourceDetails {
   description: string
 }
 
-export const searchSourcesByCriteria = (actionDetails: ActionDetails, supportedFilters: string[], resourceType: ResourceType) =>
+export const searchSourcesByCriteria = (
+  actionDetails: ActionDetails,
+  supportedFilters: string[], 
+  resourceType: ResourceType
+) =>
   searchByCriteria(sourceEndpoint(resourceType), actionDetails, supportedFilters)
 
 export const fetchSources = (actionDetails: ActionDetails, resourceType: ResourceType) =>

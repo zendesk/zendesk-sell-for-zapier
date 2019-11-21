@@ -8,7 +8,8 @@ import {fetchItems} from '../queries'
 
 /**
  * We need those items fetched to list existing industries within dynamic dropdowns for Leads and Contacts.
- * Semantically those items are triggers, but they are hidden and not available to user (not visible in Zapier interface).
+ * Semantically those items are triggers, but they are hidden and not available to user
+ * (not visible in Zapier interface).
  */
 const industryEndpoint = (resourceType: ResourceType): string => {
   if (resourceType === ResourceType.Deal) throw new Error('Cannot fetch industries for deals')

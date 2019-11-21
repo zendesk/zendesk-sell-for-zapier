@@ -24,7 +24,7 @@ const errorResponseFromMalformedEnvelope = (status: number, statusMessage: strin
   return {
     errors: [{
       error: {
-        details: details
+        details
       }
     }],
     meta: {

@@ -28,8 +28,12 @@ export const createFakeBundle = (inputData: { [x: string]: any }, meta: object =
 /**
  * Create fake response compliant with HttpResponse type
  */
-export const createFakeHttpResponse = (status: number, content: string | object, request: HttpRequestOptions = {}): HttpResponse => {
-  const stringifiedContent = typeof(content) === 'object' ? JSON.stringify(content) : content
+export const createFakeHttpResponse = (
+  status: number,
+  content: string | object,
+  request: HttpRequestOptions = {}
+): HttpResponse => {
+  const stringifiedContent = typeof (content) === 'object' ? JSON.stringify(content) : content
   return {
     status,
     content: stringifiedContent,
@@ -72,7 +76,8 @@ export const createFakeZObject = (status: number, payload: object): FakeZObject 
 }
 
 /**
- * Creates fake ZObject which returns different responses based on order of calling request method. Additionally counts all request calls.
+ * Creates fake ZObject which returns different responses based on order of calling request method.
+ * Additionally counts all request calls.
  */
 export const createMappingZObject = (responses: Array<[number, object]>): FakeZObject => {
   let counter = 0
@@ -100,5 +105,5 @@ export const createFakeActionDetails = (): ActionDetails =>
 
 export const assertDeduplicationIds = (items: any[], ids: number[], deduplicationIds: string[]) => {
   expect(items.map((i: any) => i.entity_original_id)).toEqual(ids)
-  expect(items.map((i : any) => i.id)).toEqual(deduplicationIds)
+  expect(items.map((i: any) => i.id)).toEqual(deduplicationIds)
 }

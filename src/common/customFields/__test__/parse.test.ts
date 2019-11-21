@@ -3,7 +3,11 @@ import {RawCustomField, RawCustomFieldType, ZapierCustomFieldType} from '../type
 
 
 describe('extractOutputCustomFields', () => {
-  const testRegularCustomField = (name: string, actualType: RawCustomFieldType, expectedType: ZapierCustomFieldType) => {
+  const testRegularCustomField = (
+    name: string,
+    actualType: RawCustomFieldType,
+    expectedType: ZapierCustomFieldType
+  ) => {
     const customField: RawCustomField = {
       id: 400,
       name,

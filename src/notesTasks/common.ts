@@ -43,7 +43,11 @@ const requestResourceType = (resourceType?: string): string | undefined => {
   return resourceType.toLowerCase()
 }
 
-const resourceField = (resourceName: string, dropDownList?: string, dropDownSearch?: string): DynamicResourceField[] => {
+const resourceField = (
+  resourceName: string,
+  dropDownList?: string,
+  dropDownSearch?: string
+): DynamicResourceField[] => {
   const field = (fieldName: string, suffix: string, prefix?: string) =>
     !!prefix ? {[fieldName]: prefix + suffix} : {}
 
@@ -64,13 +68,29 @@ const resourceFields = (resourceType?: ResourceChoice): DynamicResourceField[] =
 
   switch (resourceType) {
     case ResourceChoice.Lead:
-      return resourceField(ResourceChoice.Lead, leadTriggers.leadListDropdown, leadSearches.leadSearchOrCreate)
+      return resourceField(
+        ResourceChoice.Lead,
+        leadTriggers.leadListDropdown,
+        leadSearches.leadSearchOrCreate
+      )
     case ResourceChoice.Person:
-      return resourceField(ResourceChoice.Person, contactTriggers.personListDropdown, contactSearches.personSearchOrCreate)
+      return resourceField(
+        ResourceChoice.Person,
+        contactTriggers.personListDropdown,
+        contactSearches.personSearchOrCreate
+      )
     case ResourceChoice.Company:
-      return resourceField(ResourceChoice.Company, contactTriggers.companyListDropdown, contactSearches.companySearchOrCreate)
+      return resourceField(
+        ResourceChoice.Company,
+        contactTriggers.companyListDropdown,
+        contactSearches.companySearchOrCreate
+      )
     case ResourceChoice.Deal:
-      return resourceField(ResourceChoice.Deal, dealTriggers.dealListDropdown, dealSearches.dealSearchOrCreate)
+      return resourceField(
+        ResourceChoice.Deal,
+        dealTriggers.dealListDropdown,
+        dealSearches.dealSearchOrCreate
+      )
     default:
       /**
        * If user provides custom value instead of selecting one from dropdown let's return simple integer field
@@ -95,7 +115,12 @@ export const appendedResourceTypeProcessor: InputPreprocessor =
 /**
  * Creates new task or note. Perform all sanitization that is required by the Public API.
  */
-export const createTaskNoteResource = (endpoint: string, actionDetails: ActionDetails, allowedFieldNames: string[], dateFieldNames: string[] = []) => {
+export const createTaskNoteResource = (
+  endpoint: string,
+  actionDetails: ActionDetails,
+  allowedFieldNames: string[],
+  dateFieldNames: string[] = []
+) => {
   const preprocessor = mergedProcessors([
     pickedFieldsProcessor(allowedFieldNames),
     utcDatesProcessor(dateFieldNames),

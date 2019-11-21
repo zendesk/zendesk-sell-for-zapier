@@ -36,7 +36,7 @@ export const updateEntity = (
 }
 
 /**
- * Tries to create or update entity based on data passed in Bundle, use only for lead/contact/deal createOrUpdate actions
+ * Tries to create or update entity based on data passed in Bundle, use only for l/c/d createOrUpdate actions
  * If id is present in Bundle and item exists it will be updates, otherwise new entity will be created
  */
 export const createOrUpdateEntity = (
@@ -50,6 +50,8 @@ export const createOrUpdateEntity = (
       return await updateEntity(endpoint, actionDetails, entityType, preprocessor)(z, bundle)
     }
     // Remove id from request at this point
-    return await createEntity(endpoint, actionDetails, entityType, chainedProcessors(preprocessor, idExcludingProcessor))(z, bundle)
+    return await createEntity(
+      endpoint, actionDetails, entityType, chainedProcessors(preprocessor, idExcludingProcessor)
+    )(z, bundle)
   }
 }

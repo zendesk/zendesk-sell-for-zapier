@@ -82,7 +82,12 @@ export const notNullableInputs = (inputData: Filters) => {
 /**
  * Checks if resource exists by trying to fetch it by ID
  */
-export const resourceExists = async (z: ZObject, bundle: Bundle, rootUrl: string, actionDetails?: ActionDetails): Promise<boolean> => {
+export const resourceExists = async (
+  z: ZObject,
+  bundle: Bundle,
+  rootUrl: string,
+  actionDetails?: ActionDetails
+): Promise<boolean> => {
   if (!hasIdDefined(bundle)) {
     return false
   }
@@ -95,7 +100,12 @@ export const resourceExists = async (z: ZObject, bundle: Bundle, rootUrl: string
  * Fetches resource (e.g. lead, contact) by id and returns as single item.
  * Error is thrown for response different than 2xx.
  */
-export const fetchResource = async (z: ZObject, bundle: Bundle, rootUrl: string, actionDetails?: ActionDetails) => {
+export const fetchResource = async (
+  z: ZObject,
+  bundle: Bundle,
+  rootUrl: string,
+  actionDetails?: ActionDetails
+) => {
   const response = await fetch(z, {url: resourceUrl(rootUrl, bundle)}, actionDetails)
   return unpackSingleItemResponse(response, z)
 }
@@ -104,7 +114,12 @@ export const fetchResource = async (z: ZObject, bundle: Bundle, rootUrl: string,
  * Fetches resource (e.g. lead, contact) by id and returns wrapped with array.
  * If item cannot be found (404 is returned from API), empty array is returned.
  */
-export const fetchResourceAsArray = async (z: ZObject, bundle: Bundle, rootUrl: string, actionDetails?: ActionDetails): Promise<any[]> => {
+export const fetchResourceAsArray = async (
+  z: ZObject,
+  bundle: Bundle,
+  rootUrl: string,
+  actionDetails?: ActionDetails
+): Promise<any[]> => {
   const response = await fetch(z, {url: resourceUrl(rootUrl, bundle)}, actionDetails)
   return unpackItemResponseAsArray(z, response)
 }

@@ -35,7 +35,12 @@ const extractMultiSelectCustomFields = (bundle: Bundle, multiSelectCustomFields:
   return reduce(multiSelectCustomFields, reducer, {})
 }
 
-export const appendedArrayFields = async (z: ZObject, bundle: Bundle, endpoint: string, actionDetails?: ActionDetails): Promise<Filters> => {
+export const appendedArrayFields = async (
+  z: ZObject,
+  bundle: Bundle,
+  endpoint: string,
+  actionDetails?: ActionDetails
+): Promise<Filters> => {
   const existingItem = await fetchResource(z, bundle, endpoint, actionDetails)
   const multiSelectCustomFields = notEmptyMutliSelectCustomFields(existingItem)
   return {

@@ -112,7 +112,8 @@ export const appendHeader = (request: HttpRequestOptions, name: string, value: s
 }
 
 /**
- * Use this function for requests instead of z.request() directly - it adds headers which identifies where request comes from
+ * Use this function for requests instead of z.request() directly -
+ * it adds headers which identifies where request comes from
  */
 export const fetch = async (
   z: ZObject,

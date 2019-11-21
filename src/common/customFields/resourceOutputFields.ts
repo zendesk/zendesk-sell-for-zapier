@@ -8,9 +8,11 @@ const customFieldKey = (fieldName: string): string => parentChildRelatedField('c
 
 const customFieldLabel = (fieldName: string): string => `Custom Field: ${fieldName}`
 
-const addressCustomFieldKey = (parentField: string, addressField: string): string => customFieldKey(parentChildRelatedField(parentField, addressField))
+const addressCustomFieldKey = (parentField: string, addressField: string): string =>
+  customFieldKey(parentChildRelatedField(parentField, addressField))
 
-const addressCustomFieldLabel = (parentField: string, addressField: string): string => customFieldLabel(`${parentField} - ${addressField}`)
+const addressCustomFieldLabel = (parentField: string, addressField: string): string =>
+  customFieldLabel(`${parentField} - ${addressField}`)
 
 const addressCustomFieldOutput = (cf: RawCustomField): OutputField[] => {
   const addressCf = (childName: string, label: string): OutputField => {

@@ -6,8 +6,9 @@ import {includes, mapValues} from 'lodash'
 import * as moment from 'moment'
 
 /**
- * DateTime and Date custom fields don't understand timezones. We want to convert them into local time (skip timezone entirely)
- * and send as ISO format, this is implication from system's limitations.
+ * DateTime and Date custom fields don't understand timezones.
+ * We want to convert them into local time (skip timezone entirely) and send as ISO format,
+ * this is implication from system's limitations.
  */
 const formatDate = (value: any) =>
   moment(value).utcOffset(value).format('YYYY-MM-DD')

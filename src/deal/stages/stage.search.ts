@@ -22,11 +22,15 @@ const findPipelineByName = async (z: ZObject, actionDetails: ActionDetails, pipe
   return unpackItemsResponse(response, z)
 }
 
-const pipelineIdFilter = async (z: ZObject, actiionDetails: ActionDetails, pipelineName?: string): Promise<{ pipeline_id?: number }> => {
+const pipelineIdFilter = async (
+  z: ZObject,
+  actionDetails: ActionDetails,
+  pipelineName?: string
+): Promise<{ pipeline_id?: number }> => {
   if (!pipelineName) {
     return {}
   }
-  const pipelines = await findPipelineByName(z, actiionDetails, pipelineName) as any[]
+  const pipelines = await findPipelineByName(z, actionDetails, pipelineName) as any[]
   return pipelines && pipelines[0] ? {pipeline_id: pipelines[0].id} : {}
 }
 

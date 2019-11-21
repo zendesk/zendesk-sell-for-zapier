@@ -21,9 +21,17 @@ export const organisationProperty = (type?: ContactType): OrganisationProperty =
   return (type === null || type === undefined) ? {} : {is_organization: type === ContactType.Company}
 }
 
-export const fetchContactsTrigger = (triggerName: string, sortBy: string, supportedFilters: string[], type?: ContactType) => {
+export const fetchContactsTrigger = (
+  triggerName: string, 
+  sortBy: string,
+  supportedFilters: string[],
+  type?: ContactType
+) => {
   return async (z: ZObject, bundle: Bundle) =>
-    await streamContacts(triggerActionDetails(triggerName), supportedFilters)(z, bundle, organisationProperty(type), descendingSort(sortBy))
+    await streamContacts(
+      triggerActionDetails(triggerName),
+      supportedFilters
+    )(z, bundle, organisationProperty(type), descendingSort(sortBy))
 }
 
 export const streamContacts = (actionDetails: ActionDetails, supportedFilters: string[]) =>

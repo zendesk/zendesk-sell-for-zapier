@@ -23,6 +23,32 @@ describe('extractErrorMessageFromEnvelope', () => {
       url: 'https://api.getbase.com/v2/leads?per_page=200'
     })
   })
+
+  it('should return proper message for empty response with Rate Limit reached', () => {
+    const response = createFakeHttpResponse(429, '')
+    const zObject = createFakeZObject(429, {})
+
+    const errorMessage = extractErrorMessageFromEnvelope(zObject, response)
+    expect(errorMessage).toMatchObject({
+      statusCode: 429,
+      statusMessage: '429 Too Many Requests',
+      errorDetails: ['You reached rate limit for Sell API']
+    })
+  })
+
+  it('should return proper message for invalid envelope', () => {
+    const response = createFakeHttpResponse(500, 'Invalid')
+    const zObject = createFakeZObject(500, {})
+    // @ts-ignore
+    zObject.console = {error: () => null}
+
+    const errorMessage = extractErrorMessageFromEnvelope(zObject, response)
+    expect(errorMessage).toMatchObject({
+      statusCode: 500,
+      statusMessage: '500 Unexpected Error',
+      errorDetails: ['Unexpected Error']
+    })
+  })
 })
 
 describe('formatAndThrowAPIError', () => {

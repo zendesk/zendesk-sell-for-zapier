@@ -1,5 +1,5 @@
 import {HttpResponse, ZObject} from 'zapier-platform-core'
-import {isForbidden, isNotFound, isRequestInvalid} from './http'
+import {isForbidden, isNotFound, isRateLimitReached, isRequestInvalid} from './http'
 
 interface ErrorDetails {
   statusCode: number,
@@ -12,19 +12,39 @@ interface ErrorDetails {
 interface ErrorResponse {
   errors: Array<{
     error: {
-      code: string,
-      message: string,
       details: string
-    },
-    meta: any
+    }
   }>,
   meta: {
-    type: string,
     http_status: string
   }
 }
 
-const parseErrorResponse = (z: ZObject, content: string): ErrorResponse => z.JSON.parse(content)
+const errorResponseFromMalformedEnvelope = (status: number, statusMessage: string, details: string): ErrorResponse => {
+  return {
+    errors: [{
+      error: {
+        details
+      }
+    }],
+    meta: {
+      http_status: statusMessage
+    }
+  }
+}
+
+const parseErrorResponse = (z: ZObject, response: HttpResponse): ErrorResponse => {
+  const {status, content} = response
+  if (isRateLimitReached(status)) {
+    return errorResponseFromMalformedEnvelope(status, '429 Too Many Requests', 'You reached rate limit for Sell API')
+  }
+  try {
+    return z.JSON.parse(content)
+  } catch (e) {
+    z.console.error('Error while parsing error envelope', e)
+    return errorResponseFromMalformedEnvelope(status, `${status} Unexpected Error`, `Unexpected Error`)
+  }
+}
 
 const extractErrorDetails = (response: ErrorResponse): string[] => response.errors.map((error) => error.error.details)
 
@@ -36,7 +56,8 @@ const requestQuery = (response: HttpResponse): string => {
 }
 
 export const extractErrorMessageFromEnvelope = (z: ZObject, response: HttpResponse): ErrorDetails => {
-  const errorResponse = parseErrorResponse(z, response.content)
+  const errorResponse = parseErrorResponse(z, response)
+
   return {
     statusCode: response.status,
     statusMessage: extractStatusMessage(errorResponse),

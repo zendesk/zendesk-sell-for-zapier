@@ -18,6 +18,7 @@
     "curly": false,
     "object-literal-sort-keys": false,
     "member-access": false,
-    "eofline": true
+    "eofline": true,
+    "max-line-length": [true, 120]
   }
 }

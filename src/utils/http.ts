@@ -10,6 +10,7 @@ export const isSuccessful = (status: number): boolean => between(status, 200, 29
 export const isNotFound = (status: number): boolean => status === 404
 export const isRequestInvalid = (status: number): boolean => includes([400, 422], status)
 export const isForbidden = (status: number): boolean => status === 403
+export const isRateLimitReached = (status: number): boolean => status === 429
 
 export const rootUrl = (): string => {
   return process.env.SELL_API_URL || 'https://api.getbase.com'
@@ -111,7 +112,8 @@ export const appendHeader = (request: HttpRequestOptions, name: string, value: s
 }
 
 /**
- * Use this function for requests instead of z.request() directly - it adds headers which identifies where request comes from
+ * Use this function for requests instead of z.request() directly -
+ * it adds headers which identifies where request comes from
  */
 export const fetch = async (
   z: ZObject,

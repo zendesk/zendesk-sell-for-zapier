@@ -62,7 +62,11 @@ export const remapDeduplication = (items: any[], fieldPath: string) => {
  *
  * More details on how deduplication in Zapier works: https://zapier.com/developer/documentation/v2/deduplication/
  */
-export const findAndRemapOnlyChangedItems = (items: any[], modificationTimeField: string, triggerFieldPath?: string) => {
+export const findAndRemapOnlyChangedItems = (
+  items: any[],
+  modificationTimeField: string,
+  triggerFieldPath?: string
+) => {
   return items.filter(isChanged(modificationTimeField))
     .map(item => remapDeduplicationId(item, triggerFieldPath || modificationTimeField))
 }

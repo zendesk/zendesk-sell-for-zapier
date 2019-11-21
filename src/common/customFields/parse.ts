@@ -58,6 +58,7 @@ const converter = (type: RawCustomFieldType)
     [RawCustomFieldType.Text]: (field: RawCustomField) => regularTypeConverter(field, ZapierCustomFieldType.Text),
     [RawCustomFieldType.Bool]: (field: RawCustomField) => regularTypeConverter(field, ZapierCustomFieldType.Boolean),
     [RawCustomFieldType.Date]: (field: RawCustomField) => regularTypeConverter(field, ZapierCustomFieldType.DateTime),
+    // tslint:disable-next-line
     [RawCustomFieldType.DateTime]: (field: RawCustomField) => regularTypeConverter(field, ZapierCustomFieldType.DateTime),
     [RawCustomFieldType.Email]: (field: RawCustomField) => regularTypeConverter(field, ZapierCustomFieldType.String),
     [RawCustomFieldType.Phone]: (field: RawCustomField) => regularTypeConverter(field, ZapierCustomFieldType.String),

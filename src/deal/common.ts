@@ -23,7 +23,8 @@ export const searchDealsByCriteria = (actionDetails: ActionDetails, supportedFil
 export const fetchDeals = (actionDetails: ActionDetails) =>
   fetchItems(dealsEndpoint, actionDetails)
 
-const skippingPipelinePreprocessor: InputPreprocessor = (inputData: Filters): Filters => omit(inputData, ['pipeline_id'])
+const skippingPipelinePreprocessor: InputPreprocessor = (inputData: Filters): Filters =>
+  omit(inputData, ['pipeline_id'])
 
 export const createDeal = (actionDetails: ActionDetails) =>
   createEntity(dealsEndpoint, actionDetails, EntityType.Deal, skippingPipelinePreprocessor)

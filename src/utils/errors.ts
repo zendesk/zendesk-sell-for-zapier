@@ -42,7 +42,7 @@ const parseErrorResponse = (z: ZObject, response: HttpResponse): ErrorResponse =
     return z.JSON.parse(content)
   } catch (e) {
     z.console.error('Error while parsing error envelope', e)
-    return errorResponseFromMalformedEnvelope(status, 'Unexpected Error', `${status} Unexpected Error`)
+    return errorResponseFromMalformedEnvelope(status, `${status} Unexpected Error`, `Unexpected Error`)
   }
 }
 

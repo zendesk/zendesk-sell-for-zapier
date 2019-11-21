@@ -12,19 +12,39 @@ interface ErrorDetails {
 interface ErrorResponse {
   errors: Array<{
     error: {
-      code: string,
-      message: string,
       details: string
-    },
-    meta: any
+    }
   }>,
   meta: {
-    type: string,
     http_status: string
   }
 }
 
-const parseErrorResponse = (z: ZObject, content: string): ErrorResponse => z.JSON.parse(content)
+const errorResponseFromMalformedEnvelope = (status: number, statusMessage: string, details: string): ErrorResponse => {
+  return {
+    errors: [{
+      error: {
+        details: details
+      }
+    }],
+    meta: {
+      http_status: statusMessage
+    }
+  }
+}
+
+const parseErrorResponse = (z: ZObject, response: HttpResponse): ErrorResponse => {
+  const {status, content} = response
+  if (isRateLimitReached(status)) {
+    return errorResponseFromMalformedEnvelope(status, '429 Too Many Requests', 'You reached rate limit for Sell API')
+  }
+  try {
+    return z.JSON.parse(content)
+  } catch (e) {
+    z.console.error('Error while parsing error envelope', e)
+    return errorResponseFromMalformedEnvelope(status, 'Unexpected Error', `${status} Unexpected Error`)
+  }
+}
 
 const extractErrorDetails = (response: ErrorResponse): string[] => response.errors.map((error) => error.error.details)
 
@@ -36,35 +56,14 @@ const requestQuery = (response: HttpResponse): string => {
 }
 
 export const extractErrorMessageFromEnvelope = (z: ZObject, response: HttpResponse): ErrorDetails => {
+  const errorResponse = parseErrorResponse(z, response)
+
   return {
     statusCode: response.status,
-    ...buildErrorMessageDetails(z, response),
+    statusMessage: extractStatusMessage(errorResponse),
+    errorDetails: extractErrorDetails(errorResponse),
     query: requestQuery(response),
     url: response.request.url
-  }
-}
-
-export const buildErrorMessageDetails = (z: ZObject, response: HttpResponse): { statusMessage: string, errorDetails: string[] } => {
-  const {status} = response
-  if (isRateLimitReached(status)) {
-    return {
-      statusMessage: '429 Too Many Requests',
-      errorDetails: ['You reached rate limit for Sell API']
-    }
-  }
-  // Purpose of this layer is to not break Zapier App in case of returning malformed envelope from Public API
-  try {
-    const errorResponse = parseErrorResponse(z, response.content)
-    return {
-      statusMessage: extractStatusMessage(errorResponse),
-      errorDetails: extractErrorDetails(errorResponse),
-    }
-  } catch (e) {
-    z.console.error('Error while parsing error envelope', e)
-    return {
-      statusMessage: 'Unexpected error',
-      errorDetails: ['Unexpected error']
-    }
   }
 }
 

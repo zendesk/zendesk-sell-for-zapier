@@ -1,10 +1,5 @@
 import {createFakeHttpResponse, createFakeZObject} from '../testHelpers'
-import {
-  buildErrorMessageDetails,
-  extractErrorMessageFromEnvelope,
-  formatAndThrowAPIError,
-  mainErrorMessage
-} from '../errors'
+import {extractErrorMessageFromEnvelope, formatAndThrowAPIError, mainErrorMessage} from '../errors'
 import * as errorResponse from './errorResponse.fixture.json'
 import * as productsErrorResponse from './productsErrorResponse.fixture.json'
 
@@ -26,6 +21,32 @@ describe('extractErrorMessageFromEnvelope', () => {
       ],
       query: 'GET https://api.getbase.com/v2/leads?per_page=200',
       url: 'https://api.getbase.com/v2/leads?per_page=200'
+    })
+  })
+
+  it('should return proper message for empty response with Rate Limit reached', () => {
+    const response = createFakeHttpResponse(429, '')
+    const zObject = createFakeZObject(429, {})
+
+    const errorMessage = extractErrorMessageFromEnvelope(zObject, response)
+    expect(errorMessage).toMatchObject({
+      statusCode: 429,
+      statusMessage: '429 Too Many Requests',
+      errorDetails: ['You reached rate limit for Sell API']
+    })
+  })
+
+  it('should return proper message for invalid envelope', () => {
+    const response = createFakeHttpResponse(500, 'Invalid')
+    const zObject = createFakeZObject(500, {})
+    // @ts-ignore
+    zObject.console = {error: () => null}
+
+    const errorMessage = extractErrorMessageFromEnvelope(zObject, response)
+    expect(errorMessage).toMatchObject({
+      statusCode: 500,
+      statusMessage: '500 Unexpected Error',
+      errorDetails: ['Unexpected Error']
     })
   })
 })
@@ -75,42 +96,5 @@ describe('mainErrorMessage', () => {
   it('should return not found message for 404 code', () => {
     const results = mainErrorMessage(404, [])
     expect(results).toEqual('Entity you are looking for doesn\'t exist.')
-  })
-})
-
-describe('buildErrorMessageDetails', () => {
-  it('should return proper message for empty response with Rate Limit reached', () => {
-    const response = createFakeHttpResponse(429, '')
-    const zObject = createFakeZObject(429, {})
-
-    const errorMessage = buildErrorMessageDetails(zObject, response)
-    expect(errorMessage).toEqual({
-      statusMessage: '429 Too Many Requests',
-      errorDetails: ['You reached rate limit for Sell API']
-    })
-  })
-
-  it('should return proper message for valid envelope', () => {
-    const response = createFakeHttpResponse(400, errorResponse)
-    const zObject = createFakeZObject(400, {})
-
-    const errorMessage = buildErrorMessageDetails(zObject, response)
-    expect(errorMessage).toEqual({
-      statusMessage: '400 Bad Request',
-      errorDetails: ['The request query parameter \'per_page\' is malformed, missing, or has an invalid value (must be between 1 and 100, given: 200)']
-    })
-  })
-
-  it('should return proper message for invalid envelope', () => {
-    const response = createFakeHttpResponse(500, 'Invalid')
-    const zObject = createFakeZObject(500, {})
-    // @ts-ignore
-    zObject.console = { error: () => null }
-
-    const errorMessage = buildErrorMessageDetails(zObject, response)
-    expect(errorMessage).toEqual({
-      statusMessage: 'Unexpected error',
-      errorDetails: ['Unexpected error']
-    })
   })
 })

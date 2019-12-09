@@ -1,3 +1,8 @@
+## 1.0.15
+
+* Bumping `node` to recent version from 12.x branch
+* Bumping `zapier-platform-core` to recent version supporting new node
+
 ## 1.0.14
 
 * Added trigger `Lead Status Change`

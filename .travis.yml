@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - 8.10.0
-before_script: 'yarn global add zapier-platform-cli@8.3.0'
+  - 12.13.0
+before_script: 'yarn global add zapier-platform-cli@9.0.0'
 script:
   - 'yarn install'
   - 'yarn run lint'

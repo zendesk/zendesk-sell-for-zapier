@@ -1,7 +1,7 @@
 {
   "name": "zendesk-sell-for-zapier",
   "private": true,
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Zendesk Sell App in Zapier",
   "repository": "git@github.com:zendesk/zendesk-sell-for-zapier.git",
   "homepage": "https://www.zendesk.com/sell/",
@@ -19,14 +19,14 @@
     "zapier-push": "yarn build && zapier push"
   },
   "engines": {
-    "node": "8.10.0",
-    "npm": ">=5.6.0"
+    "node": "^12.13.0",
+    "npm": ">=6.13.2"
   },
   "dependencies": {
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "zapier-platform-core": "8.3.0"
+    "zapier-platform-core": "9.0.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.5",

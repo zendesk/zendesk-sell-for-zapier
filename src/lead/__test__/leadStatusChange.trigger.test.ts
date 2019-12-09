@@ -53,7 +53,7 @@ describe('lead status change trigger', () => {
     assertDeduplicationIds(
       results,
       [100, 200, 300],
-      ['100_Unqualified', '200_Unqualified', '300_Unqualified']
+      ['100_Unqualified 2', '200_Unqualified 1', '300_Unqualified 3']
     )
   })
 })

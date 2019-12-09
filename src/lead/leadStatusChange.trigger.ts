@@ -34,7 +34,7 @@ export const LeadStatusChangeTrigger: ZapierItem = {
         key: statusFieldName,
         label: 'Status',
         required: false,
-        type: 'integer',
+        type: 'string',
         dynamic: `${leadStatusTriggers.leadStatusDropdown}.name.name`
       }
     ],

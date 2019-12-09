@@ -41,7 +41,7 @@ const UpdatedContactTrigger: ZapierItem = {
         altersDynamicFields: true
       },
       {
-        key: 'field_trigger',
+        key: 'trigger_field',
         label: 'Field to monitor the updates',
         helpText: 'Trigger will work only when selected field gets updated. Leave empty to trigger on any change.',
         required: false,

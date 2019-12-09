@@ -5,7 +5,7 @@
         "id": 100,
         "creator_id": 1,
         "owner_id": 1,
-        "status": "Unqualified",
+        "status": "Unqualified 2",
         "first_name": "Mark",
         "last_name": "Johnson",
         "organization_name": "Design Services Company"
@@ -16,7 +16,7 @@
         "id": 200,
         "creator_id": 1,
         "owner_id": 1,
-        "status": "Unqualified",
+        "status": "Unqualified 1",
         "first_name": "Kuba",
         "last_name": "Tutaj",
         "organization_name": "Base CRM"
@@ -27,7 +27,7 @@
         "id": 300,
         "creator_id": 1,
         "owner_id": 1,
-        "status": "Unqualified",
+        "status": "Unqualified 3",
         "first_name": "Andrzej",
         "last_name": "Kiszala",
         "organization_name": "Zendesk"

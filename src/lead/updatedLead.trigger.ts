@@ -13,7 +13,11 @@ const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     []
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(leads, bundle.inputData.trigger_field)
+  return findAndRemapOnlyUpdatedItems(
+    leads,
+    bundle.meta && bundle.meta.isPopulatingDedupe,
+    bundle.inputData.trigger_field
+  )
 }
 
 const UpdatedLeadTrigger: ZapierItem = {

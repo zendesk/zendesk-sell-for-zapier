@@ -1,7 +1,11 @@
 import * as moment from 'moment'
 import {isPlainObject} from 'lodash'
 
-const isChanged = (changeFieldName: string) => {
+const isChanged = (changeFieldName: string, populatingDedup: boolean) => {
+  if (populatingDedup) {
+    return () => true
+  }
+  
   return (entity: any) => {
     const createdAt = moment(entity.created_at)
     const changedAt = moment(entity[changeFieldName])
@@ -64,15 +68,16 @@ export const remapDeduplication = (items: any[], fieldPath: string) => {
  */
 export const findAndRemapOnlyChangedItems = (
   items: any[],
+  populatingDedup: boolean,
   modificationTimeField: string,
   triggerFieldPath?: string
 ) => {
-  return items.filter(isChanged(modificationTimeField))
+  return items.filter(isChanged(modificationTimeField, populatingDedup))
     .map(item => remapDeduplicationId(item, triggerFieldPath || modificationTimeField))
 }
 
-export const findAndRemapOnlyUpdatedItems = (items: any[], triggerFieldPath?: string) =>
-  findAndRemapOnlyChangedItems(items, 'updated_at', triggerFieldPath)
+export const findAndRemapOnlyUpdatedItems = (items: any[], populatingDedup: boolean = false, triggerFieldPath?: string) =>
+  findAndRemapOnlyChangedItems(items, populatingDedup, 'updated_at', triggerFieldPath)
 
-export const findAndRemapOnlyStageUpdatedItems = (items: any[]) =>
-  findAndRemapOnlyChangedItems(items, 'last_stage_change_at')
+export const findAndRemapOnlyStageUpdatedItems = (items: any[], populatingDedup: boolean = false) =>
+  findAndRemapOnlyChangedItems(items, populatingDedup, 'last_stage_change_at')

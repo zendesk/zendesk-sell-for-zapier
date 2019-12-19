@@ -16,7 +16,10 @@ const listDealsByLastStageChange = async (z: ZObject, bundle: Bundle) => {
     stageChangeAtField,
     triggerSupportedFields
   )(z, bundle)
-  return findAndRemapOnlyStageUpdatedItems(deals)
+  return findAndRemapOnlyStageUpdatedItems(
+    deals,
+    bundle.meta && bundle.meta.isPopulatingDedupe,
+  )
 }
 
 export const DealStageChangeTrigger: ZapierItem = {

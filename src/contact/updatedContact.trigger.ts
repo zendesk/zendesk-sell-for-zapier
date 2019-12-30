@@ -13,10 +13,7 @@ const listContactsByUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     ['is_organization']
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(
-    contacts,
-    bundle.meta && bundle.meta.isPopulatingDedupe
-  )
+  return findAndRemapOnlyUpdatedItems(contacts)
 }
 
 /**

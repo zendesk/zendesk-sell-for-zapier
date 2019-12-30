@@ -13,10 +13,7 @@ const listDealsByUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     []
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(
-    deals,
-    bundle.meta && bundle.meta.isPopulatingDedupe
-  )
+  return findAndRemapOnlyUpdatedItems(deals)
 }
 
 const UpdatedDealTrigger: ZapierItem = {

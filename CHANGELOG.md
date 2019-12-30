@@ -1,3 +1,7 @@
+## 1.0.16
+
+* Bumping other dependencies
+
 ## 1.0.15
 
 * Bumping `node` to recent version from 12.x branch

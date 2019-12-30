@@ -15,8 +15,7 @@ const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
   )(z, bundle)
   return findAndRemapOnlyUpdatedItems(
     leads,
-    bundle.meta && bundle.meta.isPopulatingDedupe,
-    bundle.inputData.trigger_field
+    bundle.meta && bundle.meta.isPopulatingDedupe
   )
 }
 
@@ -30,16 +29,6 @@ const UpdatedLeadTrigger: ZapierItem = {
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
     sample: leadSample,
-    inputFields: [
-      {
-        key: 'trigger_field',
-        label: 'Field to monitor the updates',
-        helpText: 'Trigger will work only when selected field gets updated. Leave empty to trigger on any change.',
-        required: false,
-        type: 'string',
-        dynamic: `${leadTriggers.leadFieldsDropdown}.id.name`
-      }
-    ],
     outputFields: [
       ...deduplicationOutputFields,
       ...commonLeadOutputFields

@@ -57,7 +57,8 @@ describe('update contact trigger', () => {
     )
   })
 
-  it('should fetch contacts sorted by update_at and generate deduplication based on passed trigger field',
+  // TODO This feature is currently not implemented
+  xit('should fetch contacts sorted by update_at and generate deduplication based on passed trigger field',
     async () => {
       const bundle = {
         inputData: {
@@ -83,7 +84,8 @@ describe('update contact trigger', () => {
       )
     })
 
-  it('should fetch companies sorted by update_at and generate deduplication based on passed trigger field',
+  // TODO This feature is currently not implemented
+  xit('should fetch companies sorted by update_at and generate deduplication based on passed trigger field',
     async () => {
       const bundle = {
         inputData: {

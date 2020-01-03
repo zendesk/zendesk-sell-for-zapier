@@ -79,7 +79,7 @@ export const sampleWithDeduplicationId = (item: any) => {
   return {
     ...item,
     entity_original_id: 100,
-    id: "100_2014-09-29T16:32:56Z"
+    id: '100_2014-09-29T16:32:56Z'
   }
 }
 

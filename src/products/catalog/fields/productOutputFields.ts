@@ -3,35 +3,43 @@ import {OutputField} from '../../../types'
 export const productOutputFields: OutputField[] = [
   {
     key: 'id',
-    label: 'Product ID'
+    label: 'Product ID',
+    type: 'integer',
   },
   {
     key: 'name',
-    label: 'Name'
+    label: 'Name',
+    type: 'string',
   },
   {
     key: 'description',
-    label: 'Description'
+    label: 'Description',
+    type: 'string',
   },
   {
     key: 'sku',
-    label: 'SKU'
+    label: 'SKU',
+    type: 'string',
   },
   {
     key: 'max_discount',
-    label: 'Max Discount'
+    label: 'Max Discount',
+    type: 'number',
   },
   {
     key: 'max_markup',
-    label: 'Max markup'
+    label: 'Max markup',
+    type: 'number',
   },
   {
     key: 'cost',
-    label: 'Unit Cost'
+    label: 'Unit Cost',
+    type: 'string',
   },
   {
     key: 'cost_currency',
-    label: 'Unit Cost Currency'
+    label: 'Unit Cost Currency',
+    type: 'string',
   },
   {
     key: 'prices[]amount',

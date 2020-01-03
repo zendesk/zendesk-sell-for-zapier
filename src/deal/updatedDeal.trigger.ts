@@ -1,7 +1,7 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
 import {fetchDealsTrigger} from './common'
 import {ZapierItem} from '../types'
-import {findAndRemapOnlyUpdatedItems} from '../utils/deduplication'
+import {findAndRemapOnlyUpdatedItems, sampleWithDeduplicationId} from '../utils/deduplication'
 import {deduplicationOutputFields} from '../common/outputFields'
 import {dealCommonOutputFields} from './fields/dealOutputFields'
 import {dealTriggers} from './keys'
@@ -25,7 +25,7 @@ const UpdatedDealTrigger: ZapierItem = {
   },
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
-    sample: dealSample,
+    sample: sampleWithDeduplicationId(dealSample),
     outputFields: [
       ...deduplicationOutputFields,
       ...dealCommonOutputFields

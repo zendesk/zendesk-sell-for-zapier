@@ -1,3 +1,7 @@
+## 1.0.17
+
+* Fixing internal warnings related to output types
+
 ## 1.0.16
 
 * Bumping other dependencies
@@ -9,7 +13,6 @@
 
 ## 1.0.14
 
-* Added trigger `Lead Status Change`
 * Support for 429 responses from Public API (Rate Limiting) - App will not break while trying to parse response
 
 ## 1.0.13

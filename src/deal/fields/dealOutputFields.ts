@@ -6,46 +6,57 @@ export const dealCommonOutputFields = [
   {
     key: 'owner_id',
     label: 'Owner',
+    type: 'integer',
   },
   {
     key: 'name',
     label: 'Name',
+    type: 'string',
   },
   {
     key: 'value',
-    label: 'Value'
+    label: 'Value',
+    type: 'string',
   },
   {
     key: 'currency',
     label: 'Currency',
+    type: 'string',
   },
   {
     key: 'hot',
     label: 'Hot',
+    type: 'boolean',
   },
   {
     key: 'stage_id',
     label: 'Stage',
+    type: 'integer',
   },
   {
     key: 'source_id',
-    label: 'Source'
+    label: 'Source',
+    type: 'integer',
   },
   {
     key: 'loss_reason_id',
-    label: 'Loss Reason'
+    label: 'Loss Reason',
+    type: 'integer',
   },
   {
     key: 'dropbox_email',
-    label: 'Dropbox Email'
+    label: 'Dropbox Email',
+    type: 'string',
   },
   {
     key: 'contact_id',
-    label: 'Primary Contact'
+    label: 'Primary Contact',
+    type: 'integer',
   },
   {
     key: 'organization_id',
-    label: 'Company'
+    label: 'Company',
+    type: 'integer',
   },
   ...tagsOutputFields,
   customFieldOutputFields(EntityType.Deal)

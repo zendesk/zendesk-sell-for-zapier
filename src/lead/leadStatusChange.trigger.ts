@@ -26,6 +26,10 @@ export const LeadStatusChangeTrigger: ZapierItem = {
     label: 'Lead Enters New Status',
     description: 'Triggers when a lead has change status',
     important: false,
+    // TODO Unfortunately, this implementation causes false-positives and reacts also
+    //      upon lead creation. We cannot build reliable solution for update using DeduplicationId
+    //      build from LeadId + StatusValue
+    hidden: true
   },
   operation: {
     sample: leadSample,

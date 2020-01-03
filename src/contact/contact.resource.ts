@@ -47,6 +47,7 @@ const ContactResource = {
     {
       key: 'id',
       label: 'ID',
+      type: 'integer',
     },
     ...commonContactOutputFields
   ]

@@ -71,6 +71,18 @@ export const findAndRemapOnlyChangedItems = (
     .map(item => remapDeduplicationId(item, triggerFieldPath || modificationTimeField))
 }
 
+/**
+ * Remaps output fields from sample using deduplication ID.
+ * For triggers like UpdatedContact we are building DeduplicationId from Id and Updated_at fields.
+ */
+export const sampleWithDeduplicationId = (item: any) => {
+  return {
+    ...item,
+    entity_original_id: 100,
+    id: '100_2014-09-29T16:32:56Z'
+  }
+}
+
 export const findAndRemapOnlyUpdatedItems = (items: any[], triggerFieldPath?: string) =>
   findAndRemapOnlyChangedItems(items, 'updated_at', triggerFieldPath)
 

@@ -1,7 +1,7 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
 import {fetchContactsTrigger} from './common'
 import {ZapierItem} from '../types'
-import {findAndRemapOnlyUpdatedItems} from '../utils/deduplication'
+import {findAndRemapOnlyUpdatedItems, sampleWithDeduplicationId} from '../utils/deduplication'
 import {deduplicationOutputFields} from '../common/outputFields'
 import {commonContactOutputFields} from './fields/contactOutputFields'
 import {contactTriggers} from './keys'
@@ -31,7 +31,7 @@ const UpdatedContactTrigger: ZapierItem = {
 
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
-    sample: contactSample,
+    sample: sampleWithDeduplicationId(contactSample),
     inputFields: [
       {
         key: 'is_organization',

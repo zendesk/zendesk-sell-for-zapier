@@ -19,27 +19,33 @@ const TaskResource = {
   outputFields: [
     {
       key: 'id',
-      label: 'Task ID'
+      label: 'Task ID',
+      type: 'integer',
     },
     {
       key: 'content',
-      label: 'Content'
+      label: 'Content',
+      type: 'text',
     },
     {
       key: 'creator_id',
-      label: 'Creator'
+      label: 'Creator',
+      type: 'integer',
     },
     {
       key: 'owner_id',
-      label: 'Owner'
+      label: 'Owner',
+      type: 'integer',
     },
     {
       key: 'resource_type',
       label: 'Resource Type',
+      type: 'string',
     },
     {
       key: 'resource_id',
-      label: 'Resource Id'
+      label: 'Resource Id',
+      type: 'integer',
     },
     {
       key: 'due_date',
@@ -47,11 +53,13 @@ const TaskResource = {
     },
     {
       key: 'remind_at',
-      label: 'Alert'
+      label: 'Alert',
+      type: 'datetime',
     },
     {
       key: 'overdue',
-      label: 'Is overdue?'
+      label: 'Is overdue?',
+      type: 'boolean',
     }
   ]
 }

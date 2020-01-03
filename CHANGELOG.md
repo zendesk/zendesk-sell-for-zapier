@@ -1,3 +1,7 @@
+## 1.0.17
+
+* Fixing internal warnings related to output types
+
 ## 1.0.16
 
 * Bumping other dependencies

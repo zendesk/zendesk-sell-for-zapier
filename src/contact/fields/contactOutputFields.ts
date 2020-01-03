@@ -12,22 +12,27 @@ export const commonContactOutputFields = [
   {
     key: 'name',
     label: 'Name',
+    type: 'string',
   },
   {
     key: 'first_name',
     label: 'First Name',
+    type: 'string',
   },
   {
     key: 'last_name',
     label: 'Last Name',
+    type: 'string',
   },
   {
     key: 'contact_id',
-    label: 'Organisation'
+    label: 'Organisation',
+    type: 'integer',
   },
   {
     key: 'parent_organization_id',
-    label: 'Parent Company'
+    label: 'Parent Company',
+    type: 'integer',
   },
   ...personalOutputFields,
   ...addressOutputFields,

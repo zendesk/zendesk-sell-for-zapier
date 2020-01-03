@@ -13,23 +13,28 @@ const NoteResource = {
   outputFields: [
     {
       key: 'id',
-      label: 'Note ID'
+      label: 'Note ID',
+      type: 'integer',
     },
     {
       key: 'content',
-      label: 'Content'
+      label: 'Content',
+      type: 'text',
     },
     {
       key: 'creator_id',
-      label: 'Creator'
+      label: 'Creator',
+      type: 'integer',
     },
     {
       key: 'resource_type',
       label: 'Resource Type',
+      type: 'string',
     },
     {
       key: 'resource_id',
-      label: 'Resource Id'
+      label: 'Resource Id',
+      type: 'integer',
     }
   ]
 }

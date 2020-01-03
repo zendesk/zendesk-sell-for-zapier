@@ -4,7 +4,7 @@ import DealResource, {dealSample} from './deal.resource'
 import {ZapierItem} from '../types'
 import {deduplicationOutputFields} from '../common/outputFields'
 import {dealCommonOutputFields} from './fields/dealOutputFields'
-import {findAndRemapOnlyStageUpdatedItems} from '../utils/deduplication'
+import {findAndRemapOnlyStageUpdatedItems, sampleWithDeduplicationId} from '../utils/deduplication'
 import {dealTriggers, pipelineTriggers, stageTriggers} from './keys'
 
 const stageChangeAtField = 'last_stage_change_at'
@@ -30,7 +30,7 @@ export const DealStageChangeTrigger: ZapierItem = {
   },
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
-    sample: dealSample,
+    sample: sampleWithDeduplicationId(dealSample),
     inputFields: [
       {
         key: 'pipeline_id',

@@ -41,6 +41,7 @@ const LeadResource = {
     {
       key: 'id',
       label: 'ID',
+      type: 'integer'
     },
     ...commonLeadOutputFields
   ]

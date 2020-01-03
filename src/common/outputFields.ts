@@ -3,11 +3,13 @@ import {OutputField} from '../types'
 export const deduplicationOutputFields: OutputField[] = [
   {
     key: 'entity_original_id',
-    label: 'ID'
+    label: 'ID',
+    type: 'integer'
   },
   {
     key: 'id',
-    label: 'Zapier Deduplication ID'
+    label: 'Zapier Deduplication ID',
+    type: 'string',
   }
 ]
 
@@ -15,10 +17,12 @@ export const creatorOwnerOutputFields: OutputField[] = [
   {
     key: 'owner_id',
     label: 'Owner',
+    type: 'integer'
   },
   {
     key: 'creator_id',
-    label: 'Creator'
+    label: 'Creator',
+    type: 'integer'
   }
 ]
 
@@ -26,50 +30,62 @@ export const personalOutputFields: OutputField[] = [
   {
     key: 'title',
     label: 'Title',
+    type: 'string'
   },
   {
     key: 'description',
-    label: 'Description'
+    label: 'Description',
+    type: 'string'
   },
   {
     key: 'industry',
-    label: 'Industry'
+    label: 'Industry',
+    type: 'string'
   },
   {
     key: 'website',
-    label: 'Website'
+    label: 'Website',
+    type: 'string'
   },
   {
     key: 'email',
-    label: 'Email'
+    label: 'Email',
+    type: 'string'
   },
   {
     key: 'phone',
-    label: 'Phone'
+    label: 'Phone',
+    type: 'string'
   },
   {
     key: 'mobile',
-    label: 'Mobile'
+    label: 'Mobile',
+    type: 'string'
   },
   {
     key: 'fax',
-    label: 'Fax'
+    label: 'Fax',
+    type: 'string'
   },
   {
     key: 'twitter',
-    label: 'Twitter'
+    label: 'Twitter',
+    type: 'string'
   },
   {
     key: 'facebook',
-    label: 'Facebook'
+    label: 'Facebook',
+    type: 'string'
   },
   {
     key: 'linkedin',
-    label: 'LinkedIn'
+    label: 'LinkedIn',
+    type: 'string'
   },
   {
     key: 'skype',
-    label: 'Skype'
+    label: 'Skype',
+    type: 'string'
   }
 ]
 
@@ -84,21 +100,26 @@ export const addressOutputFields: OutputField[] = [
   {
     key: 'address__line1',
     label: 'Street',
+    type: 'string'
   },
   {
     key: 'address__city',
     label: 'City',
+    type: 'string'
   },
   {
     key: 'address__postal_code',
     label: 'Zip/Post Code',
+    type: 'string'
   },
   {
     key: 'address__state',
     label: 'State',
+    type: 'string'
   },
   {
     key: 'address__country',
     label: 'Country',
+    type: 'string'
   }
 ]

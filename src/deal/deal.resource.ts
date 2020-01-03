@@ -37,6 +37,7 @@ const DealResource = {
     {
       key: 'id',
       label: 'ID',
+      type: 'integer',
     },
     ...dealCommonOutputFields
   ]

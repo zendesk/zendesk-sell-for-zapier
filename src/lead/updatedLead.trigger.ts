@@ -1,7 +1,7 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
 import {fetchLeadsTrigger} from './common'
 import {ZapierItem} from '../types'
-import {findAndRemapOnlyUpdatedItems} from '../utils/deduplication'
+import {findAndRemapOnlyUpdatedItems, sampleWithDeduplicationId} from '../utils/deduplication'
 import {deduplicationOutputFields} from '../common/outputFields'
 import {commonLeadOutputFields} from './fields/leadOutputFields'
 import {leadTriggers} from './keys'
@@ -25,7 +25,7 @@ const UpdatedLeadTrigger: ZapierItem = {
   },
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
-    sample: leadSample,
+    sample: sampleWithDeduplicationId(leadSample),
     outputFields: [
       ...deduplicationOutputFields,
       ...commonLeadOutputFields

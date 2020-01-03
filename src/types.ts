@@ -55,6 +55,7 @@ export interface InputField {
  */
 export interface OutputField {
   key: string,
-  label: string
+  label: string,
+  type?: string
 }
 

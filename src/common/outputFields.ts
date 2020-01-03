@@ -91,8 +91,8 @@ export const personalOutputFields: OutputField[] = [
 
 export const tagsOutputFields: OutputField[] = [
   {
-    key: 'tags',
-    label: 'Tags'
+    key: 'tags[]',
+    label: 'Tags',
   }
 ]
 

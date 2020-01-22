@@ -24,7 +24,7 @@ export const LeadStatusChangeTrigger: ZapierItem = {
 
   display: {
     label: 'Lead Enters New Status',
-    description: 'Triggers whenever lead status is updated, including upon creation of a lead',
+    description: 'Triggers when lead status is updated, including upon creation of a lead.',
     important: false
   },
   operation: {

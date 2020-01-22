@@ -59,7 +59,7 @@ describe('deals update trigger', () => {
   it('should process also new deals (just created) if trigger field is defined', async () => {
     const bundle = {
       inputData: {
-        trigger_field: 'hot'
+        trigger_field: 'custom_fields.multiselect'
       }
     }
 
@@ -77,7 +77,7 @@ describe('deals update trigger', () => {
     assertDeduplicationIds(
       results,
       [51753911, 53024259],
-      ['51753911_false', '53024259_true']
+      ['51753911_XX,OO,XX', '53024259_null']
     )
   })
 

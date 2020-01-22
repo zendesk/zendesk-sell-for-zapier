@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 1,
+        "creator_id": 1,
+        "owner_id": 1,
+        "status": "New",
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "organization_name": "Design Services Company",
+        "updated_at": "1990-01-01T00:00:00Z",
+        "created_at": "1990-01-01T00:00:00Z",
+        "custom_fields": {
+          "Custom Field 1": "Value 111"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": 2,
+        "creator_id": 1,
+        "owner_id": 1,
+        "status": "Unqualified",
+        "first_name": "Kuba",
+        "last_name": "Tutaj",
+        "organization_name": "Base CRM",
+        "updated_at": "2019-01-01T08:00:00Z",
+        "created_at": "1990-01-01T00:00:00Z",
+        "custom_fields": {
+          "Custom Field 1": "Value 222"
+        }
+      }
+    }
+  ],
+  "type": "collection",
+  "count": 2,
+  "links": {}
+}

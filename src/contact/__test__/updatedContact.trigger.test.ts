@@ -3,6 +3,7 @@ import * as nock from 'nock'
 import App from '../..'
 import * as multipleContacts from './multipleContacts.fixture.json'
 import * as multipleCompanies from './multipleCompanies.fixture.json'
+import * as contactsDifferentTimestamps from './contactsDifferentTimestamps.fixture.json'
 import UpdatedContactTrigger from '../updatedContact.trigger'
 import {assertDeduplicationIds} from '../../utils/testHelpers'
 
@@ -108,6 +109,53 @@ describe('update contact trigger', () => {
         results,
         [100, 200],
         ['100_Street 9', '200_Leona Wyczolkowskiego']
+      )
+    })
+
+  it('should process also new contacts (just created) if trigger field is defined', async () => {
+    const bundle = {
+      inputData: {
+        trigger_field: 'tags',
+      }
+    }
+
+    nock('https://api.getbase.com/v2')
+      .get('/contacts')
+      .query({
+        sort_by: 'updated_at:desc',
+        page: 1,
+        per_page: 100
+      })
+      .reply(200, contactsDifferentTimestamps)
+
+    const results = await appTester(App.triggers[UpdatedContactTrigger.key].operation.perform, bundle)
+    expect(results).toHaveLength(2)
+    assertDeduplicationIds(
+      results,
+      [1, 2],
+      ['1_tag1,tag2', '2_']
+    )
+  })
+
+  it('should process only contacts with created_at different than updated_at when trigger field is not defined',
+    async () => {
+      const bundle = {}
+
+      nock('https://api.getbase.com/v2')
+        .get('/contacts')
+        .query({
+          sort_by: 'updated_at:desc',
+          page: 1,
+          per_page: 100
+        })
+        .reply(200, contactsDifferentTimestamps)
+
+      const results = await appTester(App.triggers[UpdatedContactTrigger.key].operation.perform, bundle)
+      expect(results).toHaveLength(1)
+      assertDeduplicationIds(
+        results,
+        [2],
+        ['2_2019-01-01T08:00:00Z']
       )
     })
 })

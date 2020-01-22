@@ -1,7 +1,15 @@
 import * as moment from 'moment'
 import {isPlainObject} from 'lodash'
 
-const isChanged = (changeFieldName: string) => {
+const isChanged = (changeFieldName: string, triggerFieldPath?: string) => {
+  // If triggerField is defined then we should skip checking whether created_at
+  // is different than updated_at and trigger also on creates.
+  // This is important, because we are building deduplication id using value of
+  // the trigger field and we need to bootstrap this value be reading all items.
+  if (!!triggerFieldPath) {
+    return () => true
+  }
+
   return (entity: any) => {
     const createdAt = moment(entity.created_at)
     const changedAt = moment(entity[changeFieldName])
@@ -67,7 +75,7 @@ export const findAndRemapOnlyChangedItems = (
   modificationTimeField: string,
   triggerFieldPath?: string
 ) => {
-  return items.filter(isChanged(modificationTimeField))
+  return items.filter(isChanged(modificationTimeField, triggerFieldPath))
     .map(item => remapDeduplicationId(item, triggerFieldPath || modificationTimeField))
 }
 

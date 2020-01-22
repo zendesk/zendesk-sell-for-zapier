@@ -3,6 +3,7 @@ import * as nock from 'nock'
 import App from '../../index'
 import UpdatedLeadTrigger from '../updatedLead.trigger'
 import * as multipleLeads from './multipleLeads.fixture.json'
+import * as leadsTimestamps from './leadsDifferentTimestamps.fixture.json'
 import {assertDeduplicationIds} from '../../utils/testHelpers'
 
 const appTester = zapier.createAppTester(App)
@@ -54,4 +55,51 @@ describe('update lead trigger', () => {
       ['1_Value 111', '2_Value 222']
     )
   })
+
+  it('should process also new leads (just created) if trigger field is defined', async () => {
+    const bundle = {
+      inputData: {
+        trigger_field: 'last_name'
+      }
+    }
+
+    nock('https://api.getbase.com/v2')
+      .get('/leads')
+      .query({
+        sort_by: 'updated_at:desc',
+        page: 1,
+        per_page: 100
+      })
+      .reply(200, leadsTimestamps)
+
+    const results = await appTester(App.triggers[UpdatedLeadTrigger.key].operation.perform, bundle)
+    expect(results).toHaveLength(2)
+    assertDeduplicationIds(
+      results,
+      [1, 2],
+      ['1_Johnson', '2_Tutaj']
+    )
+  })
+
+  it('should process only leads with created_at different than updated_at when trigger field is not defined',
+    async () => {
+      const bundle = {}
+
+      nock('https://api.getbase.com/v2')
+        .get('/leads')
+        .query({
+          sort_by: 'updated_at:desc',
+          page: 1,
+          per_page: 100
+        })
+        .reply(200, leadsTimestamps)
+
+      const results = await appTester(App.triggers[UpdatedLeadTrigger.key].operation.perform, bundle)
+      expect(results).toHaveLength(1)
+      assertDeduplicationIds(
+        results,
+        [2],
+        ['2_2019-01-01T08:00:00Z']
+      )
+    })
 })

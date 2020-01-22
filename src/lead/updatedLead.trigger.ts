@@ -13,7 +13,7 @@ const listLeadsUpdatedAt = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     []
   )(z, bundle)
-  return findAndRemapOnlyUpdatedItems(leads)
+  return findAndRemapOnlyUpdatedItems(leads, bundle.inputData.trigger_field)
 }
 
 const UpdatedLeadTrigger: ZapierItem = {
@@ -26,6 +26,16 @@ const UpdatedLeadTrigger: ZapierItem = {
   operation: {
     // Resource cannot be used here, because of different output fields (deduplication)
     sample: sampleWithDeduplicationId(leadSample),
+    inputFields: [
+      {
+        key: 'trigger_field',
+        label: 'Field to monitor the updates',
+        helpText: 'Triggers whenever this field is updated, including upon creation of a  lead, contact, or deal.',
+        required: false,
+        type: 'string',
+        dynamic: `${leadTriggers.leadFieldsDropdown}.id.name`
+      }
+    ],
     outputFields: [
       ...deduplicationOutputFields,
       ...commonLeadOutputFields

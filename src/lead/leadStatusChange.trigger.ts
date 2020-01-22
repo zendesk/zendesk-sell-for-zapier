@@ -15,7 +15,7 @@ const leadLeadsByStatusChange = async (z: ZObject, bundle: Bundle) => {
     'updated_at',
     [statusFieldName]
   )(z, bundle)
- return remapDeduplication(leads, statusFieldName)
+  return remapDeduplication(leads, statusFieldName)
 }
 
 export const LeadStatusChangeTrigger: ZapierItem = {
@@ -24,12 +24,8 @@ export const LeadStatusChangeTrigger: ZapierItem = {
 
   display: {
     label: 'Lead Enters New Status',
-    description: 'Triggers when a lead has change status',
-    important: false,
-    // TODO Unfortunately, this implementation causes false-positives and reacts also
-    //      upon lead creation. We cannot build reliable solution for update using DeduplicationId
-    //      build from LeadId + StatusValue
-    hidden: true
+    description: 'Triggers whenever lead status is updated, including upon creation of a lead',
+    important: false
   },
   operation: {
     sample: leadSample,

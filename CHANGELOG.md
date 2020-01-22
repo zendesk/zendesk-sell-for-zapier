@@ -1,3 +1,8 @@
+## 1.0.19
+
+* Added trigger `Lead Status Change`
+* Added ability to pass trigger field to `Updated Lead`, `Updated Contact`, `Updated Deal`. User will be able to select field which value will be validated against trigger - Zap won't trigger if value doesnt' change
+
 ## 1.0.18
 
 * Fixing implicit conversion between Person and Company when for instance Person is passed to Update Company action

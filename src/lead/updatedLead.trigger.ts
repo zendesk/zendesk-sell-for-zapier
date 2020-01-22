@@ -30,7 +30,7 @@ const UpdatedLeadTrigger: ZapierItem = {
       {
         key: 'trigger_field',
         label: 'Field to monitor the updates',
-        helpText: 'Triggers whenever this field is updated, including upon creation of a  lead, contact, or deal.',
+        helpText: 'Triggers whenever this field is updated, including upon creation of a lead.',
         required: false,
         type: 'string',
         dynamic: `${leadTriggers.leadFieldsDropdown}.id.name`

@@ -1,6 +1,7 @@
 ## 1.0.18
 
 * Fixing implicit conversion between Person and Company when for instance Person is passed to Update Company action
+* Bumping `zapier-platform-core` to recent version (9.2.0)
 
 ## 1.0.17
 

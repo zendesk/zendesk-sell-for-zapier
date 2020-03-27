@@ -139,8 +139,7 @@ describe('update person action', () => {
       .put('/contacts/600', {
         data: {
           first_name: 'Uzi',
-          last_name: 'Shmilovici',
-          is_organization: false
+          last_name: 'Shmilovici'
         }
       })
       .reply(200, {data: {id: 600}})
@@ -174,8 +173,7 @@ describe('update company action', () => {
           name: 'Base CRM',
           address: {
             state: 'CA'
-          },
-          is_organization: true
+          }
         }
       })
       .reply(200, {data: {id: 100}})

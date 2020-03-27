@@ -1,7 +1,7 @@
 {
   "name": "zendesk-sell-for-zapier",
   "private": true,
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Zendesk Sell App in Zapier",
   "repository": "git@github.com:zendesk/zendesk-sell-for-zapier.git",
   "homepage": "https://www.zendesk.com/sell/",

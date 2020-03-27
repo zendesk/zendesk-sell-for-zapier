@@ -1,3 +1,7 @@
+## 1.0.18
+
+* Fixing implicit conversion between Person and Company when for instance Person is passed to Update Company action
+
 ## 1.0.17
 
 * Fixing internal warnings related to output types

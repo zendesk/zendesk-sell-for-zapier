@@ -50,7 +50,7 @@ export const createContact = (type: ContactType, actionDetails: ActionDetails) =
   createEntity(contactsEndpoint, actionDetails, EntityType.Contact, appendOrganisation(type))
 
 export const updateContact = (type: ContactType, actionDetails: ActionDetails) =>
-  updateEntity(contactsEndpoint, actionDetails, EntityType.Contact, appendOrganisation(type))
+  updateEntity(contactsEndpoint, actionDetails, EntityType.Contact)
 
 export const createOrUpdateContact = (type: ContactType, actionDetails: ActionDetails) =>
   createOrUpdateEntity(contactsEndpoint, actionDetails, EntityType.Contact, appendOrganisation(type))

@@ -22,7 +22,8 @@ const triggerSupportedTypes = [
   RawCustomFieldType.Email,
   RawCustomFieldType.Phone,
   RawCustomFieldType.Url,
-  RawCustomFieldType.List
+  RawCustomFieldType.List,
+  RawCustomFieldType.MultiSelect,
 ]
 
 const customFieldPath = (cf: RawCustomField): string =>

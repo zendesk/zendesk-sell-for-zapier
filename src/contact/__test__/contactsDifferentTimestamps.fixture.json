@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 1,
+        "creator_id": 1045095,
+        "owner_id": 1293487,
+        "name": "Kuba Tutaj",
+        "tags": ["tag1", "tag2"],
+        "updated_at": "1990-01-01T00:00:00Z",
+        "created_at": "1990-01-01T00:00:00Z"
+      }
+    },
+    {
+      "data": {
+        "id": 2,
+        "creator_id": 100,
+        "owner_id": 1293487,
+        "name": "John Smith",
+        "tags": [],
+        "updated_at": "2019-01-01T08:00:00Z",
+        "created_at": "1990-01-01T00:00:00Z"
+      }
+    }
+  ],
+  "meta": {
+    "type": "collection",
+    "count": 2,
+    "links": {}
+  }
+}

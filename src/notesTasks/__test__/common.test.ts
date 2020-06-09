@@ -11,6 +11,7 @@ describe('dynamicResourceField', () => {
     expect(dynamicResourceField(z, bundle)).toEqual([{
       key: 'resource_id',
       label: 'Lead',
+      helpText: 'After selecting the "Related To" field above, map the corresponding ID in this field. For example, if "Related To" is "Person" then you will map a Person ID here.',
       type: 'integer',
       dynamic: `${ListLeadsDropdown.key}.id.name`,
       search: `${LeadSearch.key}.id`,
@@ -28,6 +29,7 @@ describe('dynamicResourceField', () => {
     expect(dynamicResourceField(z, bundle)).toEqual([{
       key: 'resource_id',
       label: 'Resource ID',
+      helpText: 'After selecting the "Related To" field above, map the corresponding ID in this field. For example, if "Related To" is "Person" then you will map a Person ID here.',
       type: 'integer',
       required: true
     }])

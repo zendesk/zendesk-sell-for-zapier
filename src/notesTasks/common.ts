@@ -20,6 +20,7 @@ interface DynamicResourceField {
   key: string,
   label: string,
   type: string,
+  helpText?: string,
   dynamic?: string,
   search?: string,
   required: boolean
@@ -55,6 +56,7 @@ const resourceField = (
     key: 'resource_id',
     label: resourceName,
     type: 'integer',
+    helpText: 'After selecting the "Related To" field above, map the corresponding ID in this field. For example, if "Related To" is "Person" then you will map a Person ID here.',
     ...field('dynamic', '.id.name', dropDownList),
     ...field('search', '.id', dropDownSearch),
     required: true

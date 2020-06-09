@@ -88,7 +88,7 @@ describe('searchByCriteria', () => {
 
 describe('fetchItems', () => {
   it('should unpack page & sort params properly', async () => {
-    const bundle = createFakeBundle({}, {page: 3})
+    const bundle = createFakeBundle({}, {page: 2})
     const z = createFakeZObject(200, {items: [{id: 10}]})
 
     const response = await fetchItems(endpoint, createFakeActionDetails())(z, bundle, {}, {

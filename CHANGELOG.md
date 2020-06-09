@@ -1,6 +1,7 @@
 ## 1.0.19
 
 * Added explanation to `Resource Id` field in Tasks and Notes 
+* Fixing pagination for dynamic dropdowns
 
 ## 1.0.18
 

@@ -1,3 +1,7 @@
+## 1.0.19
+
+* Added explanation to `Resource Id` field in Tasks and Notes 
+
 ## 1.0.18
 
 * Fixing implicit conversion between Person and Company when for instance Person is passed to Update Company action

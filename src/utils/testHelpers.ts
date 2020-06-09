@@ -19,7 +19,7 @@ export const createFakeBundle = (inputData: { [x: string]: any }, meta: object =
       isPopulatingDedupe: false,
       isTestingAuth: false,
       limit: 1,
-      page: 1,
+      page: 0,
       ...meta
     }
   }

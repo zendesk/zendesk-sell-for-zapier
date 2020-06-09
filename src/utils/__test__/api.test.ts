@@ -1,4 +1,4 @@
-import {fetchResourceAsArray, hasIdDefined, SortOrder, sortParameter} from '../api'
+import {extractPageParameter, fetchResourceAsArray, hasIdDefined, SortOrder, sortParameter} from '../api'
 import {Bundle} from 'zapier-platform-core'
 import {createFakeBundle, createFakeZObject} from '../testHelpers'
 
@@ -67,5 +67,43 @@ describe('fetchResourceAsArray', () => {
     expect(items[0]).toHaveProperty('name', 'Uzi')
 
     expect(z.url()).toEqual('https://api.getbase.com/v2/resources/100')
+  })
+})
+
+describe('extractPageParameter', () => {
+  it('should return first page when 0 is present in meta', () => {
+    const bundle = createFakeBundle({id: 100}, {page: 0, limit: null})
+    const page = extractPageParameter(bundle)
+    expect(page).toEqual({
+      page: 1,
+      per_page: 100
+    })
+  })
+
+  it('should return first page when meta.page is not present', () => {
+    const bundle = createFakeBundle({id: 100}, {page: null, limit: null})
+    const page = extractPageParameter(bundle)
+    expect(page).toEqual({
+      page: 1,
+      per_page: 100
+    })
+  })
+
+  it('should return first page when 0 is present in meta and default is provided', () => {
+    const bundle = createFakeBundle({id: 100}, {page: 0, limit: null})
+    const page = extractPageParameter(bundle, 100)
+    expect(page).toEqual({
+      page: 1,
+      per_page: 100
+    })
+  })
+
+  it('should return proper API page', () => {
+    const bundle = createFakeBundle({id: 100}, {page: 2, limit: null})
+    const page = extractPageParameter(bundle)
+    expect(page).toEqual({
+      page: 3,
+      per_page: 100
+    })
   })
 })

@@ -1,4 +1,4 @@
-import {isEmpty, pick, pickBy} from 'lodash'
+import {isEmpty, pick, pickBy, isNumber} from 'lodash'
 import {Bundle, ZObject} from 'zapier-platform-core'
 import {fetch, isResourcePresentInResponse, unpackItemResponseAsArray, unpackSingleItemResponse} from './http'
 import {ActionDetails} from './operations'
@@ -65,8 +65,15 @@ export const sortParameter = (sort?: SortDefinition): ApiSortParameter => {
   }
 }
 
+const normalizedZapierPage = (bundle: Bundle, pageNumber?: number): number | undefined => {
+  if (bundle && bundle.meta && isNumber(bundle.meta.page)) {
+    return bundle.meta.page + 1 // Zapier starts indexing pages from 0
+  }
+  return pageNumber
+}
+
 export const extractPageParameter = (bundle: Bundle, pageNumber?: number, pageSize?: number) =>
-  pageParameter((bundle && bundle.meta && bundle.meta.page) || pageNumber, pageSize)
+  pageParameter(normalizedZapierPage(bundle, pageNumber), pageSize)
 
 export const pageParameter = (pageNumber: number = 1, pageSize: number = 100) => {
   return {

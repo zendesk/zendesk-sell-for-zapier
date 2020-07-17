@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "jsonwebtoken": "^8.3.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "moment": "^2.22.2",
     "zapier-platform-core": "9.2.0"
   },

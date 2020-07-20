@@ -1,3 +1,4 @@
+![repo-checks](https://github.com/zendesk/zendesk-sell-for-zapier/workflows/repo-checks/badge.svg)
 # Zendesk Sell App in Zapier 
 
 [Zendesk Sell App](https://zapier.com/apps/zendesk-sell/integrations/) is an application written 

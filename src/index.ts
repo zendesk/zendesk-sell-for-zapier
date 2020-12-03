@@ -71,8 +71,8 @@ import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
 import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
 import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
 import {CreateEnrollmentAction} from './enrollment/enrollment.action'
-import EnrollmentResource from "./enrollment/enrollment.resource";
-import {EnrollmentSearch} from "./enrollment/enrollment.search";
+import EnrollmentResource from './enrollment/enrollment.resource'
+import {EnrollmentSearch} from './enrollment/enrollment.search'
 
 // We can roll up all our behaviors in an App.
 const App = {

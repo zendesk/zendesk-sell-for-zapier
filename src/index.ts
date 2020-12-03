@@ -70,6 +70,9 @@ import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
 import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
 import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
 import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
+import {CreateEnrollmentAction} from './enrollment/enrollment.action'
+import EnrollmentResource from "./enrollment/enrollment.resource";
+import {EnrollmentSearch} from "./enrollment/enrollment.search";
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -113,7 +116,10 @@ const App = {
     [UserResource.key]: UserResource,
     [IndustryResource.key]: IndustryResource,
     [LeadStatusResource.key]: LeadStatusResource,
-    [SourceResource.key]: SourceResource
+    [SourceResource.key]: SourceResource,
+
+    // Enrollment
+    [EnrollmentResource.key]: EnrollmentResource
   },
 
   // If you want your trigger to show up, you better include it here!
@@ -209,7 +215,10 @@ const App = {
     [DealSourceSearch.key]: DealSourceSearch,
 
     // Products
-    [ProductSearch.key]: ProductSearch
+    [ProductSearch.key]: ProductSearch,
+
+    // Enrollments
+    [EnrollmentSearch.key]: EnrollmentSearch
   },
 
   // If you want your creates to show up, you better include it here!
@@ -233,6 +242,9 @@ const App = {
 
     // Tasks
     [CreateTaskAction.key]: CreateTaskAction,
+
+    // Enrollments
+    [CreateEnrollmentAction.key]: CreateEnrollmentAction,
 
     // Products
     [CreateProductAction.key]: CreateProductAction,

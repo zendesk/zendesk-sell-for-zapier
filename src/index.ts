@@ -73,6 +73,8 @@ import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
 import {CreateEnrollmentAction} from './enrollment/enrollment.action'
 import EnrollmentResource from './enrollment/enrollment.resource'
 import {EnrollmentSearch} from './enrollment/enrollment.search'
+import SequenceResource from './enrollment/sequence.resource'
+import {SequenceSearch} from './enrollment/sequence.search'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -118,8 +120,9 @@ const App = {
     [LeadStatusResource.key]: LeadStatusResource,
     [SourceResource.key]: SourceResource,
 
-    // Enrollment
-    [EnrollmentResource.key]: EnrollmentResource
+    // Engage
+    [EnrollmentResource.key]: EnrollmentResource,
+    [SequenceResource.key]: SequenceResource
   },
 
   // If you want your trigger to show up, you better include it here!
@@ -218,7 +221,8 @@ const App = {
     [ProductSearch.key]: ProductSearch,
 
     // Enrollments
-    [EnrollmentSearch.key]: EnrollmentSearch
+    [EnrollmentSearch.key]: EnrollmentSearch,
+    [SequenceSearch.key]: SequenceSearch
   },
 
   // If you want your creates to show up, you better include it here!

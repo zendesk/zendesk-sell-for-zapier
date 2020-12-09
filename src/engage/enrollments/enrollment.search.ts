@@ -1,9 +1,9 @@
-import {ZapierItem} from '../types'
-import {enrollmentSearches} from './keys'
+import {ZapierItem} from '../../types'
+import {enrollmentSearches} from '../keys'
 import EnrollmentResource from './enrollment.resource'
-import {searchPrefixedField} from '../utils/fieldsHelpers'
-import {searchActionDetails} from '../utils/operations'
-import {searchEnrollmentsByCriteria} from './common'
+import {searchPrefixedField} from '../../utils/fieldsHelpers'
+import {searchActionDetails} from '../../utils/operations'
+import {searchEnrollmentsByCriteria} from '../common'
 
 export const EnrollmentSearch: ZapierItem = {
     key: enrollmentSearches.enrollmentSearch,
@@ -24,8 +24,9 @@ export const EnrollmentSearch: ZapierItem = {
             {
                 key: searchPrefixedField('resource_type'),
                 label: 'Resource Type',
-                required: false,
-                type: 'string'
+                required: true,
+                type: 'string',
+                choices: ['lead']
             },
             {
                 key: searchPrefixedField('resource_ids'),

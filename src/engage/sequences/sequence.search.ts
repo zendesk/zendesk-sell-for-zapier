@@ -1,8 +1,8 @@
-import {ZapierItem} from '../types'
-import {sequenceSearches} from './keys'
-import {searchPrefixedField} from '../utils/fieldsHelpers'
-import {searchActionDetails} from '../utils/operations'
-import {searchSequencesByCriteria} from './common'
+import {ZapierItem} from '../../types'
+import {sequenceSearches} from '../keys'
+import {searchPrefixedField} from '../../utils/fieldsHelpers'
+import {searchActionDetails} from '../../utils/operations'
+import {searchSequencesByCriteria} from '../common'
 import SequenceResource from './sequence.resource'
 
 export const SequenceSearch: ZapierItem = {

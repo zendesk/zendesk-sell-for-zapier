@@ -1,0 +1,240 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 92593,
+        "actor_id": 1700155,
+        "resource_type": "lead",
+        "resource_id": 1988695232,
+        "created_at": "2020-06-03T11:08:42Z",
+        "sequence": {
+          "data": {
+            "id": 21124,
+            "name": "My sequence name",
+            "steps_total": 3,
+            "creator_id": 1700155,
+            "updated_at": "2020-06-03T11:08:12Z",
+            "created_at": "2020-06-03T11:08:12Z"
+          },
+          "meta": {
+            "type": "sequence"
+          }
+        },
+        "state": "finished",
+        "previously_executed_step_position": 1,
+        "enrollment_steps": {
+          "items": [
+            {
+              "data": {
+                "position": 0,
+                "delay_from_previous_step": 0,
+                "delay_from_previous_step_unit": "weekdays",
+                "action_type": "automated_email",
+                "action_properties": {
+                  "email_template_id": 398744,
+                  "is_reply": false
+                },
+                "action": {
+                  "data": {
+                    "status": "completed",
+                    "executed_at": "1970-01-01T00:00:00Z",
+                    "estimated_execute_at": null,
+                    "failure_reason": null
+                  },
+                  "meta": {
+                    "type": "action"
+                  }
+                }
+              },
+              "meta": {
+                "type": "enrollment_step"
+              }
+            },
+            {
+              "data": {
+                "position": 1,
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "action_type": "automated_email",
+                "action_properties": {
+                  "email_template_id": 398745,
+                  "is_reply": true
+                },
+                "action": {
+                  "data": {
+                    "status": "cancelled",
+                    "executed_at": null,
+                    "estimated_execute_at": null,
+                    "failure_reason": null
+                  },
+                  "meta": {
+                    "type": "action"
+                  }
+                }
+              },
+              "meta": {
+                "type": "enrollment_step"
+              }
+            },
+            {
+              "data": {
+                "position": 2,
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "action_type": "automated_email",
+                "action_properties": {
+                  "email_template_id": 398746,
+                  "is_reply": true
+                },
+                "action": {
+                  "data": {
+                    "status": "cancelled",
+                    "executed_at": null,
+                    "estimated_execute_at": null,
+                    "failure_reason": null
+                  },
+                  "meta": {
+                    "type": "action"
+                  }
+                }
+              },
+              "meta": {
+                "type": "enrollment_step"
+              }
+            }
+          ],
+          "meta": {
+            "type": "collection",
+            "count": 3
+          }
+        },
+        "finished_at": "2020-06-03T11:09:18Z",
+        "finished_reason": "manual",
+        "finished_actor_id": 1700155
+      },
+      "meta": {
+        "type": "sequence_enrollment"
+      }
+    },
+    {
+      "data": {
+        "id": 92594,
+        "actor_id": 1700155,
+        "resource_type": "lead",
+        "resource_id": 1988695232,
+        "created_at": "2020-06-03T11:09:25Z",
+        "sequence": {
+          "data": {
+            "id": 21124,
+            "name": "My sequence name",
+            "steps_total": 3,
+            "creator_id": 1700155,
+            "updated_at": "2020-06-03T11:08:12Z",
+            "created_at": "2020-06-03T11:08:12Z"
+          },
+          "meta": {
+            "type": "sequence"
+          }
+        },
+        "state": "finished",
+        "previously_executed_step_position": 1,
+        "enrollment_steps": {
+          "items": [
+            {
+              "data": {
+                "position": 0,
+                "delay_from_previous_step": 0,
+                "delay_from_previous_step_unit": "weekdays",
+                "action_type": "automated_email",
+                "action_properties": {
+                  "email_template_id": 398744,
+                  "is_reply": false
+                },
+                "action": {
+                  "data": {
+                    "status": "completed",
+                    "executed_at": "1970-01-01T00:00:00Z",
+                    "estimated_execute_at": null,
+                    "failure_reason": null
+                  },
+                  "meta": {
+                    "type": "action"
+                  }
+                }
+              },
+              "meta": {
+                "type": "enrollment_step"
+              }
+            },
+            {
+              "data": {
+                "position": 1,
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "action_type": "automated_email",
+                "action_properties": {
+                  "email_template_id": 398745,
+                  "is_reply": true
+                },
+                "action": {
+                  "data": {
+                    "status": "cancelled",
+                    "executed_at": null,
+                    "estimated_execute_at": null,
+                    "failure_reason": null
+                  },
+                  "meta": {
+                    "type": "action"
+                  }
+                }
+              },
+              "meta": {
+                "type": "enrollment_step"
+              }
+            },
+            {
+              "data": {
+                "position": 2,
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "action_type": "automated_email",
+                "action_properties": {
+                  "email_template_id": 398746,
+                  "is_reply": true
+                },
+                "action": {
+                  "data": {
+                    "status": "cancelled",
+                    "executed_at": null,
+                    "estimated_execute_at": null,
+                    "failure_reason": null
+                  },
+                  "meta": {
+                    "type": "action"
+                  }
+                }
+              },
+              "meta": {
+                "type": "enrollment_step"
+              }
+            }
+          ],
+          "meta": {
+            "type": "collection",
+            "count": 3
+          }
+        },
+        "finished_at": "2020-06-03T11:10:10Z",
+        "finished_reason": "manual",
+        "finished_actor_id": 1700155
+      },
+      "meta": {
+        "type": "sequence_enrollment"
+      }
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "type": "collection"
+  }
+}

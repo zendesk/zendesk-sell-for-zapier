@@ -1,8 +1,8 @@
-import {ZapierItem} from '../types'
-import {createEnrollment, stopEnrollment} from './common'
-import {createActionDetails} from '../utils/operations'
-import {userSearches, userTriggers} from '../users/keys'
-import {enrollmentActions} from './keys'
+import {ZapierItem} from '../../types'
+import {createEnrollment, stopEnrollment} from '../common'
+import {createActionDetails} from '../../utils/operations'
+import {userSearches, userTriggers} from '../../users/keys'
+import {enrollmentActions} from '../keys'
 import EnrollmentResource from './enrollment.resource'
 
 export const CreateEnrollmentAction: ZapierItem = {

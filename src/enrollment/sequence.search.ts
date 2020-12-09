@@ -20,8 +20,14 @@ export const SequenceSearch: ZapierItem = {
                 label: 'Sequence ID',
                 required: false,
                 type: 'integer'
+            },
+            {
+                key: searchPrefixedField('name'),
+                label: 'Sequence Name',
+                required: false,
+                type: 'string'
             }
         ],
-        perform: searchSequencesByCriteria(searchActionDetails(sequenceSearches.sequenceSearch), ['id'])
+        perform: searchSequencesByCriteria(searchActionDetails(sequenceSearches.sequenceSearch), ['id', 'name'])
     }
 }

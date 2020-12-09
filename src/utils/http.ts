@@ -125,3 +125,4 @@ export const fetch = async (
 }
 
 export const restEndpoints = (resource: string): string => `${rootUrl()}/v2/${resource}`
+export const restBetaEndpoints = (resource: string): string => `https://app.futuresimple.com/apis/engage/api/v1/${resource}`

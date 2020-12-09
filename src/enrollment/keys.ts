@@ -1,5 +1,6 @@
 export const enrollmentActions = {
-    createEnrollmentAction: 'enrollment_create'
+    createEnrollmentAction: 'enrollment_create',
+    stopEnrollmentAction: 'enrollment_stop'
 }
 
 export const enrollmentSearches = {

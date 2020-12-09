@@ -20,8 +20,20 @@ export const EnrollmentSearch: ZapierItem = {
                 label: 'Enrollment ID',
                 required: false,
                 type: 'integer'
+            },
+            {
+                key: searchPrefixedField('resource_type'),
+                label: 'Resource Type',
+                required: false,
+                type: 'string'
+            },
+            {
+                key: searchPrefixedField('resource_ids'),
+                label: 'Resource ID',
+                required: false,
+                type: 'integer'
             }
         ],
-        perform: searchEnrollmentsByCriteria(searchActionDetails(enrollmentSearches.enrollmentSearch), ['id'])
+        perform: searchEnrollmentsByCriteria(searchActionDetails(enrollmentSearches.enrollmentSearch), ['id', 'resource_type', 'resource_ids'])
     }
 }

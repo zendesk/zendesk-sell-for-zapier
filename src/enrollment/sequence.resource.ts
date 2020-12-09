@@ -45,11 +45,6 @@ const SequenceResource = {
             key: 'creator_id',
             label: 'Sequence Creator',
             type: 'integer',
-        },
-        {
-            key: 'steps',
-            label: 'Sequence Steps',
-            type: 'collection',
         }
     ]
 }

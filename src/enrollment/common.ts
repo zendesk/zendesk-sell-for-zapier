@@ -1,12 +1,12 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
-import {restEndpoints} from '../utils/http'
+import {restBetaEndpoints} from '../utils/http'
 import {ActionDetails, triggerActionDetails} from '../utils/operations'
 import {searchWithPrefixedFields, streamItems} from '../common/queries'
 import {descendingSort} from '../utils/api'
-import {createItem, pickedFieldsProcessor} from '../common/createUpdate'
+import {createItem, pickedFieldsProcessor, updateItem} from '../common/createUpdate'
 
-const enrollmentsEndpoint = restEndpoints('enrollments')
-const sequencesEndpoint = restEndpoints('sequences')
+const enrollmentsEndpoint = restBetaEndpoints('enrollments')
+const sequencesEndpoint = restBetaEndpoints('sequences')
 
 export const searchEnrollmentsByCriteria = (actionDetails: ActionDetails, supportedFields: string[]) =>
     searchWithPrefixedFields(enrollmentsEndpoint, actionDetails, supportedFields)
@@ -32,4 +32,7 @@ export const fetchSequencesTrigger = (triggerName: string, sortBy: string, suppo
 export const createEnrollment = (actionDetails: ActionDetails) =>
     createItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
-const createFieldsProcess = pickedFieldsProcessor(['sequence_id', 'resource_type', 'resource_id', 'actor_id'])
+export const stopEnrollment = (actionDetails: ActionDetails) =>
+    updateItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
+
+const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])

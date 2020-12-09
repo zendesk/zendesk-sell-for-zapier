@@ -70,7 +70,7 @@ import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
 import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
 import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
 import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
-import {CreateEnrollmentAction} from './enrollment/enrollment.action'
+import {CreateEnrollmentAction, StopEnrollmentAction} from './enrollment/enrollment.action'
 import EnrollmentResource from './enrollment/enrollment.resource'
 import {EnrollmentSearch} from './enrollment/enrollment.search'
 import SequenceResource from './enrollment/sequence.resource'
@@ -249,6 +249,7 @@ const App = {
 
     // Enrollments
     [CreateEnrollmentAction.key]: CreateEnrollmentAction,
+    [StopEnrollmentAction.key]: StopEnrollmentAction,
 
     // Products
     [CreateProductAction.key]: CreateProductAction,

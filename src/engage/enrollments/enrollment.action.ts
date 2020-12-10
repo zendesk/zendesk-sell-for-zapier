@@ -23,12 +23,25 @@ export const CreateEnrollmentAction: ZapierItem = {
                 required: true
             },
             {
-                key: 'lead_id',
-                label: 'Lead',
-                helpText: 'Zendesk Sell Lead that will be enrolled.',
-                required: true,
-                type: 'integer',
+                key: 'sell_resource',
+                label: 'Sell Resource',
+                children: [
+                    {
+                        key: 'resource_id',
+                        label: 'Lead',
+                        helpText: 'Zendesk Sell Lead that will be enrolled.',
+                        required: true,
+                        type: 'integer',
 
+                    },
+                    {
+                        key: 'resource_type',
+                        label: 'Resource Type',
+                        choices: ['lead'],
+                        type: 'string',
+                        required: true
+                    }
+                ]
             },
             {
                 key: 'actor_id',

@@ -5,7 +5,7 @@ import {searchWithPrefixedFields, streamItems} from '../common/queries'
 import {descendingSort} from '../utils/api'
 import {createItem, pickedFieldsProcessor, updateItem} from '../common/createUpdate'
 
-const enrollmentsEndpoint = restBetaEndpoints('enrollments')
+const enrollmentsEndpoint = restBetaEndpoints('sequence_enrollments')
 const sequencesEndpoint = restBetaEndpoints('sequences')
 
 export const searchEnrollmentsByCriteria = (actionDetails: ActionDetails, supportedFields: string[]) =>
@@ -35,4 +35,4 @@ export const createEnrollment = (actionDetails: ActionDetails) =>
 export const stopEnrollment = (actionDetails: ActionDetails) =>
     updateItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
-const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])
+const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sell_resource', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])

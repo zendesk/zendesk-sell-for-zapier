@@ -8,36 +8,50 @@ const appTester = zapier.createAppTester(App)
 zapier.tools.env.inject()
 
 describe('search sequences in catalog', () => {
-  it('should return empty array without calling api if supported filters are not present', async () => {
+    it('should return empty array without calling api if supported filters are not present', async () => {
+        const bundle = {
+            inputData: {
+                'search.first_name': 'Joe'
+            }
+        }
+
+        const results = await appTester(App.searches[SequenceSearch.key].operation.perform, bundle)
+        expect(results).toHaveLength(0)
+    })
+
+    it('should be possible to pass id to search endpoint', async () => {
+        const bundle = {
+            inputData: {
+                'search.id': 314281
+            }
+        }
+
+        nock('https://api.getbase.com/v2_beta')
+            .get('/sequences/314281')
+            .reply(200, sequenceResponse)
+
+        const results = await appTester(App.searches[SequenceSearch.key].operation.perform, bundle)
+        expect(results).toHaveLength(1)
+    })
+
+  it('should be possible to pass name to search endpoint', async () => {
     const bundle = {
       inputData: {
-        'search.first_name': 'Joe'
+        'search.id': null,
+        'search.name': 'Welcome'
       }
     }
 
-    const results = await appTester(App.searches[SequenceSearch.key].operation.perform, bundle)
-    expect(results).toHaveLength(0)
-  })
-
-  it('should pass only supported filters to search endpoint', async () => {
-    const bundle = {
-      inputData: {
-        'search.id': 1,
-        'search.name': 'Sample',
-        'search.max_discount': 90
-      }
-    }
-
-    nock('https://api.getbase.com/v2')
-      .get('/sequences')
-      .query({
-        id: 21123,
-        name: 'Sample',
-        per_page: 100
-      })
-      .reply(200, sequenceResponse)
+    nock('https://api.getbase.com/v2_beta')
+        .get('/sequences')
+        .query({
+          name: 'Welcome',
+          page: 1,
+          per_page: 100
+        })
+        .reply(200, sequenceResponse)
 
     const results = await appTester(App.searches[SequenceSearch.key].operation.perform, bundle)
-    expect(results).toHaveLength(3)
+    expect(results).toHaveLength(2)
   })
 })

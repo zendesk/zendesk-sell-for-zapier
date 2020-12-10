@@ -29,8 +29,8 @@ describe('search enrollments in catalog', () => {
       }
     }
 
-    nock('https://api.getbase.com/v2')
-      .get('/enrollments')
+    nock('https://api.getbase.com/v2_beta')
+      .get('/sequence_enrollments')
       .query({
         id: 1,
         resource_type: 'lead',

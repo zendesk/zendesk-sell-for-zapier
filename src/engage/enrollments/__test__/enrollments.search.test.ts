@@ -22,24 +22,38 @@ describe('search enrollments in catalog', () => {
   it('should pass only supported filters to search endpoint', async () => {
     const bundle = {
       inputData: {
-        'search.id': 1,
+        'search.id': null,
         'search.resource_type': 'lead',
-        'search.resource_ids': 10,
-        'search.max_discount': 90
+        'search.resource_ids': 1988695232,
       }
     }
 
     nock('https://api.getbase.com/v2_beta')
       .get('/sequence_enrollments')
       .query({
-        id: 1,
         resource_type: 'lead',
-        resource_ids: 10,
-        per_page: 100
+        resource_ids: 1988695232,
+        per_page: 100,
+        page: 1
       })
       .reply(200, enrollmentsResponse)
 
     const results = await appTester(App.searches[EnrollmentSearch.key].operation.perform, bundle)
-    expect(results).toHaveLength(3)
+    expect(results).toHaveLength(2)
+  })
+
+  it('should pass only supported filters to search endpoint', async () => {
+    const bundle = {
+      inputData: {
+        'search.id': 92593
+      }
+    }
+
+    nock('https://api.getbase.com/v2_beta')
+        .get('/sequence_enrollments/92593')
+        .reply(200, enrollmentsResponse)
+
+    const results = await appTester(App.searches[EnrollmentSearch.key].operation.perform, bundle)
+    expect(results).toHaveLength(1)
   })
 })

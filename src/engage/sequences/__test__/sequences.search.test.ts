@@ -22,12 +22,12 @@ describe('search sequences in catalog', () => {
     it('should be possible to pass id to search endpoint', async () => {
         const bundle = {
             inputData: {
-                'search.id': 314281
+                'search.id': 21123
             }
         }
 
         nock('https://api.getbase.com/v2_beta')
-            .get('/sequences/314281')
+            .get('/sequences/21123')
             .reply(200, sequenceResponse)
 
         const results = await appTester(App.searches[SequenceSearch.key].operation.perform, bundle)

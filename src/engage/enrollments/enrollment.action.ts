@@ -10,7 +10,7 @@ export const CreateEnrollmentAction: ZapierItem = {
     noun: 'Enrollment',
     display: {
         label: 'Create Enrollment',
-        description: 'Creates a new enrollment.'
+        description: 'Creates a new enrollment in catalog. Requires Reach subscription.'
     },
     operation: {
         resource: EnrollmentResource.key,

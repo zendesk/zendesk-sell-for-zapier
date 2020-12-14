@@ -35,6 +35,9 @@ export const EnrollmentSearch: ZapierItem = {
                 type: 'integer'
             }
         ],
-        perform: searchEnrollmentsByCriteria(searchActionDetails(enrollmentSearches.enrollmentSearch), ['id', 'resource_type', 'resource_ids'])
+        perform: searchEnrollmentsByCriteria(
+            searchActionDetails(enrollmentSearches.enrollmentSearch),
+            ['id', 'resource_type', 'resource_ids']
+        )
     }
 }

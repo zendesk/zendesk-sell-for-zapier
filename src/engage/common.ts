@@ -17,16 +17,22 @@ export const searchSequencesByCriteria = (actionDetails: ActionDetails, supporte
 export const fetchEnrollmentsTrigger = (triggerName: string, sortBy: string, supportedFilters: string[]) => {
     return async (z: ZObject, bundle: Bundle) => {
         const sort = descendingSort(sortBy)
-        return await streamItems(enrollmentsEndpoint, triggerActionDetails(triggerName),
-            supportedFilters)(z, bundle, {}, sort)
+        return await streamItems(
+            enrollmentsEndpoint,
+            triggerActionDetails(triggerName),
+            supportedFilters
+        )(z, bundle, {}, sort)
     }
 }
 
 export const fetchSequencesTrigger = (triggerName: string, sortBy: string, supportedFilters: string[]) => {
     return async (z: ZObject, bundle: Bundle) => {
         const sort = descendingSort(sortBy)
-        return await streamItems(sequencesEndpoint, triggerActionDetails(triggerName),
-            supportedFilters)(z, bundle, {}, sort)
+        return await streamItems(
+            sequencesEndpoint,
+            triggerActionDetails(triggerName),
+            supportedFilters
+        )(z, bundle, {}, sort)
     }
 }
 export const createEnrollment = (actionDetails: ActionDetails) =>

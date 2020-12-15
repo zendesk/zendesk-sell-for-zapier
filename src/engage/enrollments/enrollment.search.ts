@@ -1,9 +1,10 @@
 import {ZapierItem} from '../../types'
-import {enrollmentSearches} from '../keys'
+import {enrollmentSearches, enrollmentTriggers} from '../keys'
 import EnrollmentResource from './enrollment.resource'
 import {searchPrefixedField} from '../../utils/fieldsHelpers'
 import {searchActionDetails} from '../../utils/operations'
 import {searchEnrollmentsByCriteria} from '../common'
+import {leadSearches, leadTriggers} from '../../lead/keys'
 
 export const EnrollmentSearch: ZapierItem = {
     key: enrollmentSearches.enrollmentSearch,
@@ -19,7 +20,9 @@ export const EnrollmentSearch: ZapierItem = {
                 key: searchPrefixedField('id'),
                 label: 'Enrollment ID',
                 required: false,
-                type: 'integer'
+                type: 'integer',
+                dynamic: `${enrollmentTriggers.enrollmentListDropdown}.id.name`,
+                search: `${enrollmentTriggers.enrollmentListDropdown}.id`
             },
             {
                 key: searchPrefixedField('resource_type'),
@@ -32,7 +35,9 @@ export const EnrollmentSearch: ZapierItem = {
                 key: searchPrefixedField('resource_ids'),
                 label: 'Resource ID',
                 required: false,
-                type: 'integer'
+                type: 'integer',
+                dynamic: `${leadTriggers.leadListDropdown}.id.name`,
+                search: `${leadSearches.leadSearchOrCreate}.id`
             }
         ],
         perform: searchEnrollmentsByCriteria(

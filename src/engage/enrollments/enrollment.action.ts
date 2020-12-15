@@ -4,6 +4,7 @@ import {createActionDetails} from '../../utils/operations'
 import {userSearches, userTriggers} from '../../users/keys'
 import {enrollmentActions, enrollmentSearches, enrollmentTriggers, sequenceSearches, sequenceTriggers} from '../keys'
 import EnrollmentResource from './enrollment.resource'
+import {leadSearches, leadTriggers} from '../../lead/keys'
 
 export const CreateEnrollmentAction: ZapierItem = {
     key: enrollmentActions.createEnrollmentAction,
@@ -33,6 +34,8 @@ export const CreateEnrollmentAction: ZapierItem = {
                         helpText: 'Zendesk Sell Lead that will be enrolled.',
                         required: true,
                         type: 'integer',
+                        dynamic: `${leadTriggers.leadListDropdown}.id.name`,
+                        search: `${leadSearches.leadSearchOrCreate}.id`
 
                     },
                     {

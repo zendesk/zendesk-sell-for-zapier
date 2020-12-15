@@ -39,6 +39,9 @@ export const fetchSequencesTrigger = (triggerName: string, sortBy: string, suppo
 export const fetchSequences = (actionDetails: ActionDetails) =>
     fetchItems(sequencesEndpoint, actionDetails)
 
+export const fetchEnrollments = (actionDetails: ActionDetails) =>
+    fetchItems(enrollmentsEndpoint, actionDetails)
+
 export const createEnrollment = (actionDetails: ActionDetails) =>
     createItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 

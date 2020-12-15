@@ -3,6 +3,9 @@ export const enrollmentActions = {
     stopEnrollmentAction: 'enrollment_stop'
 }
 
+export const enrollmentTriggers = {
+    enrollmentListDropdown: 'enrollment_list_enrollments_dropdown'
+}
 export const enrollmentSearches = {
     enrollmentSearch: 'enrollment_search'
 }

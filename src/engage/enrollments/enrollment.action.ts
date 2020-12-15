@@ -2,7 +2,7 @@ import {ZapierItem} from '../../types'
 import {createEnrollment, stopEnrollment} from '../common'
 import {createActionDetails} from '../../utils/operations'
 import {userSearches, userTriggers} from '../../users/keys'
-import {enrollmentActions, sequenceSearches, sequenceTriggers} from '../keys'
+import {enrollmentActions, enrollmentSearches, enrollmentTriggers, sequenceSearches, sequenceTriggers} from '../keys'
 import EnrollmentResource from './enrollment.resource'
 
 export const CreateEnrollmentAction: ZapierItem = {
@@ -74,7 +74,9 @@ export const StopEnrollmentAction: ZapierItem = {
                 key: 'id',
                 label: 'Enrollment',
                 type: 'integer',
-                required: true
+                required: true,
+                dynamic: `${enrollmentTriggers.enrollmentListDropdown}.id.name`,
+                search: `${enrollmentSearches.enrollmentSearch}.id`,
             },
             {
                 key: 'state',

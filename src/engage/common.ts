@@ -1,7 +1,7 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
 import {restBetaEndpoints} from '../utils/http'
 import {ActionDetails, triggerActionDetails} from '../utils/operations'
-import {searchWithPrefixedFields, streamItems} from '../common/queries'
+import {fetchItems, searchWithPrefixedFields, streamItems} from '../common/queries'
 import {descendingSort} from '../utils/api'
 import {createItem, pickedFieldsProcessor, updateItem} from '../common/createUpdate'
 
@@ -35,10 +35,14 @@ export const fetchSequencesTrigger = (triggerName: string, sortBy: string, suppo
         )(z, bundle, {}, sort)
     }
 }
+
+export const fetchSequences = (actionDetails: ActionDetails) =>
+    fetchItems(sequencesEndpoint, actionDetails)
+
 export const createEnrollment = (actionDetails: ActionDetails) =>
     createItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
 export const stopEnrollment = (actionDetails: ActionDetails) =>
     updateItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
-const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sell_resource', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])
+const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])

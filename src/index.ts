@@ -75,6 +75,7 @@ import EnrollmentResource from './engage/enrollments/enrollment.resource'
 import {EnrollmentSearch} from './engage/enrollments/enrollment.search'
 import SequenceResource from './engage/sequences/sequence.resource'
 import {SequenceSearch} from './engage/sequences/sequence.search'
+import {ListSequencesDropdown} from './engage/sequences/newSequence.trigger'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -189,6 +190,9 @@ const App = {
     [LeadFieldsDropdown.key]: LeadFieldsDropdown,
     [DealFieldsDropdown.key]: DealFieldsDropdown,
     [ContactFieldsDropdown.key]: ContactFieldsDropdown,
+
+    // Sequences dropdowns
+    [ListSequencesDropdown.key]: ListSequencesDropdown,
   },
 
   // If you want your searches to show up, you better include it here!

@@ -10,4 +10,6 @@ export const enrollmentSearches = {
 export const sequenceSearches = {
     sequenceSearch: 'sequence_search'
 }
-
+export const sequenceTriggers = {
+    sequenceListDropdown: 'sequence_list_sequences_dropdown'
+}

@@ -1,5 +1,5 @@
 import {ZapierItem} from '../../types'
-import {createEnrollment, stopEnrollment} from '../common'
+import {createEnrollment, stopEnrollment, stopAllEnrollments} from '../common'
 import {createActionDetails} from '../../utils/operations'
 import {userSearches, userTriggers} from '../../users/keys'
 import {enrollmentActions, enrollmentSearches, enrollmentTriggers, sequenceSearches, sequenceTriggers} from '../keys'
@@ -59,6 +59,38 @@ export const CreateEnrollmentAction: ZapierItem = {
         ],
         perform: createEnrollment(
             createActionDetails(enrollmentActions.createEnrollmentAction)
+        )
+    }
+}
+
+export const StopAllEnrollmentsAction: ZapierItem = {
+    key: enrollmentActions.stopAllEnrollmentsAction,
+    noun: 'Enrollment',
+    display: {
+        label: 'Stop All Enrollments',
+        description: 'Stops all enrollments for given lead.',
+    },
+    operation: {
+        resource: EnrollmentResource.key,
+        inputFields: [
+            {
+                key: 'id',
+                label: 'Resource',
+                type: 'integer',
+                required: true,
+                dynamic: `${leadTriggers.leadListDropdown}.id.name`,
+                search: `${leadSearches.leadSearchOrCreate}.id`,
+            },
+            {
+                key: 'resource_type',
+                label: 'Resource Type',
+                choices: ['lead'],
+                type: 'string',
+                required: true
+            }
+        ],
+        perform: stopAllEnrollments(
+            createActionDetails(enrollmentActions.stopAllEnrollmentsAction)
         )
     }
 }

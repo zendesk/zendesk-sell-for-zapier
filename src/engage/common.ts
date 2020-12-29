@@ -48,4 +48,7 @@ export const createEnrollment = (actionDetails: ActionDetails) =>
 export const stopEnrollment = (actionDetails: ActionDetails) =>
     updateItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
+export const stopAllEnrollments = (actionDetails: ActionDetails) =>
+    createItem(enrollmentsEndpoint + '/finish_ongoing_for_resource', actionDetails, createFieldsProcess)
+
 const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])

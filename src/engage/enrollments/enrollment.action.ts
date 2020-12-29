@@ -10,8 +10,8 @@ export const CreateEnrollmentAction: ZapierItem = {
     key: enrollmentActions.createEnrollmentAction,
     noun: 'Enrollment',
     display: {
-        label: 'Create Enrollment',
-        description: 'Creates a new enrollment in catalog. Requires Reach subscription.'
+        label: 'Create sequence enrolment',
+        description: 'Creates a sequence enrolment for a given lead. Requires Reach add-on.'
     },
     operation: {
         resource: EnrollmentResource.key,
@@ -49,8 +49,8 @@ export const CreateEnrollmentAction: ZapierItem = {
             },
             {
                 key: 'actor_id',
-                label: 'Owner',
-                helpText: 'Zendesk Sell User that will be an actor for enrollment.',
+                label: 'Sequence owner',
+                helpText: 'That will be the user that emails will be sent by and tasks will be created for.',
                 required: false,
                 type: 'integer',
                 dynamic: `${userTriggers.userListDropdown}.id.name`,
@@ -67,8 +67,8 @@ export const StopAllEnrollmentsAction: ZapierItem = {
     key: enrollmentActions.stopAllEnrollmentsAction,
     noun: 'Enrollment',
     display: {
-        label: 'Stop All Enrollments',
-        description: 'Stops all enrollments for given lead.',
+        label: 'Stop all sequence enrolments',
+        description: 'Stops all sequence enrolments for a given lead.',
     },
     operation: {
         resource: EnrollmentResource.key,
@@ -99,8 +99,8 @@ export const StopEnrollmentAction: ZapierItem = {
     key: enrollmentActions.stopEnrollmentAction,
     noun: 'Enrollment',
     display: {
-        label: 'Stop Enrollment',
-        description: 'Stops enrollment for given lead.',
+        label: 'Stop sequence enrolment',
+        description: 'Stops a sequence enrolment for a given lead.',
     },
     operation: {
         resource: EnrollmentResource.key,

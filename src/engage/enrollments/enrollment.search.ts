@@ -10,8 +10,8 @@ export const EnrollmentSearch: ZapierItem = {
     key: enrollmentSearches.enrollmentSearch,
     noun: 'Enrollment',
     display: {
-        label: 'Find Enrollment in Catalog',
-        description: 'Finds a enrollment by Enrollment ID and resource ID. Requires Reach subscription.'
+        label: 'Find sequence enrolment',
+        description: 'Finds a sequence enrolment for a given lead by sequence name or sequence ID.'
     },
     operation: {
         resource: EnrollmentResource.key,

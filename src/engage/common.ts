@@ -1,12 +1,12 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
-import {restBetaEndpoints} from '../utils/http'
+import {restBetaEndpoints, restEndpoints} from '../utils/http'
 import {ActionDetails, triggerActionDetails} from '../utils/operations'
 import {fetchItems, searchWithPrefixedFields, streamItems} from '../common/queries'
 import {descendingSort} from '../utils/api'
 import {createItem, pickedFieldsProcessor, updateItem} from '../common/createUpdate'
 
-const enrollmentsEndpoint = restBetaEndpoints('sequence_enrollments')
-const sequencesEndpoint = restBetaEndpoints('sequences')
+const enrollmentsEndpoint = restEndpoints('sequence_enrollments')
+const sequencesEndpoint = restEndpoints('sequences')
 
 export const searchEnrollmentsByCriteria = (actionDetails: ActionDetails, supportedFields: string[]) =>
     searchWithPrefixedFields(enrollmentsEndpoint, actionDetails, supportedFields)
@@ -49,6 +49,7 @@ export const stopEnrollment = (actionDetails: ActionDetails) =>
     updateItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
 export const stopAllEnrollments = (actionDetails: ActionDetails) =>
-    createItem(enrollmentsEndpoint + '/finish_ongoing_for_resource', actionDetails, createFieldsProcess)
+    createItem(restBetaEndpoints('sequence_enrollments')
+        + '/finish_ongoing_for_resource', actionDetails, createFieldsProcess)
 
-const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_id', 'resource_type', 'resource_id', 'actor_id'])
+const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_ids', 'resource_type', 'resource_id', 'actor_id'])

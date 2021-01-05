@@ -1,8 +1,8 @@
 import {ZapierItem} from '../../types'
-import {createEnrollment, stopEnrollment, stopAllEnrollments} from '../common'
+import {createEnrollment, stopAllEnrollments} from '../common'
 import {createActionDetails} from '../../utils/operations'
 import {userSearches, userTriggers} from '../../users/keys'
-import {enrollmentActions, enrollmentSearches, enrollmentTriggers, sequenceSearches, sequenceTriggers} from '../keys'
+import {enrollmentActions, sequenceSearches, sequenceTriggers} from '../keys'
 import EnrollmentResource from './enrollment.resource'
 import {leadSearches, leadTriggers} from '../../lead/keys'
 
@@ -74,7 +74,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
         resource: EnrollmentResource.key,
         inputFields: [
             {
-                key: 'id',
+                key: 'resource_id',
                 label: 'Resource',
                 type: 'integer',
                 required: true,
@@ -87,42 +87,18 @@ export const StopAllEnrollmentsAction: ZapierItem = {
                 choices: ['lead'],
                 type: 'string',
                 required: true
+            },
+            {
+                key: 'sequence_ids',
+                label: 'Sequence ID',
+                type: 'integer',
+                required: false,
+                dynamic: `${sequenceTriggers.sequenceListDropdown}.id.name`,
+                search: `${sequenceSearches.sequenceSearch}.id`,
             }
         ],
         perform: stopAllEnrollments(
             createActionDetails(enrollmentActions.stopAllEnrollmentsAction)
-        )
-    }
-}
-
-export const StopEnrollmentAction: ZapierItem = {
-    key: enrollmentActions.stopEnrollmentAction,
-    noun: 'Enrollment',
-    display: {
-        label: 'Stop sequence enrolment',
-        description: 'Stops a sequence enrolment for a given lead.',
-    },
-    operation: {
-        resource: EnrollmentResource.key,
-        inputFields: [
-            {
-                key: 'id',
-                label: 'Enrollment',
-                type: 'integer',
-                required: true,
-                dynamic: `${enrollmentTriggers.enrollmentListDropdown}.id.name`,
-                search: `${enrollmentSearches.enrollmentSearch}.id`,
-            },
-            {
-                key: 'state',
-                label: 'Enrollment State',
-                choices: ['finished'],
-                type: 'string',
-                required: true
-            }
-        ],
-        perform: stopEnrollment(
-            createActionDetails(enrollmentActions.stopEnrollmentAction)
         )
     }
 }

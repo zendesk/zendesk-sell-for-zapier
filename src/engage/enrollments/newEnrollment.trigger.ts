@@ -9,12 +9,13 @@ const listEnrollmentsWithoutFilters = async (z: ZObject, bundle: Bundle) => {
     const enrollments = await fetchEnrollments(
         dropdownActionDetails(enrollmentTriggers.enrollmentListDropdown)
     )(z, bundle)
-    return enrollments.map(sequence => enrollmentWithExtractedName(sequence))
+    return enrollments.map(enrollment => enrollmentWithExtractedName(enrollment))
 }
 
 const enrollmentWithExtractedName = (enrollment: any) => ({
     ...enrollment,
-    name: enrollment.name
+    name: 'Resource (id: ' + enrollment.resource_id + ', type: ' + enrollment.resource_type
+        + '), Sequence name: ' + enrollment.sequence.data.name
 })
 
 /**

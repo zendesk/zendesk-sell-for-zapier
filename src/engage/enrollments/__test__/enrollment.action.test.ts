@@ -1,7 +1,7 @@
 import * as zapier from 'zapier-platform-core'
 import App from '../../..'
 import * as nock from 'nock'
-import {CreateEnrollmentAction, StopEnrollmentAction} from '../enrollment.action'
+import {CreateEnrollmentAction, StopAllEnrollmentsAction} from '../enrollment.action'
 
 const appTester = zapier.createAppTester(App)
 zapier.tools.env.inject()
@@ -36,7 +36,7 @@ describe('create enrollment action', () => {
     })
 })
 
-describe('stop enrollment action', () => {
+describe('stop enrollments action', () => {
     it('should pass if enrollment is properly stopped', async () => {
         const bundle = {
             inputData: {
@@ -46,14 +46,15 @@ describe('stop enrollment action', () => {
         }
 
         nock('https://api.getbase.com/v2_beta')
-            .put('/sequence_enrollments/1000', {
+            .post('/sequence_enrollments/finish_ongoing_for_resource', {
                 data: {
-                    state: 'finished',
+                    resource_id: '1000',
+                    resource_type: 'lead'
                 }
             })
             .reply(200, {data: {id: 1000}})
 
-        const response: any = await appTester(App.creates[StopEnrollmentAction.key].operation.perform, bundle)
+        const response: any = await appTester(App.creates[StopAllEnrollmentsAction.key].operation.perform, bundle)
         expect(response.id).toEqual(1000)
     })
 })

@@ -92,6 +92,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
                 key: 'sequence_ids',
                 label: 'Sequence ID',
                 type: 'integer',
+                list: true,
                 required: false,
                 dynamic: `${sequenceTriggers.sequenceListDropdown}.id.name`,
                 search: `${sequenceSearches.sequenceSearch}.id`,

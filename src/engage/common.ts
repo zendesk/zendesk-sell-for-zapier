@@ -8,9 +8,6 @@ import {createItem, pickedFieldsProcessor, updateItem} from '../common/createUpd
 const enrollmentsEndpoint = restEndpoints('sequence_enrollments')
 const sequencesEndpoint = restEndpoints('sequences')
 
-export const searchEnrollmentsByCriteria = (actionDetails: ActionDetails, supportedFields: string[]) =>
-    searchWithPrefixedFields(enrollmentsEndpoint, actionDetails, supportedFields)
-
 export const searchSequencesByCriteria = (actionDetails: ActionDetails, supportedFields: string[]) =>
     searchWithPrefixedFields(sequencesEndpoint, actionDetails, supportedFields)
 
@@ -44,9 +41,6 @@ export const fetchEnrollments = (actionDetails: ActionDetails) =>
 
 export const createEnrollment = (actionDetails: ActionDetails) =>
     createItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
-
-export const stopEnrollment = (actionDetails: ActionDetails) =>
-    updateItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
 export const stopAllEnrollments = (actionDetails: ActionDetails) =>
     createItem(restBetaEndpoints('sequence_enrollments')

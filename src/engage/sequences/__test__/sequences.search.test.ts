@@ -26,7 +26,7 @@ describe('search sequences in catalog', () => {
             }
         }
 
-        nock('https://api.getbase.com/v2_beta')
+        nock('https://api.getbase.com/v2')
             .get('/sequences/21123')
             .reply(200, sequenceResponse)
 
@@ -42,7 +42,7 @@ describe('search sequences in catalog', () => {
       }
     }
 
-    nock('https://api.getbase.com/v2_beta')
+    nock('https://api.getbase.com/v2')
         .get('/sequences')
         .query({
           name: 'Welcome',

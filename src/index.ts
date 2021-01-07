@@ -72,7 +72,6 @@ import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
 import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
 import {CreateEnrollmentAction, StopAllEnrollmentsAction} from './engage/enrollments/enrollment.action'
 import EnrollmentResource from './engage/enrollments/enrollment.resource'
-import {EnrollmentSearch} from './engage/enrollments/enrollment.search'
 import SequenceResource from './engage/sequences/sequence.resource'
 import {SequenceSearch} from './engage/sequences/sequence.search'
 import {ListSequencesDropdown} from './engage/sequences/newSequence.trigger'
@@ -229,7 +228,6 @@ const App = {
     [ProductSearch.key]: ProductSearch,
 
     // Enrollments
-    [EnrollmentSearch.key]: EnrollmentSearch,
     [SequenceSearch.key]: SequenceSearch
   },
 

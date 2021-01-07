@@ -42,6 +42,7 @@ export const CreateEnrollmentAction: ZapierItem = {
                         key: 'resource_type',
                         label: 'Resource Type',
                         choices: ['lead'],
+                        default: 'lead',
                         type: 'string',
                         required: true
                     }
@@ -85,6 +86,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
                 key: 'resource_type',
                 label: 'Resource Type',
                 choices: ['lead'],
+                default: 'lead',
                 type: 'string',
                 required: true
             },

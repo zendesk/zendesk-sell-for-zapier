@@ -10,8 +10,8 @@ export const CreateEnrollmentAction: ZapierItem = {
     key: enrollmentActions.createEnrollmentAction,
     noun: 'Enrollment',
     display: {
-        label: 'Create sequence enrolment',
-        description: 'Creates a sequence enrolment for a given lead. Requires Reach add-on.'
+        label: 'Create sequence enrollment',
+        description: 'Creates a sequence enrollment for a given lead. Requires Reach add-on.'
     },
     operation: {
         resource: EnrollmentResource.key,
@@ -30,7 +30,7 @@ export const CreateEnrollmentAction: ZapierItem = {
                 children: [
                     {
                         key: 'resource_id',
-                        label: 'Object ID',
+                        label: 'Resource ID',
                         helpText: 'Zendesk Sell Lead that will be enrolled.',
                         required: true,
                         type: 'integer',
@@ -40,7 +40,7 @@ export const CreateEnrollmentAction: ZapierItem = {
                     },
                     {
                         key: 'resource_type',
-                        label: 'Object Type',
+                        label: 'Resource Type',
                         choices: ['lead'],
                         default: 'lead',
                         type: 'string',
@@ -68,15 +68,15 @@ export const StopAllEnrollmentsAction: ZapierItem = {
     key: enrollmentActions.stopAllEnrollmentsAction,
     noun: 'Enrollment',
     display: {
-        label: 'Stop all sequence enrolments',
-        description: 'Stops all sequence enrolments for a given lead.',
+        label: 'Stop all sequence enrollments',
+        description: 'Stops all sequence enrollments for a given lead.',
     },
     operation: {
         resource: EnrollmentResource.key,
         inputFields: [
             {
                 key: 'resource_id',
-                label: 'Object ID',
+                label: 'Resource ID',
                 type: 'integer',
                 required: true,
                 dynamic: `${leadTriggers.leadListDropdown}.id.name`,
@@ -84,7 +84,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
             },
             {
                 key: 'resource_type',
-                label: 'Object Type',
+                label: 'Resource Type',
                 choices: ['lead'],
                 default: 'lead',
                 type: 'string',
@@ -94,6 +94,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
                 key: 'sequence_ids',
                 label: 'Sequence ID',
                 type: 'integer',
+                helpText: 'If you leave it blank, this will stop all currently active sequences for that object.',
                 list: true,
                 required: false,
                 dynamic: `${sequenceTriggers.sequenceListDropdown}.id.name`,

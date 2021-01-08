@@ -26,8 +26,8 @@ export const ListEnrollmentsDropdown: ZapierItem = {
     noun: 'Enrollment',
 
     display: {
-        label: 'New sequence enrolment',
-        description: 'Triggers when a new sequence enrolment is created.',
+        label: 'New sequence enrollment',
+        description: 'Triggers when a new sequence enrollment is created.',
         hidden: true
     },
 

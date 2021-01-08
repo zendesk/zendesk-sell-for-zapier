@@ -30,7 +30,7 @@ export const CreateEnrollmentAction: ZapierItem = {
                 children: [
                     {
                         key: 'resource_id',
-                        label: 'Lead',
+                        label: 'Object ID',
                         helpText: 'Zendesk Sell Lead that will be enrolled.',
                         required: true,
                         type: 'integer',
@@ -40,7 +40,7 @@ export const CreateEnrollmentAction: ZapierItem = {
                     },
                     {
                         key: 'resource_type',
-                        label: 'Resource Type',
+                        label: 'Object Type',
                         choices: ['lead'],
                         default: 'lead',
                         type: 'string',
@@ -50,7 +50,7 @@ export const CreateEnrollmentAction: ZapierItem = {
             },
             {
                 key: 'actor_id',
-                label: 'Sequence owner',
+                label: 'Sequence Owner ID',
                 helpText: 'That will be the user that emails will be sent by and tasks will be created for.',
                 required: false,
                 type: 'integer',
@@ -76,7 +76,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
         inputFields: [
             {
                 key: 'resource_id',
-                label: 'Resource',
+                label: 'Object ID',
                 type: 'integer',
                 required: true,
                 dynamic: `${leadTriggers.leadListDropdown}.id.name`,
@@ -84,7 +84,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
             },
             {
                 key: 'resource_type',
-                label: 'Resource Type',
+                label: 'Object Type',
                 choices: ['lead'],
                 default: 'lead',
                 type: 'string',

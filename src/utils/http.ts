@@ -125,4 +125,3 @@ export const fetch = async (
 }
 
 export const restEndpoints = (resource: string): string => `${rootUrl()}/v2/${resource}`
-export const restBetaEndpoints = (resource: string): string => `${rootUrl()}/v2_beta/${resource}`

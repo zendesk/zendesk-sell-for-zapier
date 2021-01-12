@@ -1,5 +1,5 @@
 import {Bundle, ZObject} from 'zapier-platform-core'
-import {restBetaEndpoints, restEndpoints} from '../utils/http'
+import {restEndpoints} from '../utils/http'
 import {ActionDetails, triggerActionDetails} from '../utils/operations'
 import {fetchItems, searchWithPrefixedFields, streamItems} from '../common/queries'
 import {descendingSort} from '../utils/api'
@@ -43,7 +43,6 @@ export const createEnrollment = (actionDetails: ActionDetails) =>
     createItem(enrollmentsEndpoint, actionDetails, createFieldsProcess)
 
 export const stopAllEnrollments = (actionDetails: ActionDetails) =>
-    createItem(restBetaEndpoints('sequence_enrollments')
-        + '/finish_ongoing_for_resource', actionDetails, createFieldsProcess)
+    createItem(enrollmentsEndpoint + '/finish_ongoing_for_resource', actionDetails, createFieldsProcess)
 
-const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_ids', 'resource_type', 'resource_id', 'actor_id'])
+const createFieldsProcess = pickedFieldsProcessor(['id', 'state', 'sequence_id', 'sequence_ids', 'resource_type', 'resource_id', 'actor_id'])

@@ -10,7 +10,7 @@ export const CreateEnrollmentAction: ZapierItem = {
     key: enrollmentActions.createEnrollmentAction,
     noun: 'Enrollment',
     display: {
-        label: 'Create sequence enrollment',
+        label: 'Create Sequence Enrollment',
         description: 'Creates a sequence enrollment for a given lead. Requires Reach add-on.'
     },
     operation: {
@@ -68,7 +68,7 @@ export const StopAllEnrollmentsAction: ZapierItem = {
     key: enrollmentActions.stopAllEnrollmentsAction,
     noun: 'Enrollment',
     display: {
-        label: 'Stop all sequence enrollments',
+        label: 'Stop All Sequence Enrollments',
         description: 'Stops all sequence enrollments for a given lead.',
     },
     operation: {

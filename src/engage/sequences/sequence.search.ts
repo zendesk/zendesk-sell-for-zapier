@@ -9,7 +9,7 @@ export const SequenceSearch: ZapierItem = {
     key: sequenceSearches.sequenceSearch,
     noun: 'Sequence',
     display: {
-        label: 'Find sequence',
+        label: 'Find Sequence',
         description: 'Finds a sequence by Sequence ID or name. Requires Reach add-on.'
     },
     operation: {

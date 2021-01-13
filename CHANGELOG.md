@@ -1,3 +1,9 @@
+## 1.0.20
+
+* Added support for Enrollments and Sequence Enrollments 
+* Added searches: `Find sequence`
+* Added actions: `Stop all sequence enrollments`, `Create sequence enrollment`
+
 ## 1.0.19
 
 * Added explanation to `Resource Id` field in Tasks and Notes 

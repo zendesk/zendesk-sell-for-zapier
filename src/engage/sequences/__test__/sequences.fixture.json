@@ -1,0 +1,146 @@
+{
+  "items": [
+    {
+      "data": {
+        "id": 21123,
+        "name": "Welcome sequence",
+        "steps_total": 3,
+        "creator_id": 1700155,
+        "updated_at": "2020-06-03T11:06:30Z",
+        "created_at": "2020-06-03T11:06:30Z",
+        "steps": {
+          "items": [
+            {
+              "data": {
+                "id": 2594755,
+                "action_type": "automated_email",
+                "delay_from_previous_step": 0,
+                "delay_from_previous_step_unit": "weekdays",
+                "position": 0,
+                "action_properties": {
+                  "email_template_id": 398744,
+                  "is_reply": false
+                }
+              },
+              "meta": {
+                "type": "step"
+              }
+            },
+            {
+              "data": {
+                "id": 2594756,
+                "action_type": "automated_email",
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "position": 1,
+                "action_properties": {
+                  "email_template_id": 398745,
+                  "is_reply": false
+                }
+              },
+              "meta": {
+                "type": "step"
+              }
+            },
+            {
+              "data": {
+                "id": 2594757,
+                "action_type": "automated_email",
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "position": 2,
+                "action_properties": {
+                  "email_template_id": 398746,
+                  "is_reply": false
+                }
+              },
+              "meta": {
+                "type": "step"
+              }
+            }
+          ],
+          "meta": {
+            "type": "collection",
+            "count": 3
+          }
+        }
+      },
+      "meta": {
+        "type": "sequence"
+      }
+    },
+    {
+      "data": {
+        "id": 21124,
+        "name": "Another test sequence",
+        "steps_total": 3,
+        "creator_id": 1700155,
+        "updated_at": "2020-06-03T11:08:12Z",
+        "created_at": "2020-06-03T11:08:12Z",
+        "steps": {
+          "items": [
+            {
+              "data": {
+                "id": 2594758,
+                "action_type": "automated_email",
+                "delay_from_previous_step": 0,
+                "delay_from_previous_step_unit": "weekdays",
+                "position": 0,
+                "action_properties": {
+                  "email_template_id": 398744,
+                  "is_reply": false
+                }
+              },
+              "meta": {
+                "type": "step"
+              }
+            },
+            {
+              "data": {
+                "id": 2594759,
+                "action_type": "automated_email",
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "position": 1,
+                "action_properties": {
+                  "email_template_id": 398745,
+                  "is_reply": true
+                }
+              },
+              "meta": {
+                "type": "step"
+              }
+            },
+            {
+              "data": {
+                "id": 2594760,
+                "action_type": "automated_email",
+                "delay_from_previous_step": 1,
+                "delay_from_previous_step_unit": "weekdays",
+                "position": 2,
+                "action_properties": {
+                  "email_template_id": 398746,
+                  "is_reply": true
+                }
+              },
+              "meta": {
+                "type": "step"
+              }
+            }
+          ],
+          "meta": {
+            "type": "collection",
+            "count": 3
+          }
+        }
+      },
+      "meta": {
+        "type": "sequence"
+      }
+    }
+  ],
+  "meta": {
+    "type": "collection",
+    "count": 2
+  }
+}

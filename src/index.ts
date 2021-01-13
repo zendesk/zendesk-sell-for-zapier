@@ -70,6 +70,12 @@ import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
 import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
 import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
 import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
+import {CreateEnrollmentAction, StopAllEnrollmentsAction} from './engage/enrollments/enrollment.action'
+import EnrollmentResource from './engage/enrollments/enrollment.resource'
+import SequenceResource from './engage/sequences/sequence.resource'
+import {SequenceSearch} from './engage/sequences/sequence.search'
+import {ListSequencesDropdown} from './engage/sequences/newSequence.trigger'
+import {ListEnrollmentsDropdown} from './engage/enrollments/newEnrollment.trigger'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -113,7 +119,11 @@ const App = {
     [UserResource.key]: UserResource,
     [IndustryResource.key]: IndustryResource,
     [LeadStatusResource.key]: LeadStatusResource,
-    [SourceResource.key]: SourceResource
+    [SourceResource.key]: SourceResource,
+
+    // Engage
+    [EnrollmentResource.key]: EnrollmentResource,
+    [SequenceResource.key]: SequenceResource
   },
 
   // If you want your trigger to show up, you better include it here!
@@ -180,6 +190,12 @@ const App = {
     [LeadFieldsDropdown.key]: LeadFieldsDropdown,
     [DealFieldsDropdown.key]: DealFieldsDropdown,
     [ContactFieldsDropdown.key]: ContactFieldsDropdown,
+
+    // Sequences dropdowns
+    [ListSequencesDropdown.key]: ListSequencesDropdown,
+
+    // Enrollments dropdowns
+    [ListEnrollmentsDropdown.key]: ListEnrollmentsDropdown,
   },
 
   // If you want your searches to show up, you better include it here!
@@ -209,7 +225,10 @@ const App = {
     [DealSourceSearch.key]: DealSourceSearch,
 
     // Products
-    [ProductSearch.key]: ProductSearch
+    [ProductSearch.key]: ProductSearch,
+
+    // Enrollments
+    [SequenceSearch.key]: SequenceSearch
   },
 
   // If you want your creates to show up, you better include it here!
@@ -233,6 +252,10 @@ const App = {
 
     // Tasks
     [CreateTaskAction.key]: CreateTaskAction,
+
+    // Enrollments
+    [CreateEnrollmentAction.key]: CreateEnrollmentAction,
+    [StopAllEnrollmentsAction.key]: StopAllEnrollmentsAction,
 
     // Products
     [CreateProductAction.key]: CreateProductAction,

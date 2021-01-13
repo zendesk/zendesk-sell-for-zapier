@@ -15,7 +15,7 @@ describe('stop all enrollments for given lead action', () => {
             }
         }
 
-        nock('https://api.getbase.com/v2_beta')
+        nock('https://api.getbase.com/v2')
             .post('/sequence_enrollments/finish_ongoing_for_resource', {
                 data: {
                     resource_id: '1000',
@@ -39,7 +39,7 @@ describe('stop enrollments for single sequence action', () => {
             }
         }
 
-        nock('https://api.getbase.com/v2_beta')
+        nock('https://api.getbase.com/v2')
             .post('/sequence_enrollments/finish_ongoing_for_resource', {
                 data: {
                     resource_id: '1000',

@@ -1,3 +1,7 @@
+## 1.0.21
+
+* Minor update to copies
+
 ## 1.0.20
 
 * Added support for Enrollments and Sequence Enrollments 

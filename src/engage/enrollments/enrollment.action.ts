@@ -68,8 +68,8 @@ export const StopAllEnrollmentsAction: ZapierItem = {
     key: enrollmentActions.stopAllEnrollmentsAction,
     noun: 'Enrollment',
     display: {
-        label: 'Stop All Sequence Enrollments',
-        description: 'Stops all sequence enrollments for a given lead.',
+        label: 'Stop Sequence Enrollments',
+        description: 'Stops sequence enrollments for a given lead.',
     },
     operation: {
         resource: EnrollmentResource.key,

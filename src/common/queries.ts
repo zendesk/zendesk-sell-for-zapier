@@ -119,7 +119,7 @@ export const streamItems = (
   endpoint: string,
   actionDetails: ActionDetails,
   supportedFilters: string[],
-  maxPages: number = 3
+  maxPages: number = 5
 ) => {
   return async (z: ZObject, bundle: Bundle, otherFilters: Filters = {}, sort?: SortDefinition) => {
     const payload = {

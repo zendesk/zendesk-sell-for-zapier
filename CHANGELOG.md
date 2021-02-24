@@ -1,3 +1,7 @@
+## 1.0.23
+
+* Bringing back previous number of resources fetched within single trigger
+
 ## 1.0.22
 
 * Reducing number of resources fetched within single trigger

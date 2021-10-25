@@ -3891,10 +3891,10 @@ yn@^2.0.0:
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
   integrity sha1-5a2ryKz0CPY4X8dklWhMiOavaJo=
 
-zapier-platform-core@9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/zapier-platform-core/-/zapier-platform-core-9.2.0.tgz#c7c0efb73c7d130f9a6ae57881dc916ac344d3cc"
-  integrity sha512-X6AsqB1KOBpU6A/AqHdyibAilPvWl+E8P991xJjGfxrsCus0S4BMqiSWFkjy5KiBGYnpRCkV0jkYSxNop7K5yw==
+zapier-platform-core@9.5.0:
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/zapier-platform-core/-/zapier-platform-core-9.5.0.tgz#36bf51200a2906c00ca3a02edf94355ebf05b3b1"
+  integrity sha512-2f2fqgVpQIgF6ynZHrg1dEijpOFmaCZKkwy6/a+Q2DUljlMIyEluJq3FM3NogqO1tetoRXvcPllPaFA4vLZQGA==
   dependencies:
     bluebird "3.5.5"
     content-disposition "0.5.3"
@@ -3904,14 +3904,14 @@ zapier-platform-core@9.2.0:
     node-fetch "2.6.0"
     oauth-sign "0.9.0"
     semver "5.6.0"
-    zapier-platform-schema "9.2.0"
+    zapier-platform-schema "9.5.0"
   optionalDependencies:
     "@types/node" "^10"
 
-zapier-platform-schema@9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/zapier-platform-schema/-/zapier-platform-schema-9.2.0.tgz#3b9472a8bf8094204f909bed52843c71cc6f0d2d"
-  integrity sha512-8HBA3BLYr1+LZnPzeA9FZ/hPsOW+heD4qtzsqvh0WX4+A/v8Cg7xSKUqmUcUTmG2OYazT8w7+XnCDepHvMZBtA==
+zapier-platform-schema@9.5.0:
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/zapier-platform-schema/-/zapier-platform-schema-9.5.0.tgz#300a040607f8400e3157687948f25a8c2fb155ea"
+  integrity sha512-vMncYzpapy/GLvatWgPf7+mTf9lhsHMuMEfMrhiDBOwvzjOP4/89fzTgUVuvN4gUl68Fj22HyBMAuINrjRswZQ==
   dependencies:
     jsonschema "1.2.2"
     lodash "4.17.15"

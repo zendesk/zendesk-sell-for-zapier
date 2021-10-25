@@ -26,7 +26,7 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "zapier-platform-core": "9.2.0"
+    "zapier-platform-core": "9.5.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.5",

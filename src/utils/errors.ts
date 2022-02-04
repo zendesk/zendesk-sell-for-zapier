@@ -10,11 +10,11 @@ interface ErrorDetails {
 }
 
 interface ErrorResponse {
-  errors: Array<{
+  errors: {
     error: {
       details: string
     }
-  }>,
+  }[],
   meta: {
     http_status: string
   }

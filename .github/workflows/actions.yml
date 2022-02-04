@@ -8,16 +8,15 @@ jobs:
     name: yarn-simple
     runs-on: ubuntu-latest
     steps:
-    - uses: zendesk/checkout@v2
-    - uses: zendesk/setup-node@v2
-      with:
-        node-version: 12.13.0
-    - name: test
-      run: |
-        curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.19.2
-        export PATH="$HOME/.yarn/bin:$PATH"
-        yarn global add zapier-platform-cli@9.4.0
-        yarn install
-        yarn run lint
-        yarn run zapier-test
-
+      - uses: zendesk/checkout@v2
+      - uses: zendesk/setup-node@v2
+        with:
+          node-version: 16.1.0
+      - name: test
+        run: |
+          curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.19.2
+          export PATH="$HOME/.yarn/bin:$PATH"
+          yarn global add zapier-platform-cli@11.2.0
+          yarn install
+          yarn run lint
+          yarn run zapier-test

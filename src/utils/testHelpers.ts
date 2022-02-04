@@ -3,8 +3,8 @@ import {
   HttpRequestOptions,
   HttpResponse,
   ZObject,
-} from "zapier-platform-core";
-import { ActionDetails, ActionType } from "./operations";
+} from 'zapier-platform-core'
+import { ActionDetails, ActionType } from './operations'
 
 /**
  * This file contains fakes which makes testing easier. Use those fake instead of mocking Zapier types directly
@@ -31,8 +31,8 @@ export const createFakeBundle = (
       page: 0,
       ...meta,
     },
-  };
-};
+  }
+}
 
 /**
  * Create fake response compliant with HttpResponse type
@@ -43,7 +43,7 @@ export const createFakeHttpResponse = (
   request: HttpRequestOptions = {}
 ): HttpResponse => {
   const stringifiedContent =
-    typeof content === "object" ? JSON.stringify(content) : content;
+    typeof content === 'object' ? JSON.stringify(content) : content
   return {
     status,
     content: stringifiedContent,
@@ -52,13 +52,13 @@ export const createFakeHttpResponse = (
     throwForStatus: () => ({}),
     skipThrowForStatus: false,
     request,
-  };
-};
+  }
+}
 
 interface FakeZObject extends ZObject {
-  url: (index?: number) => string | null | undefined;
-  options: (index?: number) => HttpRequestOptions | null | undefined;
-  count: () => number;
+  url: (index?: number) => string | null | undefined
+  options: (index?: number) => HttpRequestOptions | null | undefined
+  count: () => number
 }
 
 /**
@@ -70,14 +70,14 @@ export const createFakeZObject = (
   status: number,
   payload: object
 ): FakeZObject => {
-  let usedOptions: HttpRequestOptions | undefined;
-  let count = 0;
+  let usedOptions: HttpRequestOptions | undefined
+  let count = 0
 
   return {
     request: async (options: HttpRequestOptions) => {
-      usedOptions = options;
-      count += 1;
-      return createFakeHttpResponse(status, payload);
+      usedOptions = options
+      count += 1
+      return createFakeHttpResponse(status, payload)
     },
     JSON: {
       parse: JSON.parse,
@@ -86,24 +86,24 @@ export const createFakeZObject = (
     url: () => usedOptions && usedOptions.url,
     options: () => usedOptions,
     count: () => count,
-  } as FakeZObject;
-};
+  } as FakeZObject
+}
 
 /**
  * Creates fake ZObject which returns different responses based on order of calling request method.
  * Additionally counts all request calls.
  */
 export const createMappingZObject = (
-  responses: Array<[number, object]>
+  responses: [number, object][]
 ): FakeZObject => {
-  let counter = 0;
-  const usedOptions: HttpRequestOptions[] = [];
+  let counter = 0
+  const usedOptions: HttpRequestOptions[] = []
 
   return {
     request: async (options: HttpRequestOptions) => {
-      usedOptions.push(options);
-      const [status, payload] = responses[counter++];
-      return createFakeHttpResponse(status, payload);
+      usedOptions.push(options)
+      const [status, payload] = responses[counter++]
+      return createFakeHttpResponse(status, payload)
     },
     JSON: {
       parse: JSON.parse,
@@ -112,20 +112,20 @@ export const createMappingZObject = (
     url: (index: number) => usedOptions[index] && usedOptions[index].url,
     options: (index: number) => usedOptions[index],
     count: () => counter,
-  } as FakeZObject;
-};
+  } as FakeZObject
+}
 
 export const createFakeActionDetails = (): ActionDetails => ({
   actionType: ActionType.Create,
-  actionName: "action_name",
-  actionId: "asdf1234",
-});
+  actionName: 'action_name',
+  actionId: 'asdf1234',
+})
 
 export const assertDeduplicationIds = (
   items: any[],
   ids: number[],
   deduplicationIds: string[]
 ) => {
-  expect(items.map((i: any) => i.entity_original_id)).toEqual(ids);
-  expect(items.map((i: any) => i.id)).toEqual(deduplicationIds);
-};
+  expect(items.map((i: any) => i.entity_original_id)).toEqual(ids)
+  expect(items.map((i: any) => i.id)).toEqual(deduplicationIds)
+}

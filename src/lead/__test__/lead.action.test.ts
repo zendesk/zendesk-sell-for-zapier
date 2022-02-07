@@ -153,7 +153,7 @@ describe('update lead action', () => {
 describe('create or update lead action', () => {
   const bundle = {
     authData: {
-      api_token: 'api token',
+      api_token: 'token',
     },
     inputData: {
       id: 200,
@@ -162,39 +162,24 @@ describe('create or update lead action', () => {
   }
 
   it('should create new lead if one with provided id doesn\'t exist', async () => {
-    const getLeadResponse = nock('https://api.getbase.com/v2')
-      .persist()
-      .get('/leads/200')
-      .reply(404)
-
-    getLeadResponse.persist(false)
-    // nock.cleanAll();
+    nock('https://api.getbase.com/v2').get('/leads/200').reply(404)
 
     mockEmptyCustomFieldsResponse()
-    nock.cleanAll()
-    const createLeadResponse = nock('https://api.getbase.com/v2', {
+    nock('https://api.getbase.com/v2', {
       allowUnmocked: true,
     })
-      .persist()
       .post('/leads', {
         data: {
           last_name: 'Josh',
         },
       })
-      .delayBody(1000)
       .reply(200, { data: { id: 200 } })
 
-    // createLeadResponse.persist(false);
-
-    try {
-      const response = await appTester(
-        App.creates[DeprecatedCreateOrUpdateLeadAction.key].operation.perform,
-        bundle
-      )
-      expect(response.id).toEqual(200)
-    } catch (e: any) {
-      expect(e.message).toContain('200')
-    }
+    const response = await appTester(
+      App.creates[DeprecatedCreateOrUpdateLeadAction.key].operation.perform,
+      bundle
+    )
+    expect(response.id).toEqual(200)
   })
 
   it('should perform update if lead exists', async () => {

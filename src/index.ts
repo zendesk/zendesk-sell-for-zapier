@@ -1,7 +1,10 @@
-import {apiTokenBearer, authentication} from './auth/authentication'
-import {version as platformVersion} from 'zapier-platform-core'
-import {ListDealsDropdown, NewDealTrigger} from './deal/newDeal.trigger'
-import {DealStageChangeTrigger, DeprecatedDealStageChangeTrigger} from './deal/dealStageChange.trigger'
+import { apiTokenBearer, authentication } from './auth/authentication'
+import { version as platformVersion } from 'zapier-platform-core'
+import { ListDealsDropdown, NewDealTrigger } from './deal/newDeal.trigger'
+import {
+  DealStageChangeTrigger,
+  DeprecatedDealStageChangeTrigger,
+} from './deal/dealStageChange.trigger'
 import UpdatedDealTrigger from './deal/updatedDeal.trigger'
 import UpdatedLeadTrigger from './lead/updatedLead.trigger'
 import UpdatedContactTrigger from './contact/updatedContact.trigger'
@@ -9,7 +12,7 @@ import {
   ContactCompanySearch,
   ContactPersonSearch,
   ContactSearch,
-  DeprecatedContactSearch
+  DeprecatedContactSearch,
 } from './contact/contact.search'
 import {
   CreateCompanyAction,
@@ -17,65 +20,99 @@ import {
   DeprecatedCreateOrUpdateCompanyAction,
   DeprecatedCreateOrUpdatePersonAction,
   UpdateCompanyAction,
-  UpdatePersonAction
+  UpdatePersonAction,
 } from './contact/contact.action'
 import ContactResource from './contact/contact.resource'
 import {
   ListCompaniesDropdown,
   ListContactDropdown,
   ListPersonsDropdown,
-  NewContactTrigger
+  NewContactTrigger,
 } from './contact/newContact.trigger'
-import {ContactTagsDropdownList, DealTagsDropdownList, LeadTagsDropdownList} from './common/tag/tag.trigger'
+import {
+  ContactTagsDropdownList,
+  DealTagsDropdownList,
+  LeadTagsDropdownList,
+} from './common/tag/tag.trigger'
 import TagResource from './common/tag/tag.resource'
 import LeadResource from './lead/lead.resource'
-import {CreateLeadAction, DeprecatedCreateOrUpdateLeadAction, UpdateLeadAction} from './lead/lead.action'
-import {DeprecatedLeadSearch, LeadSearch} from './lead/lead.search'
+import {
+  CreateLeadAction,
+  DeprecatedCreateOrUpdateLeadAction,
+  UpdateLeadAction,
+} from './lead/lead.action'
+import { DeprecatedLeadSearch, LeadSearch } from './lead/lead.search'
 import SourceResource from './common/source/source.resource'
-import {ListLeadsDropdown, NewLeadTrigger} from './lead/newLead.trigger'
-import {CreateDealAction, DeprecatedCreateOrUpdateDealAction, UpdateDealAction} from './deal/deal.action'
-import {DealSearch, DeprecatedDealSearch} from './deal/deal.search'
+import { ListLeadsDropdown, NewLeadTrigger } from './lead/newLead.trigger'
+import {
+  CreateDealAction,
+  DeprecatedCreateOrUpdateDealAction,
+  UpdateDealAction,
+} from './deal/deal.action'
+import { DealSearch, DeprecatedDealSearch } from './deal/deal.search'
 import DealResource from './deal/deal.resource'
 import StageResource from './deal/stages/stage.resource'
 import PipelineResource from './deal/stages/pipeline.resource'
-import {ListUsersDropdown} from './users/user.trigger'
-import {UserSearch} from './users/user.search'
+import { ListUsersDropdown } from './users/user.trigger'
+import { UserSearch } from './users/user.search'
 import UserResource from './users/user.resource'
-import {ContactIndustryDropdown, LeadIndustryDropdown} from './common/industry/industry.trigger'
-import {StageSearch} from './deal/stages/stage.search'
-import {ListLeadStatusDropdown} from './lead/status/leadStatus.trigger'
+import {
+  ContactIndustryDropdown,
+  LeadIndustryDropdown,
+} from './common/industry/industry.trigger'
+import { StageSearch } from './deal/stages/stage.search'
+import { ListLeadStatusDropdown } from './lead/status/leadStatus.trigger'
 import LeadStatusResource from './lead/status/leadStatus.resource'
 import IndustryResource from './common/industry/industry.resource'
-import {DealSourceDropdownList, LeadSourceDropdownList} from './common/source/source.trigger'
-import {DealSourceSearch, LeadSourceSearch} from './common/source/source.search'
+import {
+  DealSourceDropdownList,
+  LeadSourceDropdownList,
+} from './common/source/source.trigger'
+import {
+  DealSourceSearch,
+  LeadSourceSearch,
+} from './common/source/source.search'
 import applicationVersion from './version'
-import {ListStageDropdown} from './deal/stages/stage.trigger'
-import {ListPipelineDropdown} from './deal/stages/pipeline.trigger'
+import { ListStageDropdown } from './deal/stages/stage.trigger'
+import { ListPipelineDropdown } from './deal/stages/pipeline.trigger'
 import NoteResource from './notesTasks/notes/note.resouce'
 import TaskResource from './notesTasks/tasks/task.resource'
-import {CreateTaskAction} from './notesTasks/tasks/task.action'
-import {CreateNoteAction} from './notesTasks/notes/note.action'
-import {NewNoteTrigger} from './notesTasks/notes/newNote.trigger'
-import {applicationMetadataAppender, appSignatureAppender} from './utils/operations'
-import {NewTaskTrigger} from './notesTasks/tasks/newTask.trigger'
-import {ContactCompanySearchOrCreate, ContactPersonSearchOrCreate} from './contact/contact.searchCreate'
-import {LeadSearchOrCreate} from './lead/lead.searchCreate'
-import {DealSearchOrCreate} from './deal/deal.searchCreate'
-import {ProductResource} from './products/catalog/product.resource'
-import {ProductSearch} from './products/catalog/product.search'
-import {ProductSearchOrCreate} from './products/catalog/product.searchCreate'
-import {CreateProductAction, UpdateProductAction} from './products/catalog/product.action'
-import {NewProductInCatalogTrigger} from './products/catalog/newProductsInCatalog.trigger'
-import {LeadStatusChangeTrigger} from './lead/leadStatusChange.trigger'
-import {LeadFieldsDropdown} from './lead/fields/leadFields.trigger'
-import {DealFieldsDropdown} from './deal/fields/dealFields.trigger'
-import {ContactFieldsDropdown} from './contact/fields/contactFields.trigger'
-import {CreateEnrollmentAction, StopAllEnrollmentsAction} from './engage/enrollments/enrollment.action'
+import { CreateTaskAction } from './notesTasks/tasks/task.action'
+import { CreateNoteAction } from './notesTasks/notes/note.action'
+import { NewNoteTrigger } from './notesTasks/notes/newNote.trigger'
+import {
+  applicationMetadataAppender,
+  appSignatureAppender,
+} from './utils/operations'
+import { NewTaskTrigger } from './notesTasks/tasks/newTask.trigger'
+import {
+  ContactCompanySearchOrCreate,
+  ContactPersonSearchOrCreate,
+} from './contact/contact.searchCreate'
+import { LeadSearchOrCreate } from './lead/lead.searchCreate'
+import { DealSearchOrCreate } from './deal/deal.searchCreate'
+import { ProductResource } from './products/catalog/product.resource'
+import { ProductSearch } from './products/catalog/product.search'
+import { ProductSearchOrCreate } from './products/catalog/product.searchCreate'
+import {
+  CreateProductAction,
+  UpdateProductAction,
+} from './products/catalog/product.action'
+import { NewProductInCatalogTrigger } from './products/catalog/newProductsInCatalog.trigger'
+import { LeadStatusChangeTrigger } from './lead/leadStatusChange.trigger'
+import { LeadFieldsDropdown } from './lead/fields/leadFields.trigger'
+import { DealFieldsDropdown } from './deal/fields/dealFields.trigger'
+import { ContactFieldsDropdown } from './contact/fields/contactFields.trigger'
+import {
+  CreateEnrollmentAction,
+  StopAllEnrollmentsAction,
+} from './engage/enrollments/enrollment.action'
 import EnrollmentResource from './engage/enrollments/enrollment.resource'
 import SequenceResource from './engage/sequences/sequence.resource'
-import {SequenceSearch} from './engage/sequences/sequence.search'
-import {ListSequencesDropdown} from './engage/sequences/newSequence.trigger'
-import {ListEnrollmentsDropdown} from './engage/enrollments/newEnrollment.trigger'
+import { SequenceSearch } from './engage/sequences/sequence.search'
+import { ListSequencesDropdown } from './engage/sequences/newSequence.trigger'
+import { ListEnrollmentsDropdown } from './engage/enrollments/newEnrollment.trigger'
+import { handleResponse } from './utils/http'
 
 // We can roll up all our behaviors in an App.
 const App = {
@@ -89,10 +126,10 @@ const App = {
   beforeRequest: [
     apiTokenBearer,
     applicationMetadataAppender,
-    appSignatureAppender
+    appSignatureAppender,
   ],
 
-  afterResponse: [],
+  afterResponse: [handleResponse],
 
   // If you want to define optional resources to simplify creation of triggers, searches, creates - do that here!
   resources: {
@@ -123,7 +160,7 @@ const App = {
 
     // Engage
     [EnrollmentResource.key]: EnrollmentResource,
-    [SequenceResource.key]: SequenceResource
+    [SequenceResource.key]: SequenceResource,
   },
 
   // If you want your trigger to show up, you better include it here!
@@ -228,7 +265,7 @@ const App = {
     [ProductSearch.key]: ProductSearch,
 
     // Enrollments
-    [SequenceSearch.key]: SequenceSearch
+    [SequenceSearch.key]: SequenceSearch,
   },
 
   // If you want your creates to show up, you better include it here!
@@ -262,10 +299,14 @@ const App = {
     [UpdateProductAction.key]: UpdateProductAction,
 
     // Deprecated and hidden
-    [DeprecatedCreateOrUpdateLeadAction.key]: DeprecatedCreateOrUpdateLeadAction,
-    [DeprecatedCreateOrUpdatePersonAction.key]: DeprecatedCreateOrUpdatePersonAction,
-    [DeprecatedCreateOrUpdateCompanyAction.key]: DeprecatedCreateOrUpdateCompanyAction,
-    [DeprecatedCreateOrUpdateDealAction.key]: DeprecatedCreateOrUpdateDealAction,
+    [DeprecatedCreateOrUpdateLeadAction.key]:
+      DeprecatedCreateOrUpdateLeadAction,
+    [DeprecatedCreateOrUpdatePersonAction.key]:
+      DeprecatedCreateOrUpdatePersonAction,
+    [DeprecatedCreateOrUpdateCompanyAction.key]:
+      DeprecatedCreateOrUpdateCompanyAction,
+    [DeprecatedCreateOrUpdateDealAction.key]:
+      DeprecatedCreateOrUpdateDealAction,
   },
 
   searchOrCreates: {
@@ -280,8 +321,8 @@ const App = {
     [DealSearchOrCreate.key]: DealSearchOrCreate,
 
     // Products
-    [ProductSearchOrCreate.key]: ProductSearchOrCreate
-  }
+    [ProductSearchOrCreate.key]: ProductSearchOrCreate,
+  },
 }
 
 // Finally, export the app.

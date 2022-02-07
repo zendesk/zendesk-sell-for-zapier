@@ -1,12 +1,17 @@
-import {isEmpty, pick, pickBy, isNumber} from 'lodash'
-import {Bundle, ZObject} from 'zapier-platform-core'
-import {fetch, isResourcePresentInResponse, unpackItemResponseAsArray, unpackSingleItemResponse} from './http'
-import {ActionDetails} from './operations'
+import { isEmpty, pick, pickBy, isNumber } from 'lodash'
+import { Bundle, ZObject } from 'zapier-platform-core'
+import {
+  fetch,
+  isResourcePresentInResponse,
+  unpackItemResponseAsArray,
+  unpackSingleItemResponse,
+} from './http'
+import { ActionDetails } from './operations'
 
 export enum ResourceType {
   Lead = 'lead',
   Contact = 'contact',
-  Deal = 'deal'
+  Deal = 'deal',
 }
 
 export enum EntityType {
@@ -14,17 +19,17 @@ export enum EntityType {
   Person = 'person',
   Company = 'company',
   Contact = 'contact',
-  Deal = 'deal'
+  Deal = 'deal',
 }
 
 export enum UpdateMethod {
   Put = 'PUT',
-  Post = 'POST'
+  Post = 'POST',
 }
 
 export enum SortOrder {
   Desc = 'desc',
-  Asc = 'asc'
+  Asc = 'asc',
 }
 
 export interface Filters {
@@ -36,21 +41,31 @@ interface ApiSortParameter {
 }
 
 export interface SortDefinition {
-  fieldName: string,
+  fieldName: string
   order?: SortOrder
 }
 
-export const descendingSort = (fieldName: string): SortDefinition => ({fieldName, order: SortOrder.Desc})
+export const descendingSort = (fieldName: string): SortDefinition => ({
+  fieldName,
+  order: SortOrder.Desc,
+})
 
-const isNumeric = (x: any): boolean => x !== null && x !== undefined && !isNaN(x)
+const isNumeric = (x: any): boolean =>
+  x !== null && x !== undefined && !isNaN(x)
 
-export const hasIdDefined = (bundle: Bundle): boolean => isNumeric(bundle.inputData.id)
+export const hasIdDefined = (bundle: Bundle): boolean =>
+  isNumeric(bundle.inputData.id)
 
-export const resourceUrl = (rootUrl: string, bundle: Bundle): string => `${rootUrl}/${bundle.inputData.id}`
+export const resourceUrl = (rootUrl: string, bundle: Bundle): string =>
+  `${rootUrl}/${bundle.inputData.id}`
 
-export const areSearchCriteriaDefined = (bundle: Bundle, filters: Filters) => hasIdDefined(bundle) || !isEmpty(filters)
+export const areSearchCriteriaDefined = (bundle: Bundle, filters: Filters) =>
+  hasIdDefined(bundle) || !isEmpty(filters)
 
-export const notNullableSupportedFilters = (bundle: Bundle, filterNames: string[]): Filters => {
+export const notNullableSupportedFilters = (
+  bundle: Bundle,
+  filterNames: string[]
+): Filters => {
   return pick(notNullableInputs(bundle.inputData), filterNames)
 }
 
@@ -58,32 +73,41 @@ export const sortParameter = (sort?: SortDefinition): ApiSortParameter => {
   if (!sort) {
     return {}
   }
-  const {fieldName, order} = sort
+  const { fieldName, order } = sort
   const stringifiedOrder = !!order ? order : SortOrder.Desc
   return {
-    sort_by: `${fieldName}:${stringifiedOrder}`
+    sort_by: `${fieldName}:${stringifiedOrder}`,
   }
 }
 
-const normalizedZapierPage = (bundle: Bundle, pageNumber?: number): number | undefined => {
+const normalizedZapierPage = (
+  bundle: Bundle,
+  pageNumber?: number
+): number | undefined => {
   if (bundle && bundle.meta && isNumber(bundle.meta.page)) {
     return bundle.meta.page + 1 // Zapier starts indexing pages from 0
   }
   return pageNumber
 }
 
-export const extractPageParameter = (bundle: Bundle, pageNumber?: number, pageSize?: number) =>
-  pageParameter(normalizedZapierPage(bundle, pageNumber), pageSize)
+export const extractPageParameter = (
+  bundle: Bundle,
+  pageNumber?: number,
+  pageSize?: number
+) => pageParameter(normalizedZapierPage(bundle, pageNumber), pageSize)
 
-export const pageParameter = (pageNumber: number = 1, pageSize: number = 100) => {
+export const pageParameter = (
+  pageNumber: number = 1,
+  pageSize: number = 100
+) => {
   return {
     per_page: pageSize,
-    page: pageNumber
+    page: pageNumber,
   }
 }
 
 export const notNullableInputs = (inputData: Filters) => {
-  return pickBy(inputData, value => value !== null && value !== undefined)
+  return pickBy(inputData, (value) => value !== null && value !== undefined)
 }
 
 /**
@@ -99,7 +123,11 @@ export const resourceExists = async (
     return false
   }
 
-  const response = await fetch(z, {url: resourceUrl(rootUrl, bundle)}, actionDetails)
+  const response = await fetch(
+    z,
+    { url: resourceUrl(rootUrl, bundle) },
+    actionDetails
+  )
   return isResourcePresentInResponse(z, response)
 }
 
@@ -113,7 +141,11 @@ export const fetchResource = async (
   rootUrl: string,
   actionDetails?: ActionDetails
 ) => {
-  const response = await fetch(z, {url: resourceUrl(rootUrl, bundle)}, actionDetails)
+  const response = await fetch(
+    z,
+    { url: resourceUrl(rootUrl, bundle) },
+    actionDetails
+  )
   return unpackSingleItemResponse(response, z)
 }
 
@@ -127,6 +159,10 @@ export const fetchResourceAsArray = async (
   rootUrl: string,
   actionDetails?: ActionDetails
 ): Promise<any[]> => {
-  const response = await fetch(z, {url: resourceUrl(rootUrl, bundle)}, actionDetails)
+  const response = await fetch(
+    z,
+    { url: resourceUrl(rootUrl, bundle) },
+    actionDetails
+  )
   return unpackItemResponseAsArray(z, response)
 }

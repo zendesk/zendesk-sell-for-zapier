@@ -114,6 +114,12 @@ export const unpackItemResponseAsArray = (
   return formatAndThrowAPIError(z, response)
 }
 
+/**
+ * Since v10 of Zapier Platform Core response.throwForStatus (throws an error if status code is between 400 and 600)
+ * is called before response is returned.
+ * To prevent this we need to set skipThrowForStatus on the request or response.
+ * This function has to be pass to afterResponse middleware.
+ */
 export const handleResponse = (response: BaseHttpResponse) => {
   if (response.status === 404) {
     response.skipThrowForStatus = true

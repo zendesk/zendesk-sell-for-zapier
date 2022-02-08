@@ -165,9 +165,7 @@ describe('create or update lead action', () => {
     nock('https://api.getbase.com/v2').get('/leads/200').reply(404)
 
     mockEmptyCustomFieldsResponse()
-    nock('https://api.getbase.com/v2', {
-      allowUnmocked: true,
-    })
+    nock('https://api.getbase.com/v2')
       .post('/leads', {
         data: {
           last_name: 'Josh',

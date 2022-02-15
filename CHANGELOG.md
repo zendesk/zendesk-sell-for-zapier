@@ -1,6 +1,6 @@
 ## 1.0.24
 
-- Bumping `node` to recent version (16.1.0)
+- Bumping `node` to version (14.19.0)
 - Bumping `zapier-platform-core` to recent version (11.2.0)
 - Bumping other dependencies to latest versions
 - Fixes and improvements in code after dependencies bump

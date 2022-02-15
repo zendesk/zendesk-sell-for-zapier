@@ -190,8 +190,8 @@ Inputs:
 
 - website - `https://zapier.com`
 - redirect url - see below
-- terms of service - `https://zapier.com/terms/`
-- logo - `https://zapier.com/brand/assets/images/logos/zapier-logo.png`
+- terms of service - `https://zapier.com/legal`
+- logo - `https://drive.google.com/file/d/1FtIASmDlXzyBlTmgcE1Yj2nou2QsRp2K/view?usp=sharing`
 
 #### How to get Redirect URI to my Zapier Application?
 

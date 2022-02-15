@@ -107,7 +107,10 @@ export const pageParameter = (
 }
 
 export const notNullableInputs = (inputData: Filters) => {
-  return pickBy(inputData, (value) => value !== null && value !== undefined)
+  return pickBy(
+    inputData,
+    (value: any) => value !== null && value !== undefined
+  )
 }
 
 /**

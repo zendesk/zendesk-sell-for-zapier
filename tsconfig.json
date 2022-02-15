@@ -4,9 +4,9 @@
     "module": "commonjs",
     "outDir": "./lib",
     "strict": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
   ]
 }

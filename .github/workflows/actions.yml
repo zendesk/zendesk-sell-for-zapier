@@ -11,7 +11,7 @@ jobs:
       - uses: zendesk/checkout@v2
       - uses: zendesk/setup-node@v2
         with:
-          node-version: 16.1.0
+          node-version: 14.19.0
       - name: test
         run: |
           curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.19.2

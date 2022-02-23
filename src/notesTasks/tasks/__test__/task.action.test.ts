@@ -2,7 +2,7 @@ import * as nock from 'nock'
 import App from '../../..'
 import * as zapier from 'zapier-platform-core'
 import * as taskErrorResponse from './taskErrorResponse.fixture.json'
-import {CreateTaskAction} from '../task.action'
+import { CreateTaskAction } from '../task.action'
 
 const appTester = zapier.createAppTester(App)
 zapier.tools.env.inject()
@@ -16,8 +16,8 @@ describe('create task action', () => {
         resource_type: 'Lead',
         resource_id: 12345,
         owner_id: 100,
-        invalid_filter: 'invalid'
-      }
+        invalid_filter: 'invalid',
+      },
     }
 
     nock('https://api.getbase.com/v2')
@@ -28,15 +28,18 @@ describe('create task action', () => {
           resource_type: 'lead',
           resource_id: 12345,
           owner_id: 100,
-        }
+        },
       })
-      .reply(200, {data: {id: 1230}})
+      .reply(200, { data: { id: 1230 } })
 
-    const response: any = await appTester(App.creates[CreateTaskAction.key].operation.perform, bundle)
+    const response: any = await appTester(
+      App.creates[CreateTaskAction.key].operation.perform,
+      bundle
+    )
     expect(response.id).toEqual(1230)
   })
 
-  it('should pass custom value used in resource_type to api', async (done) => {
+  it('should pass custom value used in resource_type to api', async () => {
     const bundle = {
       inputData: {
         content: 'This is task',
@@ -44,7 +47,7 @@ describe('create task action', () => {
         resource_type: 'leadzz',
         resource_id: 12345,
         owner_id: 100,
-      }
+      },
     }
 
     nock('https://api.getbase.com/v2')
@@ -55,16 +58,17 @@ describe('create task action', () => {
           resource_type: 'leadzz',
           resource_id: 12345,
           owner_id: 100,
-        }
+        },
       })
       .reply(422, taskErrorResponse)
 
     try {
-      await appTester(App.creates[CreateTaskAction.key].operation.perform, bundle)
-      done.fail('422 API response should throw exception')
-    } catch (e) {
+      await appTester(
+        App.creates[CreateTaskAction.key].operation.perform,
+        bundle
+      )
+    } catch (e: any) {
       expect(e.message).toContain('422')
-      done()
     }
   })
 })

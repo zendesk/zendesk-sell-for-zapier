@@ -1,14 +1,25 @@
-import {HttpRequestOptions, HttpResponse, ZObject} from 'zapier-platform-core'
-import {formatAndThrowAPIError} from './errors'
-import {ActionDetails, extractHeaders, FetchRequestOptions} from './operations'
-import {includes} from 'lodash'
+import {
+  BaseHttpResponse,
+  HttpRequestOptions,
+  HttpResponse,
+  ZObject,
+} from 'zapier-platform-core'
+import { formatAndThrowAPIError } from './errors'
+import {
+  ActionDetails,
+  extractHeaders,
+  FetchRequestOptions,
+} from './operations'
+import { includes } from 'lodash'
 
 const between = (status: number, minInclusive: number, maxInclusive: number) =>
   status >= minInclusive && status <= maxInclusive
 
-export const isSuccessful = (status: number): boolean => between(status, 200, 299)
+export const isSuccessful = (status: number): boolean =>
+  between(status, 200, 299)
 export const isNotFound = (status: number): boolean => status === 404
-export const isRequestInvalid = (status: number): boolean => includes([400, 422], status)
+export const isRequestInvalid = (status: number): boolean =>
+  includes([400, 422], status)
 export const isForbidden = (status: number): boolean => status === 403
 export const isRateLimitReached = (status: number): boolean => status === 429
 
@@ -17,16 +28,16 @@ export const rootUrl = (): string => {
 }
 
 export interface ItemsWithMeta {
-  items: object[],
+  items: object[]
   meta: {
-    type: string,
-    count: number,
+    type: string;
+    count: number;
     links: {
-      self?: string,
-      first_page?: string,
-      prev_page?: string,
-      next_page?: string
-    }
+      self?: string;
+      first_page?: string;
+      prev_page?: string;
+      next_page?: string;
+    };
   }
 }
 
@@ -36,10 +47,13 @@ export interface ItemsWithMeta {
  *
  * More details here: https://developers.getbase.com/docs/rest/articles/responses
  */
-export const unpackItemsResponse = (response: HttpResponse, z: ZObject): object[] => {
+export const unpackItemsResponse = (
+  response: HttpResponse,
+  z: ZObject
+): object[] => {
   if (isSuccessful(response.status)) {
     const payload: any[] = z.JSON.parse(response.content).items
-    return payload.map(item => item.data)
+    return payload.map((item) => item.data)
   }
   return formatAndThrowAPIError(z, response)
 }
@@ -50,12 +64,15 @@ export const unpackItemsResponse = (response: HttpResponse, z: ZObject): object[
  *
  * More details here: https://developers.getbase.com/docs/rest/articles/responses
  */
-export const unpackItemsWithMeta = (response: HttpResponse, z: ZObject): ItemsWithMeta => {
+export const unpackItemsWithMeta = (
+  response: HttpResponse,
+  z: ZObject
+): ItemsWithMeta => {
   if (isSuccessful(response.status)) {
     const payload = z.JSON.parse(response.content)
     return {
       items: payload.items.map((item: any) => item.data),
-      meta: payload.meta
+      meta: payload.meta,
     }
   }
   return formatAndThrowAPIError(z, response)
@@ -67,13 +84,15 @@ export const unpackItemsWithMeta = (response: HttpResponse, z: ZObject): ItemsWi
  *
  * More details here: https://developers.getbase.com/docs/rest/articles/responses
  */
-export const unpackSingleItemResponse = (response: HttpResponse, z: ZObject) => {
+export const unpackSingleItemResponse = (
+  response: HttpResponse,
+  z: ZObject
+) => {
   if (isSuccessful(response.status)) {
     return z.JSON.parse(response.content).data
   }
   return formatAndThrowAPIError(z, response)
 }
-
 
 /**
  * Unpacks single item from Sell API response envelope and returns wrapped with an array.
@@ -81,8 +100,11 @@ export const unpackSingleItemResponse = (response: HttpResponse, z: ZObject) => 
  *
  * More details here: https://developers.getbase.com/docs/rest/articles/responses
  */
-export const unpackItemResponseAsArray = (z: ZObject, response: HttpResponse): any[] => {
-  const {status} = response
+export const unpackItemResponseAsArray = (
+  z: ZObject,
+  response: HttpResponse
+): any[] => {
+  const { status } = response
   if (isSuccessful(status)) {
     return [unpackSingleItemResponse(response, z)]
   }
@@ -92,8 +114,24 @@ export const unpackItemResponseAsArray = (z: ZObject, response: HttpResponse): a
   return formatAndThrowAPIError(z, response)
 }
 
-export const isResourcePresentInResponse = (z: ZObject, response: HttpResponse): boolean => {
-  const {status} = response
+/**
+ * Since v10 of Zapier Platform Core response.throwForStatus (throws an error if status code is between 400 and 600)
+ * is called before response is returned.
+ * To prevent this we need to set skipThrowForStatus on the request or response.
+ * This function has to be pass to afterResponse middleware.
+ */
+export const handleResponse = (response: BaseHttpResponse) => {
+  if (response.status === 404) {
+    response.skipThrowForStatus = true
+  }
+  return response
+}
+
+export const isResourcePresentInResponse = (
+  z: ZObject,
+  response: HttpResponse
+): boolean => {
+  const { status } = response
   if (isSuccessful(status)) {
     return true
   }
@@ -103,7 +141,11 @@ export const isResourcePresentInResponse = (z: ZObject, response: HttpResponse):
   return formatAndThrowAPIError(z, response)
 }
 
-export const appendHeader = (request: HttpRequestOptions, name: string, value: string): HttpRequestOptions => {
+export const appendHeader = (
+  request: HttpRequestOptions,
+  name: string,
+  value: string
+): HttpRequestOptions => {
   if (!request.headers) {
     request.headers = {}
   }
@@ -124,4 +166,5 @@ export const fetch = async (
   return await z.request(newOptions)
 }
 
-export const restEndpoints = (resource: string): string => `${rootUrl()}/v2/${resource}`
+export const restEndpoints = (resource: string): string =>
+  `${rootUrl()}/v2/${resource}`

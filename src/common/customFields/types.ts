@@ -22,10 +22,10 @@ export interface RawCustomField {
   choices?: RawCustomFieldChoices | null
 }
 
-export type RawCustomFieldChoices = Array<{
+export type RawCustomFieldChoices = {
   id: number,
   name: string
-}>
+}[]
 
 export enum ZapierCustomFieldType {
   String = 'string',

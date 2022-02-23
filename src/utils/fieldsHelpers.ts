@@ -1,18 +1,22 @@
-import {isEmpty, mapKeys, mapValues, omitBy, pick, pickBy} from 'lodash'
+import { isEmpty, mapKeys, mapValues, omitBy, pick, pickBy } from 'lodash'
 import * as moment from 'moment'
-import {Filters} from './api'
+import { Filters } from './api'
 
 const addressFieldsEnvelope = (addressFields: object) => {
-  const remapped = mapKeys(addressFields, (value, key) => key.split('.')[1])
-  return isEmpty(remapped) ? {} : {address: remapped}
+  const remapped = mapKeys(
+    addressFields,
+    (value: any, key: string) => key.split('.')[1]
+  )
+  return isEmpty(remapped) ? {} : { address: remapped }
 }
 
 export const formatAddressFields = (inputData: object) => {
-  const addressFieldsPredicate = (value: string, key: string): boolean => key.startsWith('address.')
+  const addressFieldsPredicate = (value: string, key: string): boolean =>
+    key.startsWith('address.')
   const addressFields = pickBy(inputData, addressFieldsPredicate)
   return {
     ...omitBy(inputData, addressFieldsPredicate),
-    ...addressFieldsEnvelope(addressFields)
+    ...addressFieldsEnvelope(addressFields),
   }
 }
 
@@ -29,11 +33,11 @@ export const convertToUtc = (input: any) => {
  *
  * Some fields (especially in tasks) requires dates to be in UTC formatted in ISO8601
  */
-export const sanitizeDateTimeFields = (inputData: Filters, dateTimeFieldNames: string[]): Filters => {
-  return mapValues(
-    pick(inputData, dateTimeFieldNames),
-    convertToUtc
-  )
+export const sanitizeDateTimeFields = (
+  inputData: Filters,
+  dateTimeFieldNames: string[]
+): Filters => {
+  return mapValues(pick(inputData, dateTimeFieldNames), convertToUtc)
 }
 
 /**
@@ -45,16 +49,20 @@ export const sanitizeDateTimeFields = (inputData: Filters, dateTimeFieldNames: s
  */
 const searchFieldPrefix = 'search.'
 
-export const searchPrefixedField = (fieldName: string) => `${searchFieldPrefix}${fieldName}`
+export const searchPrefixedField = (fieldName: string) =>
+  `${searchFieldPrefix}${fieldName}`
 
 export const pickOnlySearchFields = (inputData: Filters): Filters => {
   const regexp = new RegExp(`^${searchFieldPrefix}`)
   const removePrefix = (v: any, k: string) => k.replace(regexp, '')
   return mapKeys(
-    pickBy(inputData, (v: any, k: string) => k.startsWith(searchFieldPrefix)), removePrefix
+    pickBy(inputData, (v: any, k: string) => k.startsWith(searchFieldPrefix)),
+    removePrefix
   )
 }
 
 export const outfilterSearchFields = (inputData: Filters): Filters => {
-  return omitBy(inputData, (v, k) => k.startsWith(searchFieldPrefix))
+  return omitBy<Filters>(inputData, (_v: any, k: string) =>
+    k.startsWith(searchFieldPrefix)
+  )
 }

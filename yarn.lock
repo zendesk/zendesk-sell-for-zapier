@@ -2161,10 +2161,10 @@ node-bin-setup@^1.0.0:
   resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.1.0.tgz#9df94c41335a8f41958a639b2736f860582a209c"
   integrity sha512-pTeU6NgUrexiLNtd+AKwvg6cngHMvj5FZ5e2bbv2ogBSIc9yhkXSSaTScfSRZnwHIh5YFmYSYlemLWkiKD7rog==
 
-node-fetch@2.6.6:
-  version "2.6.6"
-  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.6.tgz"
-  integrity sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
 
@@ -2878,10 +2878,10 @@ yn@3.1.1:
   resolved "https://registry.npmjs.org/yn/-/yn-3.1.1.tgz"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 
-zapier-platform-core@11.2.0:
-  version "11.2.0"
-  resolved "https://registry.npmjs.org/zapier-platform-core/-/zapier-platform-core-11.2.0.tgz"
-  integrity sha512-NzG66GQYl/QcVplAbJP1dNzd1049q2EnM1UzCAbMpjxjsCdvAyA0vE/3rUBA/l+5CtFPQh7XwsNnpEIrmC8QZw==
+zapier-platform-core@11.3.3:
+  version "11.3.3"
+  resolved "https://registry.yarnpkg.com/zapier-platform-core/-/zapier-platform-core-11.3.3.tgz#8d6e53d8319026647615f7940da511c999b4047f"
+  integrity sha512-XGwg5mUlrvocSZf1WYR+dL6LEEdP8f5IIxHRp1Kl1T1HXdTG0tHlnVXdGBd2EFt1a279ivtFSH0K6ysfXMWU1g==
   dependencies:
     "@zapier/secret-scrubber" "^1.0.3"
     bluebird "3.7.2"
@@ -2890,17 +2890,17 @@ zapier-platform-core@11.2.0:
     form-data "4.0.0"
     lodash "4.17.21"
     mime-types "2.1.34"
-    node-fetch "2.6.6"
+    node-fetch "2.6.7"
     oauth-sign "0.9.0"
     semver "7.3.5"
-    zapier-platform-schema "11.2.0"
+    zapier-platform-schema "11.3.3"
   optionalDependencies:
     "@types/node" "^14.14.35"
 
-zapier-platform-schema@11.2.0:
-  version "11.2.0"
-  resolved "https://registry.npmjs.org/zapier-platform-schema/-/zapier-platform-schema-11.2.0.tgz"
-  integrity sha512-shsHYl572F46CUufHAbiTZlatNryowGAVD1TqO+UaGqF8uLYIx5z85u0OKp/maa5EeJ5cJyELGfJykwR/5tHlg==
+zapier-platform-schema@11.3.3:
+  version "11.3.3"
+  resolved "https://registry.yarnpkg.com/zapier-platform-schema/-/zapier-platform-schema-11.3.3.tgz#24afbfdf32c49dcd3daee4b1f5007e18acd5bfec"
+  integrity sha512-L07b807uxLJqdA7akgOVD/t5lD18jv7io8OTmu5K4am+W2pYsLkxhu1pvjwwSn+2sGDJZusuQrLjLL0VLTha5w==
   dependencies:
     jsonschema "1.2.2"
     lodash "4.17.21"

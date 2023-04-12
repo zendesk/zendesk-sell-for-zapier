@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PRODUCTION_KEY: "App6276"
+      PRODUCTION_ID: 6276
     steps:
       - uses: zendesk/checkout@v2
       - uses: zendesk/setup-node@v2
@@ -22,6 +23,5 @@ jobs:
           yarn install
           yarn run lint
           yarn run zapier-test
-          yarn run zapier-link
-          echo $PRODUCTION_KEY
+          echo {id: $PRODUCTION_ID, key: $RODUCTION_KEY} > .zapierapprc
           yarn run zapier-push

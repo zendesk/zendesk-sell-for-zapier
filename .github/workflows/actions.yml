@@ -3,6 +3,11 @@ on:
   push:
     branches: [master]
   pull_request:
+env:
+  production:  {
+    id: 6276,
+    key: "App6276"
+  }
 jobs:
   main:
     name: yarn-simple
@@ -21,4 +26,5 @@ jobs:
           yarn run lint
           yarn run zapier-test
           yarn run zapier-link
+          echo $env.production > .zapierapprc
           yarn run zapier-push

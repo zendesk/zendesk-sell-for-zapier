@@ -4,6 +4,7 @@ node_modules
 *.log
 .environment
 .env
+.zapierapprc
 *.iml
 .idea
 lib

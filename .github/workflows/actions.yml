@@ -20,4 +20,5 @@ jobs:
           yarn install
           yarn run lint
           yarn run zapier-test
+          yarn run zapier-link
           yarn run zapier-push

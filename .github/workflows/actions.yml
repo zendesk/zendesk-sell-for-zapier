@@ -24,5 +24,6 @@ jobs:
           yarn run lint
           yarn run zapier-test
           echo {id: $PRODUCTION_ID, key: $RODUCTION_KEY} > .zapierapprc
+          yarn run zapier login
           yarn run zapier-link
           yarn run zapier-push

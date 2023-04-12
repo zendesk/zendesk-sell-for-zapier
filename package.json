@@ -17,7 +17,8 @@
     "zapier-validate": "yarn build && zapier validate",
     "zapier-test": "yarn build && zapier validate && yarn test",
     "zapier-push": "yarn build && zapier push",
-    "zapier-link": "zapier link"
+    "zapier-link": "zapier link",
+    "zapier-login": "zapier login"
   },
   "engines": {
     "node": ">=16.14",

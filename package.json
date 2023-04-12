@@ -20,14 +20,14 @@
     "zapier-link": "zapier link"
   },
   "engines": {
-    "node": "<=16",
+    "node": ">=16.14",
     "npm": ">=7.11.2"
   },
   "dependencies": {
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "moment": "^2.29.1",
-    "node": "<=16",
+    "node": ">=16.14",
     "npm": "^9.6.4",
     "zapier-platform-core": "11.2.0"
   },

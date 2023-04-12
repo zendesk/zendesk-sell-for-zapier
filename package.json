@@ -16,7 +16,7 @@
     "lint-fix": "tslint --project tsconfig.json --fix && echo \"👍 Lint passed\" || echo \"👎 Found few lint errors\"",
     "zapier-validate": "yarn build && zapier validate",
     "zapier-test": "yarn build && zapier validate && yarn test",
-    "zapier-push": "yarn build && zapier push"
+    "zapier-push": "yarn build && zapier link && zapier push"
   },
   "engines": {
     "node": "^14.19.0",

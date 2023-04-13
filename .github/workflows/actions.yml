@@ -24,6 +24,6 @@ jobs:
           yarn install
           yarn run lint
           yarn run zapier-test
-          echo {id: $PRODUCTION_ID, key: $RODUCTION_KEY} > .zapierapprc
-          echo {deployKey: $ZAPIER_DEPLOY_KEY} > .zapierrc
+          echo "{\"deployKey\": $ZAPIER_DEPLOY_KEY}" > .zapierrc
+          echo "{\"id\": $PRODUCTION_ID,\"key\": $RODUCTION_KEY}" > .zapierapprc
           yarn run zapier-push

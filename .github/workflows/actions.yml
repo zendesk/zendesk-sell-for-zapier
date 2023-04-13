@@ -26,5 +26,4 @@ jobs:
           yarn run zapier-test
           echo {id: $PRODUCTION_ID, key: $RODUCTION_KEY} > .zapierapprc
           echo {deployKey: $ZAPIER_DEPLOY_KEY} > .zapierrc
-          yarn run zapier-link
           yarn run zapier-push

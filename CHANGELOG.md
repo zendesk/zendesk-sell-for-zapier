@@ -1,6 +1,6 @@
 ## 1.0.24
 - Added zapier push command to Github Actions
-- Bumping `node` to version (16.13.0) and `npm` to 7.11.2
+- Bumping `node` to version (16.14.0) and `npm` to 7.11.2
 
 ## 1.0.24
 

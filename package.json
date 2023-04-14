@@ -36,7 +36,7 @@
     "@types/jest": "^27.4.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash": "^4.14.178",
-    "@types/node": "^17.0.12",
+    "@types/node": "^18.15.11",
     "jest": "^27.4.7",
     "jest-junit": "^13.0.0",
     "nock": "^13.2.2",

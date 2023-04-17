@@ -115,7 +115,7 @@ This is how it looks like step by step:
 - If application is private you have to [promote it first](https://zapier.github.io/zapier-platform-cli/#promoting-an-app-version)
   `zapier promote 1.0.1`
 - Migrate all the users to the newer version `zapier migrate 1.0.0 1.0.1 100%`
-- The alst two steps can be done from UI on Zapier developer site on `versions` menu:
+- The last two steps can be done from UI on Zapier developer site on `versions` menu:
 
 ![Zapier developer sit - versions](readme_image.png)
 

@@ -1,4 +1,6 @@
-## 1.0.24
+## 1.0.26
+- update README.md
+## 1.0.25
 - Added zapier push command to Github Actions
 - Bumping `node` to version (16.14.0) and `npm` to 7.11.2
 

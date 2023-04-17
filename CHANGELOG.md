@@ -1,4 +1,8 @@
 ## 1.0.24
+- Added zapier push command to Github Actions
+- Bumping `node` to version (16.14.0) and `npm` to 7.11.2
+
+## 1.0.24
 
 - Bumping `node` to version (14.19.0)
 - Bumping `zapier-platform-core` to recent version (11.2.0)

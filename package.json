@@ -1,7 +1,7 @@
 {
   "name": "zendesk-sell-for-zapier",
   "private": true,
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Zendesk Sell App in Zapier",
   "repository": "git@github.com:zendesk/zendesk-sell-for-zapier.git",
   "homepage": "https://www.zendesk.com/sell/",
@@ -16,24 +16,27 @@
     "lint-fix": "tslint --project tsconfig.json --fix && echo \"👍 Lint passed\" || echo \"👎 Found few lint errors\"",
     "zapier-validate": "yarn build && zapier validate",
     "zapier-test": "yarn build && zapier validate && yarn test",
-    "zapier-push": "yarn build && zapier push"
+    "zapier-push": "yarn build && zapier push --skip-npm-install",
+    "zapier-link": "zapier link",
+    "zapier-login": "zapier login"
   },
   "engines": {
-    "node": "^14.19.0",
+    "node": ">=16.14.0",
     "npm": ">=7.11.2"
   },
   "dependencies": {
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "moment": "^2.29.1",
-    "node": "^14.19.0",
+    "node": ">=16.14",
+    "npm": "^9.6.4",
     "zapier-platform-core": "11.2.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash": "^4.14.178",
-    "@types/node": "^17.0.12",
+    "@types/node": "^18.15.11",
     "jest": "^27.4.7",
     "jest-junit": "^13.0.0",
     "nock": "^13.2.2",

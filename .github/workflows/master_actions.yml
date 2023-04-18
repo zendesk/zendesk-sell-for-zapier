@@ -4,10 +4,13 @@ push:
   branches: [master]
 jobs:
   main:
-    name: yarn-simple
+    name: yarn-master
     runs-on: ubuntu-latest
     env:
       VERSION: JSON.stringify(require('./package.json').version)
+      PRODUCTION_KEY: "App6276"
+      PRODUCTION_ID: 6276
+      ZAPIER_DEPLOY_KEY: ${{ secrets.ZAPIER_DEPLOY_KEY }}
     steps:
       - uses: zendesk/checkout@v2
       - uses: zendesk/setup-node@v2
@@ -21,4 +24,7 @@ jobs:
           yarn install
           yarn run lint
           yarn run zapier-test
+          echo "{\"deployKey\": $ZAPIER_DEPLOY_KEY}" > .zapierrc
+          echo "{\"id\": $PRODUCTION_ID,\"key\": $RODUCTION_KEY}" > .zapierapprc
+          echo 'Zendesk Sell (6276)' | yarn run zapier-link
           zapier promote $VERSION

@@ -109,7 +109,7 @@ This is how it looks like step by step:
 - Replace `version` entry in [package.json](/package.json) with next minor version `1.0.1`
 - Github action will run tests and push application, at this point Application is published, but all users are still using previous version
 - Migrate test account to run tests and manually double check if everything works `zapier migrate 1.0.0 1.0.1 --username=testuser@example.com`
-- Migrate Sulik account to new version of application using this command zapier migrate X Y --user=krzysztof.bober@getbase.com
+- Migrate Sulik account to new version of application using this command zapier migrate 1.0.0 1.0.1 --user=krzysztof.bober@getbase.com
 - Run Suliks manually from [here](https://ci.uxguards.com/job/Sulik/job/Zapier/)
 - If you want to perform manual tests (and you have account in Zapier which has Zendesk Sell Application assigned) you can go to [Zapier Editor](https://zapier.com/editor) and you should be able to use new version
 - If application is private you have to [promote it first](https://zapier.github.io/zapier-platform-cli/#promoting-an-app-version)
@@ -117,7 +117,7 @@ This is how it looks like step by step:
 - Migrate all the users to the newer version `zapier migrate 1.0.0 1.0.1 100%`
 - The last two steps can be done from UI on Zapier developer site on `versions` menu:
 
-![Zapier developer sit - versions](readme_image.png)
+![Zapier developer site - versions](readme_image.png)
 
 All commands in one place:
 

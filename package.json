@@ -18,7 +18,8 @@
     "zapier-test": "yarn build && zapier validate && yarn test",
     "zapier-push": "yarn build && zapier push --skip-npm-install",
     "zapier-link": "zapier link",
-    "zapier-login": "zapier login"
+    "zapier-login": "zapier login",
+    "zapier-promote": "zapier promote "
   },
   "engines": {
     "node": ">=16.14.0",

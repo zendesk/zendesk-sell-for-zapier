@@ -1,7 +1,6 @@
-name: repo-checks
+name: deployment
 on:
-  push:
-    branches: [master]
+push:
   pull_request:
 jobs:
   main:
@@ -28,3 +27,26 @@ jobs:
           echo "{\"id\": $PRODUCTION_ID,\"key\": $RODUCTION_KEY}" > .zapierapprc
           echo 'Zendesk Sell (6276)' | yarn run zapier-link
           yarn run zapier-push --skip-npm-install
+on
+  push:
+    branches: [master]
+jobs:
+  main:
+    name: yarn-simple
+    runs-on: ubuntu-latest
+    env:
+      VERSION: JSON.stringify(require('./package.json').version)
+    steps:
+      - uses: zendesk/checkout@v2
+      - uses: zendesk/setup-node@v2
+        with:
+          node-version: 16.14
+      - name: test
+        run: |
+          curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.19.2
+          export PATH="$HOME/.yarn/bin:$PATH"
+          yarn global add zapier-platform-cli@11.2.0
+          yarn install
+          yarn run lint
+          yarn run zapier-test
+          zapier promote $VERSION

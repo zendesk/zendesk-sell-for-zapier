@@ -1,6 +1,5 @@
 name: deployment
 on:
-push:
   pull_request:
 jobs:
   main:

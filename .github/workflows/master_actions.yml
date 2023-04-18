@@ -1,7 +1,7 @@
 name: deployment to master
 on:
-push:
-  branches: [master]
+  push:
+    branches: [master]
 jobs:
   main:
     name: yarn-master

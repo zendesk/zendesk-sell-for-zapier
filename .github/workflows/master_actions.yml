@@ -1,9 +1,10 @@
-name: deployment
+name: deployment to master
 on:
-  pull_request:
+  push:
+    branches: [master]
 jobs:
   main:
-    name: yarn-simple
+    name: yarn-master
     runs-on: ubuntu-latest
     env:
       PRODUCTION_KEY: "App6276"
@@ -25,4 +26,3 @@ jobs:
           echo "{\"deployKey\": $ZAPIER_DEPLOY_KEY}" > .zapierrc
           echo "{\"id\": $PRODUCTION_ID,\"key\": $RODUCTION_KEY}" > .zapierapprc
           echo 'Zendesk Sell (6276)' | yarn run zapier-link
-          yarn run zapier-push --skip-npm-install

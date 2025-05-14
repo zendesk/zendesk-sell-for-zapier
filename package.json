@@ -25,7 +25,7 @@
     "npm": ">=7.11.2"
   },
   "dependencies": {
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.10",
     "moment": "^2.29.1",
     "node": ">=16.14",
